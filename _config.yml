@@ -15,7 +15,7 @@ twitter_username: jandot
 github_username:  jandot
 profile_links:
   Email: "mailto:jan.aerts@gmail.com"
-  GitHub: "https://github.com/jandot"
+  # GitHub: "https://github.com/jandot"
   # You can add more profile links above, or edit _includes/sidebar.html
 
 # Comment Service (Disqus or 多说)
@@ -31,7 +31,7 @@ header:
     Category: /category/
     Donate: https://laobubu.net/donate.html
 
-permalink: /archivers/:title
+permalink: /:year/:month/:title
 plugins:
  - jekyll-paginate
  - jekyll-gist
