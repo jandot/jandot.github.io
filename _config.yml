@@ -1,22 +1,22 @@
 # Site settings
-title: Another Blog
-url: "http://laobubu.github.io"    # the protocol and hostname of your site, eg. `http://laobubu.github.io`
-baseurl: "/jekyll-theme-EasyBook" # the prefix of your site uri, eg. `"/jekyll-theme-EasyBook"` or empty string `""`
+title: SaaienTist
+url: "http://jandot.github.io"
+baseurl: "" # the prefix of your site uri, eg. `"/jekyll-theme-EasyBook"` or empty string `""`
 #timezone: Asia/Chongqing
 description: >
-  One or more sentences introducing this blog.
+  SaaienTist blog 2.0, probably on personal productivity, programming, data science. And other stuff.
 
 # Your information
-email: your_email@example.com
-author: your_name
-avatar: "//www.gravatar.com/avatar/your_email_md5?d=mm&s=135"
-profile: One sentence introducing yourself.
-#twitter_username: twitter_username
-#github_username:  github_username
+email: jan.aerts@gmail.com
+author: Jan Aerts
+avatar: "//www.gravatar.com/avatar/jan.aerts@gmail.com"
+profile: Professor Data Science & Visual Analytics.
+twitter_username: jandot
+github_username:  jandot
 profile_links:
-  Email: "mailto:your_email@example.com"
-  GitHub: "https://github.com/laobubu/jekyll-theme-EasyBook"
-  # You can add more profile links above, or edit _includes/sidebar.html 
+  Email: "mailto:jan.aerts@gmail.com"
+  GitHub: "https://github.com/jandot"
+  # You can add more profile links above, or edit _includes/sidebar.html
 
 # Comment Service (Disqus or 多说)
 #  choose one and un-comment the line to active it
