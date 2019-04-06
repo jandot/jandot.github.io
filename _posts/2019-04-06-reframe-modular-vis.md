@@ -42,6 +42,8 @@ The `my-project/src/cljs/my_project` directory hosts the most important files.
 
 I still need to read the '6-domino cascade' part at the re-frame website, so it's not all clear yet. Will update here where I get there...
 
+## Version 1 - Straightforwardly creating separate svg elements
+
 `core.cljs`: didn't touch this
 ```clojure
 (ns my-re-frame.core
@@ -162,6 +164,125 @@ Note the `:on-mouse-over` and `:on-click` (and keep a look at your browser conso
     ]))
 ```
 
-This is ridiculously simple. Here's the result:<br/>
+Here's the result:<br/>
 <img src="{{site.base}}/assets/re-frame_screenshot.png" style="width: 250px;"/>
 
+Here we're just straightforwardly calling a `(map circle @data)` to create the separate SVG elements.
+
+## Version 2 - A complete plot and passing options
+
+Instead of directly creating a separate circle for each datapoint, we want to create a scatterplot that takes the complete dataset as input.
+
+### Step 1: replace `map` with call to creator function
+
+This is also very simple: we only have to create a `scatterplot` function, and replace the call in the `main-panel`.
+
+```clojure
+(defn scatterplot
+  [data]
+  (map circle data)
+```
+Make sure to put this function _after_ the definition of the `circle` function, otherwise it will complain.
+
+We now have to replace the call in the `main-panel`:
+```clojure
+...
+[:svg {:x 0 :y 0 :width 400 :height 200 :on-click #(println "Clicked")}
+  (map rect @data)
+  (scatterplot @data)
+]
+...
+```
+
+### Step 2: passing options to the scatterplot
+We might have a border around our scatterplot. Or not... Of course we can create different functions: one for scatterplot without border, and one with border. This obviously is not scalable to other options. So let's see if we can get this working: draw a scatterplot _with_ a border next to one _without_.
+
+```clojure
+...
+[:svg {:x 0 :y 0 :width 200 :height 200 :on-click #(println "Clicked")}
+        (scatterplot {:border true} @data)
+        (scatterplot {:border false} @data)
+]
+...
+```
+
+This took a while to figure out, simply because the `scatterplot` function needs to return a single data structure. I must say: figwheel helped a _lot_ here.
+
+```clojure
+(defn scatterplot
+  [opts data]
+  (->> []
+       (#(if (= (:border opts) true) (conj % (border 0 0 200 200))))
+       (#(conj % (map circle data)))
+       (flatten)
+       (partition 2)
+       (map vec)))
+```
+
+Having access to a REPL that is connected to the browser works wonders. The `lein figwheel dev` mentioned above starts a REPL that is connected live to your code. Whenever you save your file, these changes are reflected here as well. To investigate what the `scatterplot` function returned, I'd just run it in that REPL:
+
+```clojure
+(ns my-re-frame.views)
+(scatterplot {:border true} [1 2 3])
+```
+
+This returns
+```clojure
+([:rect
+  {:style {:fill "none", :stroke "black", :stroke-width 1},
+   :x 0,
+   :y 0,
+   :width 200,
+   :height 200}]
+ [:ellipse
+  {:style {:fill "rgba(128,0,0,0.3)", :stroke-width 0},
+   :key "c0.5915471522077664",
+   :cx 1,
+   :cy 1,
+   :rx 10,
+   :ry 10,
+   :on-mouse-over #object[Function]}]
+ [:ellipse
+  {:style {:fill "rgba(128,0,0,0.3)", :stroke-width 0},
+   :key "c0.6396423198112418",
+   :cx 2,
+   :cy 2,
+   :rx 10,
+   :ry 10,
+   :on-mouse-over #object[Function]}]
+ [:ellipse
+  {:style {:fill "rgba(128,0,0,0.3)", :stroke-width 0},
+   :key "c0.7417803449596954",
+   :cx 3,
+   :cy 3,
+   :rx 10,
+   :ry 10,
+   :on-mouse-over #object[Function]}])
+```
+
+Initially, I'd get output where the `:rect` was not really part of the same data structure. Hence the `flatten` -> `partition` -> `map vec`.
+
+```clojure
+[[:rect
+  {:style {:fill "none", :stroke "black", :stroke-width 1},
+   :x 0,
+   ...}]
+ ([:ellipse
+   {:style {:fill "rgba(128,0,0,0.3)", :stroke-width 0},
+    :key "c0.6519528849418721",
+    ...}]
+  [:ellipse
+   {:style {:fill "rgba(128,0,0,0.3)", :stroke-width 0},
+    :key "c0.9563097578789714",
+    ...}]
+  [:ellipse
+   {:style {:fill "rgba(128,0,0,0.3)", :stroke-width 0},
+    :key "c0.449294105728856",
+    ...}])]
+```
+(To be clear: this last bit of output is the _wrong, not working_ one...)
+
+The final picture looks like this:<br/>
+<img src="{{site.base}}/assets/re-frame_screenshot_borders.png" style="width: 250px;"/>
+
+Next: getting the id of the element on select/hover...
