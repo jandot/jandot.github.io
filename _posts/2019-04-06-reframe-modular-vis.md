@@ -285,4 +285,162 @@ Initially, I'd get output where the `:rect` was not really part of the same data
 The final picture looks like this:<br/>
 <img src="{{site.base}}/assets/re-frame_screenshot_borders.png" style="width: 250px;"/>
 
-Next: getting the id of the element on select/hover...
+Next:
+* getting the id of the element on select/hover...
+* getting mouse position
+
+## Version 3 - Getting the mouse position
+
+In order to get the mouse position, we need to unfortunately dig into javascript itself. The code block below prints the mouse position to console whenever the mouse moves over the scatterplot.
+
+```clojure
+[:svg {:x 0
+       :y 0
+       :width 200
+       :height 200
+       :on-mouse-move (fn [e] (println (.-clientX e)))}
+  (scatterplot {:border true} @data)
+]
+```
+
+## Version 4 - Changing state
+At some point we'll want to change state. Never having used atoms before, I did need some help from [this blog post](http://blog.klipse.tech/clojure/2019/02/17/reframe-tutorial.html).
+
+Changes to `db.cljs`:
+```clojure
+(def default-db
+  {:name "imp"
+   :data [1 2 3 5 8 13 21 34 55 89]
+   :selected nil
+   })
+```
+
+In `subs.cljs`:
+```clojure
+(re-frame/reg-sub
+  ::selected-point
+  (fn [db]
+    (:selected-point db)))
+```
+
+In `events.cljs`:
+```clojure
+(re-frame/reg-event-db
+ :selected-point-change
+ (fn [db [_ new-value]]
+   (assoc db :selected-point new-value)))
+```
+
+In `views.cljs`, we change `circle` so that the `selected-point` stores the value of any point that is clicked on:
+```clojure
+(defn circle
+  [pos]
+  [:ellipse {
+    :style {
+      :fill "rgba(128,0,0,0.3)"
+      :stroke-width 0}
+    :key (str "c" (rand))
+    :cx pos
+    :cy pos
+    :rx 10
+    :ry 10
+    :on-mouse-over #(println (str "circle" pos))
+    :on-mouse-down #(re-frame/dispatch [:selected-point-change pos])
+  }])
+```
+
+We can then show that e.g. if you click on one of the SVGs. We need to add `selected-point` to the `let`, and add an `on-click` event to an SVG:
+```clojure
+(defn main-panel []
+  (let [name (re-frame/subscribe [::subs/name])
+        data (re-frame/subscribe [::subs/data])
+        selected-point (re-frame/subscribe [::subs/selected-point])]
+    ...
+    [:svg {:x 0 :y 0 :width 200 :height 200
+           :on-click #(println @selected-point)}
+      (scatterplot {:border true} @data)
+    ]
+    ...
+```
+Don't have a clue yet why the double `::`...
+
+## Version 5 - Very simple brushing/linking
+
+OK. Next step: when I hover over one of the datapoints, I want that datapoint in all other plots to be highlighted.
+
+At this point we need to add CSS to the picture. For the moment I have just put this in the head of the main `index.html`...
+
+```html
+<style>
+  rect {fill: rgba(0,128,0,0.3)}
+  ellipse {fill: rgba(128,0,0,0.3)}
+  .selected {stroke: red; stroke-width: 2}
+</style>
+```
+
+The idea is that any selected datapoint will get a red border.
+
+In `db.cljs` we need to add an additional piece of state in the `default-db`, namely which is the selected point:
+```clojure
+(def default-db
+  {:name "imp"
+   :data [1 2 3 5 8 13 21 34 55 89]
+   :selected-point nil
+   })
+```
+which we will access through a function in `subs.cljs`:
+```clojure
+(re-frame/reg-sub
+  ::selected-point
+  (fn [db]
+    (:selected-point db)))
+```
+
+And here's the tricky part: in the view we need to toggle the class of an SVG element between "selected" and an empty string so as to apply the correct CSS. An element is only redrawn if its parent (i.c. `scatterplot` or `barchart`) is redrawn, or if one of its properties changes. At this moment, the only property of `scatterplot` are `opts` and `data`, but we need to add `selected` to that.
+
+```clojure
+(defn scatterplot
+  [opts selected data]
+  (->> []
+       (#(if (= (:border opts) true) (conj % (border 0 0 200 200))))
+       (#(conj % (map circle data)))
+       (flatten)
+       (partition 2)
+       (map vec)
+       ))
+```
+
+The _only_ thing changed here is the parameters; the code itself has not changed.
+
+In the `main-panel` we need to call `scatterplot` differently of course: we will add the @selected-point parameter.
+```clojure
+(defn main-panel []
+  (let [name (re-frame/subscribe [::subs/name])
+        data (re-frame/subscribe [::subs/data])
+        selected-point (re-frame/subscribe [::subs/selected-point])]
+    [:div
+    ...
+      [:svg {:x 0 :y 0 :width 200 :height 200}
+        (scatterplot {:border false} @selected-point @data)
+      ]
+    ...
+```
+
+Finally, in the circle function we add a `:class` parameter which is either "selected" or "" based on whether or not that datapoint is the same as `@selected-point` or not. The `:on-mouse-over` makes sure that we actually change the selected point when we move our mouse.
+```clojure
+(defn circle
+  [pos]
+  (let [selected-point (re-frame/subscribe [::subs/selected-point])]
+    [:ellipse {
+      :key (str "c" (rand))
+      :cx pos
+      :cy pos
+      :rx 10
+      :ry 10
+      :class (if (= pos @selected-point) "selected" "")
+      :on-mouse-over #(re-frame/dispatch [:selected-point-change pos])
+    }]))
+```
+
+The result looks like this:<br/>
+<img src="{{site.baseurl}}/assets/re-frame_screenshot_brushinglinking.png" style="width: 400px;"/>
