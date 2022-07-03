@@ -29,8 +29,9 @@ jobs:
 
     - name: Deploy                               
       uses: peaceiris/actions-gh-pages@v2
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
       env:
-        REPO_TOKEN: ${{ github.token }}
         # ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         # PUBLISH_BRANCH: gh-pages
         PUBLISH_DIR: ./public
