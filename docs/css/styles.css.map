@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "styles.css",
-	"sourceRoot": "/home/jandot/Scratch/hugo",
+	"sourceRoot": "/home/jandot/Documents/P/_Projects/jandot.github.io",
 	"sources": [
 		"themes/cactus/assets/scss/style.scss",
 		"themes/cactus/assets/scss/_variables.scss",

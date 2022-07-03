@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://jandot.github.io/</loc>
+    <lastmod>2022-06-24T22:01:50+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jandot.github.io/tags/docker/</loc>
+    <lastmod>2022-06-24T22:01:50+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://jandot.github.io/tags/javascript/</loc>
+    <lastmod>2022-06-24T22:01:50+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://jandot.github.io/posts/</loc>
+    <lastmod>2022-06-24T22:01:50+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://jandot.github.io/posts/running-docker-command-from-svelte/</loc>
+    <lastmod>2022-06-24T22:01:50+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://jandot.github.io/tags/svelte/</loc>
+    <lastmod>2022-06-24T22:01:50+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://jandot.github.io/tags/</loc>
+    <lastmod>2022-06-24T22:01:50+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://jandot.github.io/tags/clojure/</loc>
+    <lastmod>2019-04-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://jandot.github.io/posts/clojure-reframe-vis/</loc>
+    <lastmod>2019-04-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://jandot.github.io/tags/datavis/</loc>
+    <lastmod>2019-04-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://jandot.github.io/tags/jupyter/</loc>
+    <lastmod>2019-03-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://jandot.github.io/posts/jupyter-notebooks-docker/</loc>
+    <lastmod>2019-03-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://jandot.github.io/tags/teaching/</loc>
+    <lastmod>2019-03-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://jandot.github.io/posts/saaientist20/</loc>
+    <lastmod>2019-03-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://jandot.github.io/categories/</loc>
+  </url>
+  
+</urlset>
