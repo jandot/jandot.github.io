@@ -2,7 +2,7 @@
 title: "Running Docker Command From Svelte"
 date: 2022-06-24T22:01:50+02:00
 draft: false
-tags: ['svelte','docker','javascript']
+tags: ['svelte','docker','javascript','arangodb']
 ---
 :imagesdir: /assets/
 
@@ -11,96 +11,162 @@ I have a setup where different docker containers are used in conjunction to prov
 
 image::docker-sequence-diagram.png[]
 
-== The solution - part 1
-It looks like this can be done using sveltekit API endpoints.
+== Directory structure
+I created the following directory structure for the app:
 
-{{< highlight javascript "linenos=table" >}}
-import { exec } from "child_process";
+[source]
+----
+docker-compose.yml
+analysis/
+  Dockerfile
+  run_analysis.py
+frontend/
+  Dockerfile
+  build/
+  public/
+  node_modules/
+  src/
+  ...
+----
 
-let command = "docker run --rm ubuntu echo 'from docker' > test.txt"
+The `analysis` container only contains a `Dockerfile` and the specific command to run the analysis; the `frontend` container holds the svelte-kit code.
 
-export async function get({ params }) {
-    exec(command, (error, stdout, stderr) => {
-        if (error) {
-            console.log(`error: ${error.message}`);
-            return;
-        }
-        if (stderr) {
-            console.log(`stderr: ${stderr}`);
-            return;
-        }
-        console.log(`stdout: ${stdout}`);
-    });
+== Setting up the analysis container
+The key in this solution is the `shell2http` script available from https://github.com/msoap/shell2http. This script enables you to attach a port on your machine to a specific script. For example, the command `shell2http /ps "ps aux"` will return the output of `ps aux` to your webbrowser if you go to http://localhost:8080/ps. 
 
-    return {
-        body: files
-    }
-}
+Let's for example say that we have an ArangoDB collection in which we want to add a new key/value pair for the document with the id `1234`. The following simple python script does this.
+
+{{< highlight docker "linenos=table" >}}
+#!/usr/bin/env python
+from arango import ArangoClient
+
+client = ArangoClient(hosts="http://arangodb:8529")
+db = client.db("oncoviz",username="<your_root_username>",password="<your_root_pwd>")
+my_collection = db.collection("my_collection")
+my_collection.update_match({'id':1234},{'newkey':'newvalue'})
 {{< / highlight >}}
 
-Save this as `routes/api/test.js`, and hit http://localhost:3000/api/test. 
+=== Testing shell2http
+The regular way of running the script (let's name it `run_analysis.py`) would be `python ./run_analysis.py`. Therefore, we can make it available using `shell2http` with the following command: `shell2http /analysis "python run_analysis.py"`. This will return the following:
 
-This will create a file `test.txt` in the home directory of the sveltekit app with 'from docker' as its contents.
+```
+2022/07/03 11:45:03 register: /analysis (python2 run_analysis.py)
+2022/07/03 11:45:03 register: / (index page)
+2022/07/03 11:45:03 listen http://localhost:8080/
+```
 
-So what I can do now is either put the actual command in the docker command, or (better) create a docker container that runs that command in `CMD`.
+It can now be executed by going to http://localhost:8080/analysis.
 
-== The solution - part 2
-{{< highlight yaml "linenos=table" >}}
-  analysis:
-    # container_name: oncoviz-analysis
-    # image: oncoviz-analysis-image
-    build:
-      context: analysis
-      dockerfile: Dockerfile
-    depends_on:
-      - arango-seed
-    ports:
-      - "22:22"
-    networks:
-      - oncoviz-network
-  analysis2:
-    # container_name: oncoviz-analysis
-    # image: oncoviz-analysis-image
-    build:
-      context: analysis
-      dockerfile: Dockerfile
-    depends_on:
-      - arango-seed
-    networks:
-      - oncoviz-network
-{{</highlight>}}
+=== Creating the Dockerfile
+To get this to work from docker, we'll start from an ubuntu base, install go, shell2http and python, and copy our analysis script. The `CMD` needs to run the actual ssh2http command.
 
-{{< highlight yaml "linenos=table" >}}
+{{< highlight docker "linenos=table" >}}
 FROM ubuntu
-
-RUN useradd -ms /bin/bash newuser
-RUN echo 'newuser:newpassword' | chpasswd
 
 RUN apt-get update -y && apt-get upgrade -y
 
-RUN apt-get install -y ssh sshpass
-RUN service ssh start
-EXPOSE 22
+# install shell2http (common for all analysis containers)
+# source: https://github.com/msoap/shell2http
+RUN apt-get install -y ca-certificates
+RUN apt-get install -y golang
+RUN go install github.com/msoap/shell2http@latest
+RUN cp /root/go/bin/shell2http /usr/local/bin
 
+# specific for this container
 RUN apt-get install -y build-essential curl python2
 RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
 RUN python2 get-pip.py
 RUN pip install python-arango
 WORKDIR /app
 COPY run_analysis.py .
-RUN chmod a+x run_analysis.py
 
-CMD ["/usr/sbin/sshd","-D"]
-{{</highlight>}}
+EXPOSE 8080
 
-[source]
-----
-docker-compose up --build
-docker ps # => get id of analysis2
-docker exec --it the_id bash
-sshpass newpassword ssh newuser@analysis python2 /app/run_analysis.py
-----
+CMD ["/usr/local/bin/shell2http","/analyse","/usr/bin/python2 /app/run_analysis.py"]
+{{< / highlight >}}
 
-https://github.com/Eshaan7/Flask-Shell2HTTP
+== Setting up the svelte-kit container
+Similarly, we can set up the svelte-kit application. It doesn't matter here what that thing looks like, as long as we can go to the link show above somewhere (i.e. http://localhost:8080/analyse).
 
-https://github.com/msoap/shell2http
+The code below is taken from the `src/routes/__layout.svelte` file. It uses sveltestrap to incorporate bootstrap into the application, and shows a navigation bar with three links, including `Analyse`. This one will go to the URL that we specified above and which triggers the shell2http script in the other container.
+
+{{< highlight html "linenos=table" >}}
+<script>
+    import { Navbar, NavLink, NavbarBrand } from 'sveltestrap';
+</script>
+
+<Navbar color="light" light expand="md">
+    <NavbarBrand href="/">My application</NavbarBrand>
+    <NavLink href="/">Home</NavLink>
+    <NavLink href="http://localhost:8080/analyse">Analyse</NavLink>
+    <NavLink href="/overview">Overview</NavLink>
+</Navbar>
+{{< / highlight >}}
+
+=== Creating the Dockerfile
+The Dockerfile for this svelte-kit application is the following:
+{{< highlight docker "linenos=table" >}}
+FROM node:16
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y sshpass ssh
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+RUN npm run build && npm prune --production
+ENV PORT 3000
+EXPOSE 3000
+CMD ["node","build"]
+{{< / highlight >}}
+
+== Docker compose
+Let's now combine everything into a single application, using docker compose. The `docker-compose.yml` file sets everything up:
+
+{{< highlight yaml "linenos=table" >}}
+services:
+  analysis:
+    build:
+      context: analysis
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    ports:
+      - 5050:3000
+    networks:
+      - app-network
+  arangodb:
+    image: arangodb:3.9
+    restart: always
+    ports:
+      - 8529:8529
+    environment:
+      - ARANGO_ROOT_PASSWORD=my_password
+    networks:
+      - app-network
+    volumes:
+      - arangodb_data_container:/var/lib/arangodb3
+      - arangodb_apps_data_container:/var/lib/arangodb3-apps
+
+networks:
+  app-network:
+
+volumes:
+  arangodb_data_container:
+  arangodb_apps_data_container:
+{{< / highlight >}}
+
+We can run everything with `docker-compose up --build`.
+
+This `docker-compose.yml` file has 3 sections, one for each docker container.
+
+For the `analysis` and `frontend` sections, the `build` part defines in which directory we can find the Dockerfile for the analysis container. We also have to expose the port 8080 in the `analysis` container, and forward the internal port 3000 to port 5050 for the `frontend` (i.e. svelte-kit) container. So if we go to http://localhost:5050, it will actually go to port 3000 _inside_ the container. Finally, we add the `analysis` and `frontend` container to the `app-network` network. This will allow us to refer to these containers from the other ones by their name.
+
+We don't build the `arangodb` container ourselves, but use the one from dockerhub. In `volumes` we describe where on our local machine the data is stored so that it is preserved whenever we have to restart containers.
+
+That's it.
