@@ -1,0 +1,62 @@
+---
+title: "Jupyter notebooks and docker"
+date: 2019-03-31
+draft: false
+tags: ["docker","jupyter","teaching"]
+---
+:imagesdir: /assets/
+:source-highlighter: rouge
+
+One of the courses I teach at KU Leuven is "Management of Large-Scale Omics Datasets". It's basically a course focussing on NoSQL databases and mapreduce/spark. We go over document-oriented databases (i.c. mongodb), key-value stores, and graph databases (neo4j). The course also includes several exercise sessions where the students can practise getting information from these datastores. Question is: how to set all this up?
+
+Up to 2015, I applied for a teaching grant from Amazon AWS EC2 to run a server with all the necessary software and data installed. The grant was about $3,000 which basically covered everything for that semester (20-30 students accessing it regularly). I had a heavily annotated script that I used every year again to install all necessary software, create user accounts, allow remote logins, etc. Everything changed in 2016, when they only granted $75, and expected each student to get their own account instead. I really didn't want to go through that hassle...
+
+I eventually decided to have the students run the exercises on their own laptops, with **docker**. And that has worked surprisingly well, but we're not there yet.
+
+== My setup
+
+I have created several docker images. One that contains different jupyter notebooks with exercises on spark, mongodb and neo4j; one with a neo4j server with data; one with a mongodb database with data. To get everything running:
+
+[source]
+----
+docker run -d -p 8888:8888 jandot/jupyter-i0u19a
+docker run -d -p 7474:7474 jandot/neo4j-i0u19a
+docker run -d -p 27017:27017 jandot/mongo-i0u19a
+----
+
+(For http://vda-lab.github.io/2016/04/hadoop-tutorial[my hadoop tutorial] the students use docker as well, but that image is a public one by sequenceiq.)
+
+When running these images and going to localhost:8888, the students are presented with this:
+
+image::jupyter.png[]
+
+Starting the spark notebook looks like this:
+
+image::spark_notebook.png[]
+
+As the students are simultaneously running the neo4j and mongodb servers, we can also access these from the jupyter notebooks. Success!!
+
+== Not all is hunky-dory
+
+=== Saving notebooks
+As the students are running notebooks from docker containers, any changes they make are not saved locally. A clear option here is to mount a local directory, but apparently saving (duplicating) notebooks in another directory than the one where the server is running is not straightforward. At the same time, we have to pay attention not to mount the directory where the notebooks themselves are kept in the container, because that will make them inaccessible. Solution at this moment: students have to _download_ their notebooks regularly... Needs some work.
+
+=== What if a student can't get docker running?
+There _are_ students who can't get docker running on their machines, mostly because the OS on their laptop is not compatible. Ideally, we could run everything very easily in **the cloud** again (yes - again stepping away from using their own laptops). Several options exist for jupyter notebooks, see for example https://www.dataschool.io/cloud-services-for-jupyter-notebook/[this overview]. After having tried out several of these, it seems that **Google Colaboratory** is the most user-friendly. I can have a notebook on my own google drive that I share with the students (read-only! => they need to make their own copies).
+
+There are however some issues here:
+
+* For the spark exercises, we need to add some changes to the notebook so that pyspark is loaded and the students can access the data. Luckily, this seems simple:
+[source]
+----
+!pip install pyspark
+!wget http://vda-lab.be/assets/beers.csv
+----
+* For the mongodb and neo4j exercises I'm not there yet. The students need to have access to running docker containers with a mongodb and neo4j server. Without having a server that I can very easily run these images on, do they still have to run them on their own laptops? If you have tips: let me know :-/ Will have to check out cloud.mongodb.com, for example.
+
+I'm also asking them to **work in pairs** during the exercise session. That way they can learn by explaining things to each other as well and there is less chance of them getting stuck and just sitting there... (or browsing facebook). For more on pair programming, see https://vimeo.com/78874763[here].
+
+=== Messes up my google drive setup
+As an avid Google Drive user (and at UHasselt we have unlimited space on Google Drive), I finally found a way to organise my documents that makes them easily findable without cluttering some huge directories: simply working with subfolders per letter of the alphabet. `Projects`, `Proposals` and `Presentations` go under `P`. Unfortunately, Google Colaboratory messes this up... Needs further investigation.
+
+image::googledrive_colab.png[]

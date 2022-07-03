@@ -1,0 +1,51 @@
+baseURL = "http://jandot.github.io/"
+languageCode = "en-us"
+title = "Saaientist"
+theme = "cactus"
+
+[params]
+  colortheme = "white"
+  description = "My external memory"
+  showAllPostsOnHomePage = false
+  postsOnHomePage = 5
+  rss = true
+
+[[params.social]]
+name = "github"
+link = "https://github.com/jandot"
+[[params.social]]
+name = "linkedin"
+link = "https://www.linkedin.com/in/jandot/"
+
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+[[menu.main]]
+name = "Posts"
+url = "/posts"
+weight = 2
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 3
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 4
+
+mainSections = ["posts"]
+
+[markup]
+  [markup.asciidocExt]
+    backend = "html5"
+    extensions = ["asciidoctor-diagram"]
+    failureLevel = 'fatal'
+    noHeaderOrFooter = true
+    preserveTOC = false
+    safeMode = 'unsafe'
+    sectionNumbers = false
+    trace = false
+    verbose = false
+    workingFolderCurrent = false
+    [markup.asciidocExt.attributes]

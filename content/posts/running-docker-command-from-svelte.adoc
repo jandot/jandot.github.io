@@ -1,0 +1,106 @@
+---
+title: "Running Docker Command From Svelte"
+date: 2022-06-24T22:01:50+02:00
+draft: true
+tags: ['svelte','docker','javascript']
+---
+:imagesdir: /assets/
+
+== What we're trying to do
+I have a setup where different docker containers are used in conjunction to provide a single application. More specifically, a database, a sveltekit app, and (at the moment just one) container to run specific analyses. The idea is that the sveltekit app in container 1 triggers a script in container 2 to change data in the database in container 3.
+
+image::docker-sequence-diagram.png[]
+
+== The solution - part 1
+It looks like this can be done using sveltekit API endpoints.
+
+{{< highlight javascript "linenos=table" >}}
+import { exec } from "child_process";
+
+let command = "docker run --rm ubuntu echo 'from docker' > test.txt"
+
+export async function get({ params }) {
+    exec(command, (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+    });
+
+    return {
+        body: files
+    }
+}
+{{< / highlight >}}
+
+Save this as `routes/api/test.js`, and hit http://localhost:3000/api/test. 
+
+This will create a file `test.txt` in the home directory of the sveltekit app with 'from docker' as its contents.
+
+So what I can do now is either put the actual command in the docker command, or (better) create a docker container that runs that command in `CMD`.
+
+== The solution - part 2
+{{< highlight yaml "linenos=table" >}}
+  analysis:
+    # container_name: oncoviz-analysis
+    # image: oncoviz-analysis-image
+    build:
+      context: analysis
+      dockerfile: Dockerfile
+    depends_on:
+      - arango-seed
+    ports:
+      - "22:22"
+    networks:
+      - oncoviz-network
+  analysis2:
+    # container_name: oncoviz-analysis
+    # image: oncoviz-analysis-image
+    build:
+      context: analysis
+      dockerfile: Dockerfile
+    depends_on:
+      - arango-seed
+    networks:
+      - oncoviz-network
+{{</highlight>}}
+
+{{< highlight yaml "linenos=table" >}}
+FROM ubuntu
+
+RUN useradd -ms /bin/bash newuser
+RUN echo 'newuser:newpassword' | chpasswd
+
+RUN apt-get update -y && apt-get upgrade -y
+
+RUN apt-get install -y ssh sshpass
+RUN service ssh start
+EXPOSE 22
+
+RUN apt-get install -y build-essential curl python2
+RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+RUN python2 get-pip.py
+RUN pip install python-arango
+WORKDIR /app
+COPY run_analysis.py .
+RUN chmod a+x run_analysis.py
+
+CMD ["/usr/sbin/sshd","-D"]
+{{</highlight>}}
+
+[source]
+----
+docker-compose up --build
+docker ps # => get id of analysis2
+docker exec --it the_id bash
+sshpass newpassword ssh newuser@analysis python2 /app/run_analysis.py
+----
+
+https://github.com/Eshaan7/Flask-Shell2HTTP
+
+https://github.com/msoap/shell2http

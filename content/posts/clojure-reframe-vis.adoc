@@ -1,0 +1,451 @@
+---
+title: "Clojurescript, re-frame and modular data visualisation"
+date: 2019-04-06
+tags: ["clojure","datavis"]
+draft: false
+---
+:imagesdir: /assets/
+:source-highlighter: rouge
+
+One of the issues we still have is how to combine our custom data visualisations in multi-view dashboards with brushing/linking. We'll have a programmer work on this for the next two years, but as clojure is a bit of a hobby I'd like to try that out as well. It appears that clojurescript https://github.com/Day8/re-frame[re-frame] fits the bill.
+
+Get set up:
+{{< highlight bash "linenos=table" >}}
+lein new re-frame my-project
+cd my-project
+lein figwheel dev
+{{< /highlight >}}
+
+`my-project/resources/public/index.html` is the landing page for the application. It contains a `div` with id `app` that will hold the actual html and svg that we'll create in `views.cljs`.
+
+.`index.html`
+{{< highlight html "linenos=table" >}}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset='utf-8'>
+
+
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="js/compiled/app.js"></script>
+    <script>my_re_frame.core.init();</script>
+  </body>
+</html>
+{{< /highlight >}}
+
+The `my-project/src/cljs/my_project` directory hosts the most important files.
+
+* `core.cljs` defines which div in `index.html` is used to mount the application.
+* `db.cljs` holds the application state.
+* `events.cljs`: no idea yet what this does...
+* `subs.cljs` contains subscriptions to different parts of the application state
+* `views.cljs` holds the actual application code
+
+I still need to read the '6-domino cascade' part at the re-frame website, so it's not all clear yet. Will update here where I get there...
+
+== Version 1 - Straightforwardly creating separate svg elements
+
+`core.cljs`: didn't touch this
+{{< highlight clojure "linenos=table" >}}
+(ns my-re-frame.core
+  (:require
+   [reagent.core :as reagent]
+   [re-frame.core :as re-frame]
+   [my-re-frame.events :as events]
+   [my-re-frame.views :as views]
+   [my-re-frame.config :as config]
+   ))
+
+(defn dev-setup []
+  (when config/debug?
+    (enable-console-print!)
+    (println "dev mode")))
+
+(defn mount-root []
+  (re-frame/clear-subscription-cache!)
+  (reagent/render [views/main-panel]
+                  (.getElementById js/document "app")))
+
+(defn ^:export init []
+  (re-frame/dispatch-sync [::events/initialize-db])
+  (dev-setup)
+  (mount-root))
+{{< /highlight >}}
+
+`db.cljs` holds the app state
+{{< highlight clojure "linenos=table" >}}
+(ns my-re-frame.db)
+
+(def default-db
+  {:name "re-frame"
+   :data [1 2 3 5 8 13 21 34 55 89]})
+{{</highlight>}}
+
+`events.cljs`
+{{< highlight clojure "linenos=table" >}}
+(ns my-re-frame.events
+  (:require
+   [re-frame.core :as re-frame]
+   [my-re-frame.db :as db]
+   ))
+
+(re-frame/reg-event-db
+ ::initialize-db
+ (fn [_ _]
+   db/default-db))
+{{</highlight>}}
+
+`subs.cljs`
+{{< highlight clojure "linenos=table" >}}
+(ns my-re-frame.subs
+  (:require
+   [re-frame.core :as re-frame]))
+
+(re-frame/reg-sub
+ ::name
+ (fn [db]
+   (:name db)))
+
+(re-frame/reg-sub
+  ::data
+  (fn [db]
+    (:data db)))
+{{</highlight>}}
+
+`views.cljs` is where I define the main panel, as well as the functions to draw circle and rectangle. These latter two should later be moved to separate files so as to make this truly modular.
+Note the `:on-mouse-over` and `:on-click` (and keep a look at your browser console); we'll probably use that later for brushing/linking.
+{{< highlight clojure "linenos=table" >}}
+(ns my-re-frame.views
+  (:require
+   [re-frame.core :as re-frame]
+   [my-re-frame.subs :as subs]))
+
+(defn rect
+  [pos]
+  [:rect {
+    :style {
+      :fill "rgba(0,0,128,0.3)"
+      :stroke-width 0}
+    :key (str "r" pos)
+    :x (+ 50 pos)
+    :y (+ 50 pos)
+    :width 10
+    :height 10
+    :on-mouse-over #(println (str "rect" pos))
+  }])
+
+(defn circle
+  [pos]
+  [:ellipse {
+    :style {
+      :fill "rgba(128,0,0,0.3)"
+      :stroke-width 0}
+    :key (str "c" pos)
+    :cx (+ (+ pos 50) 50)
+    :cy (+ pos 50)
+    :rx 10
+    :ry 10
+    :on-mouse-over #(println (str "circle" pos))
+  }])
+
+(defn main-panel []
+  (let [name (re-frame/subscribe [::subs/name])
+        data (re-frame/subscribe [::subs/data])]
+    [:div
+      [:h1 "Hello from " @name]
+      [:p "Before"]
+      [:br]
+      [:svg {:x 0 :y 0 :width 400 :height 200 :on-click #(println "Clicked")}
+        (map rect @data)
+        (map circle @data)
+      ]
+      [:br]
+      [:p "After"]
+
+    ]))
+{{</highlight>}}
+
+Here's the result:<br/>
+image::re-frame_screenshot.png[width=25%]
+
+Here we're just straightforwardly calling a `(map circle @data)` to create the separate SVG elements.
+
+== Version 2 - A complete plot and passing options
+
+Instead of directly creating a separate circle for each datapoint, we want to create a scatterplot that takes the complete dataset as input.
+
+=== Step 1: replace `map` with call to creator function
+
+This is also very simple: we only have to create a `scatterplot` function, and replace the call in the `main-panel`.
+
+{{< highlight clojure "linenos=table" >}}
+(defn scatterplot
+  [data]
+  (map circle data)
+{{</highlight>}}
+Make sure to put this function _after_ the definition of the `circle` function, otherwise it will complain.
+
+We now have to replace the call in the `main-panel`:
+{{< highlight clojure "linenos=table" >}}
+...
+[:svg {:x 0 :y 0 :width 400 :height 200 :on-click #(println "Clicked")}
+  (map rect @data)
+  (scatterplot @data)
+]
+...
+{{</highlight>}}
+
+=== Step 2: passing options to the scatterplot
+We might have a border around our scatterplot. Or not... Of course we can create different functions: one for scatterplot without border, and one with border. This obviously is not scalable to other options. So let's see if we can get this working: draw a scatterplot _with_ a border next to one _without_.
+
+{{< highlight clojure "linenos=table" >}}
+...
+[:svg {:x 0 :y 0 :width 200 :height 200 :on-click #(println "Clicked")}
+        (scatterplot {:border true} @data)
+        (scatterplot {:border false} @data)
+]
+...
+{{</highlight>}}
+
+This took a while to figure out, simply because the `scatterplot` function needs to return a single data structure. I must say: figwheel helped a _lot_ here.
+
+{{< highlight clojure "linenos=table" >}}
+(defn scatterplot
+  [opts data]
+  (->> []
+       (#(if (= (:border opts) true) (conj % (border 0 0 200 200))))
+       (#(conj % (map circle data)))
+       (flatten)
+       (partition 2)
+       (map vec)))
+{{</highlight>}}
+
+Having access to a REPL that is connected to the browser works wonders. The `lein figwheel dev` mentioned above starts a REPL that is connected live to your code. Whenever you save your file, these changes are reflected here as well. To investigate what the `scatterplot` function returned, I'd just run it in that REPL:
+
+{{< highlight clojure "linenos=table" >}}
+(ns my-re-frame.views)
+(scatterplot {:border true} [1 2 3])
+{{</highlight>}}
+
+This returns
+{{< highlight clojure "linenos=table" >}}
+([:rect
+  {:style {:fill "none", :stroke "black", :stroke-width 1},
+   :x 0,
+   :y 0,
+   :width 200,
+   :height 200}]
+ [:ellipse
+  {:style {:fill "rgba(128,0,0,0.3)", :stroke-width 0},
+   :key "c0.5915471522077664",
+   :cx 1,
+   :cy 1,
+   :rx 10,
+   :ry 10,
+   :on-mouse-over #object[Function]}]
+ [:ellipse
+  {:style {:fill "rgba(128,0,0,0.3)", :stroke-width 0},
+   :key "c0.6396423198112418",
+   :cx 2,
+   :cy 2,
+   :rx 10,
+   :ry 10,
+   :on-mouse-over #object[Function]}]
+ [:ellipse
+  {:style {:fill "rgba(128,0,0,0.3)", :stroke-width 0},
+   :key "c0.7417803449596954",
+   :cx 3,
+   :cy 3,
+   :rx 10,
+   :ry 10,
+   :on-mouse-over #object[Function]}])
+{{</highlight>}}
+
+Initially, I'd get output where the `:rect` was not really part of the same data structure. Hence the `flatten` -> `partition` -> `map vec`.
+
+{{< highlight clojure "linenos=table" >}}
+[[:rect
+  {:style {:fill "none", :stroke "black", :stroke-width 1},
+   :x 0,
+   ...}]
+ ([:ellipse
+   {:style {:fill "rgba(128,0,0,0.3)", :stroke-width 0},
+    :key "c0.6519528849418721",
+    ...}]
+  [:ellipse
+   {:style {:fill "rgba(128,0,0,0.3)", :stroke-width 0},
+    :key "c0.9563097578789714",
+    ...}]
+  [:ellipse
+   {:style {:fill "rgba(128,0,0,0.3)", :stroke-width 0},
+    :key "c0.449294105728856",
+    ...}])]
+{{</highlight>}}
+(To be clear: this last bit of output is the _wrong, not working_ one...)
+
+The final picture looks like this:<br/>
+image::re-frame_screenshot_borders.png[width=25%]
+
+Next:
+
+* getting the id of the element on select/hover...
+* getting mouse position
+
+== Version 3 - Getting the mouse position
+
+In order to get the mouse position, we need to unfortunately dig into javascript itself. The code block below prints the mouse position to console whenever the mouse moves over the scatterplot.
+
+{{< highlight clojure "linenos=table" >}}
+[:svg {:x 0
+       :y 0
+       :width 200
+       :height 200
+       :on-mouse-move (fn [e] (println (.-clientX e)))}
+  (scatterplot {:border true} @data)
+]
+{{</highlight>}}
+
+== Version 4 - Changing state
+At some point we'll want to change state. Never having used atoms before, I did need some help from [this blog post](http://blog.klipse.tech/clojure/2019/02/17/reframe-tutorial.html).
+
+Changes to `db.cljs`:
+{{< highlight clojure "linenos=table" >}}
+(def default-db
+  {:name "imp"
+   :data [1 2 3 5 8 13 21 34 55 89]
+   :selected nil
+   })
+{{</highlight>}}
+
+In `subs.cljs`:
+{{< highlight clojure "linenos=table" >}}
+(re-frame/reg-sub
+  ::selected-point
+  (fn [db]
+    (:selected-point db)))
+{{</highlight>}}
+
+In `events.cljs`:
+{{< highlight clojure "linenos=table" >}}
+(re-frame/reg-event-db
+ :selected-point-change
+ (fn [db [_ new-value]]
+   (assoc db :selected-point new-value)))
+{{</highlight>}}
+
+In `views.cljs`, we change `circle` so that the `selected-point` stores the value of any point that is clicked on:
+{{< highlight clojure "linenos=table" >}}
+(defn circle
+  [pos]
+  [:ellipse {
+    :style {
+      :fill "rgba(128,0,0,0.3)"
+      :stroke-width 0}
+    :key (str "c" (rand))
+    :cx pos
+    :cy pos
+    :rx 10
+    :ry 10
+    :on-mouse-over #(println (str "circle" pos))
+    :on-mouse-down #(re-frame/dispatch [:selected-point-change pos])
+  }])
+{{</highlight>}}
+
+We can then show that e.g. if you click on one of the SVGs. We need to add `selected-point` to the `let`, and add an `on-click` event to an SVG:
+{{< highlight clojure "linenos=table" >}}
+(defn main-panel []
+  (let [name (re-frame/subscribe [::subs/name])
+        data (re-frame/subscribe [::subs/data])
+        selected-point (re-frame/subscribe [::subs/selected-point])]
+    ...
+    [:svg {:x 0 :y 0 :width 200 :height 200
+           :on-click #(println @selected-point)}
+      (scatterplot {:border true} @data)
+    ]
+    ...
+{{</highlight>}}
+Don't have a clue yet why the double `::`...
+
+== Version 5 - Very simple brushing/linking
+
+OK. Next step: when I hover over one of the datapoints, I want that datapoint in all other plots to be highlighted.
+
+At this point we need to add CSS to the picture. For the moment I have just put this in the head of the main `index.html`...
+
+{{< highlight html "linenos=table" >}}
+<style>
+  rect {fill: rgba(0,128,0,0.3)}
+  ellipse {fill: rgba(128,0,0,0.3)}
+  .selected {stroke: red; stroke-width: 2}
+</style>
+{{</highlight>}}
+
+The idea is that any selected datapoint will get a red border.
+
+In `db.cljs` we need to add an additional piece of state in the `default-db`, namely which is the selected point:
+{{< highlight clojure "linenos=table" >}}
+(def default-db
+  {:name "imp"
+   :data [1 2 3 5 8 13 21 34 55 89]
+   :selected-point nil
+   })
+{{</highlight>}}
+which we will access through a function in `subs.cljs`:
+{{< highlight clojure "linenos=table" >}}
+(re-frame/reg-sub
+  ::selected-point
+  (fn [db]
+    (:selected-point db)))
+{{</highlight>}}
+
+And here's the tricky part: in the view we need to toggle the class of an SVG element between "selected" and an empty string so as to apply the correct CSS. An element is only redrawn if its parent (i.c. `scatterplot` or `barchart`) is redrawn, or if one of its properties changes. At this moment, the only property of `scatterplot` are `opts` and `data`, but we need to add `selected` to that.
+
+{{< highlight clojure "linenos=table" >}}
+(defn scatterplot
+  [opts selected data]
+  (->> []
+       (#(if (= (:border opts) true) (conj % (border 0 0 200 200))))
+       (#(conj % (map circle data)))
+       (flatten)
+       (partition 2)
+       (map vec)
+       ))
+{{</highlight>}}
+
+The _only_ thing changed here is the parameters; the code itself has not changed.
+
+In the `main-panel` we need to call `scatterplot` differently of course: we will add the @selected-point parameter.
+{{< highlight clojure "linenos=table" >}}
+(defn main-panel []
+  (let [name (re-frame/subscribe [::subs/name])
+        data (re-frame/subscribe [::subs/data])
+        selected-point (re-frame/subscribe [::subs/selected-point])]
+    [:div
+    ...
+      [:svg {:x 0 :y 0 :width 200 :height 200}
+        (scatterplot {:border false} @selected-point @data)
+      ]
+    ...
+{{</highlight>}}
+
+Finally, in the circle function we add a `:class` parameter which is either "selected" or "" based on whether or not that datapoint is the same as `@selected-point` or not. The `:on-mouse-over` makes sure that we actually change the selected point when we move our mouse.
+{{< highlight clojure "linenos=table" >}}
+(defn circle
+  [pos]
+  (let [selected-point (re-frame/subscribe [::subs/selected-point])]
+    [:ellipse {
+      :key (str "c" (rand))
+      :cx pos
+      :cy pos
+      :rx 10
+      :ry 10
+      :class (if (= pos @selected-point) "selected" "")
+      :on-mouse-over #(re-frame/dispatch [:selected-point-change pos])
+    }]))
+{{</highlight>}}
+
+The result looks like this:
+
+image::re-frame_screenshot_brushinglinking.png[width=50%]
