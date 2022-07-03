@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>datavis on Saaientist</title>
+    <link>/tags/datavis/</link>
+    <description>Recent content in datavis on Saaientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/datavis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Clojurescript, re-frame and modular data visualisation</title>
+      <link>/posts/clojure-reframe-vis/</link>
+      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/clojure-reframe-vis/</guid>
+      <description>One of the issues we still have is how to combine our custom data visualisations in multi-view dashboards with brushing/linking. We&amp;#8217;ll have a programmer work on this for the next two years, but as clojure is a bit of a hobby I&amp;#8217;d like to try that out as well. It appears that clojurescript re-frame fits the bill.
+ Get set up: 1 2 3  lein new re-frame my-project cd my-project lein figwheel dev</description>
+    </item>
+    
+  </channel>
+</rss>
