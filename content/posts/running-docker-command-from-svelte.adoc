@@ -1,7 +1,7 @@
 ---
 title: "Running Docker Command From Svelte"
 date: 2022-06-24T22:01:50+02:00
-draft: true
+draft: false
 tags: ['svelte','docker','javascript']
 ---
 :imagesdir: /assets/
