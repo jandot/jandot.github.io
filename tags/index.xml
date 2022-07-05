@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Jun 2022 22:01:50 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 05 Jul 2022 16:04:00 +0200</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>svelte</title>
+      <link>/tags/svelte/</link>
+      <pubDate>Tue, 05 Jul 2022 16:04:00 +0200</pubDate>
+      
+      <guid>/tags/svelte/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vega</title>
+      <link>/tags/vega/</link>
+      <pubDate>Tue, 05 Jul 2022 16:04:00 +0200</pubDate>
+      
+      <guid>/tags/vega/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>visualisation</title>
+      <link>/tags/visualisation/</link>
+      <pubDate>Tue, 05 Jul 2022 16:04:00 +0200</pubDate>
+      
+      <guid>/tags/visualisation/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>arangodb</title>
@@ -35,15 +62,6 @@
       <pubDate>Fri, 24 Jun 2022 22:01:50 +0200</pubDate>
       
       <guid>/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>svelte</title>
-      <link>/tags/svelte/</link>
-      <pubDate>Fri, 24 Jun 2022 22:01:50 +0200</pubDate>
-      
-      <guid>/tags/svelte/</guid>
       <description></description>
     </item>
     
