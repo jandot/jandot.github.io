@@ -5,7 +5,7 @@ baseurl = "/"
 
 [params]
   colortheme = "white"
-  description = "My external memory"
+  description = "My external memory. See http://saaientist.blogspot.com for old posts."
   showAllPostsOnHomePage = false
   postsOnHomePage = 5
   rss = true
