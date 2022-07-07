@@ -1,0 +1,55 @@
+---
+title: "Svelte in Asciidoc"
+date: 2022-07-07T14:16:08+02:00
+draft: false
+tags: ['svelte','visualisation','asciidoc']
+---
+:imagesdir: /assets/
+
+Sometimes you want to add interactive material or custom visualisations to a site built with asciidoc. Luckily, it is possible to do so. An example can be found in my datavis technologies material https://vda-lab.gitlab.io/datavis-technologies/_advanced_visualisation_using_svelte.html[here].
+
+The following steps are based on this blog post:https://dtang.dev/2020-01-25-adding-svelte-3-to-a-jekyll-site
+
+* Step 1: Create a separate directory for the svelte-components, including `rollup.config.js`, etc.
+* Step 2: Create a `svelte-components/src` directory with:
+** the svelte component files
+** `main.js`
+* Step 3: For each component you want to use, add the following to `main.js`:
+
+{{< highlight javascript "linenos=table" >}}
+import CustomComponent1 from './CustomComponent1.svelte'
+import CustomComponent2 from './CustomComponent2.svelte'
+
+new CustomComponent1({
+	target: document.querySelector('#svelte-custom-component-1')
+})
+
+new CustomComponent2({
+	target: document.querySelector('#svelte-custom-component-2')
+})
+{{< /highlight >}}
+
+
+* Step 4: Add the following in each `.adoc` file in which you want to include a svelte component:
+
+{{< highlight html "linenos=table" >}}
+++++
+<link href="/dist/svelte-bundle.css" rel="stylesheet" />
+++++
+
+++++
+<script defer src="/dist/svelte-bundle.js"></script>
+++++
+{{< /highlight >}}
+
+* Step 5: Where you want to include a svelte component, add
+
+{{< highlight html "linenos=table" >}}
+++++
+<div id="svelte-custom-component-1"></div>
+++++
+{{< /highlight >}}
+
+* Step 6: To run, type `cd svelte-components ; rollup -c rollup.config.js ; cd .. ; make ; http-server`
+
+That's it.
