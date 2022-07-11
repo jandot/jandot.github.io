@@ -12,6 +12,18 @@
     
     
     <item>
+      <title>How to create Word file from asciidoc</title>
+      <link>/posts/how-to-create-word-file-from-asciidoc/</link>
+      <pubDate>Thu, 07 Jul 2022 14:16:08 +0200</pubDate>
+      
+      <guid>/posts/how-to-create-word-file-from-asciidoc/</guid>
+      <description>The easiest way to create Microsoft Word files (.docx) from asciidoc, is to generate the .html using asciidoctor and then using pandoc to convert that .html to .docx.
+ In the code below, we avoid having to install pandoc by running it from a docker container.
+ asciidoctor my_file.adoc docker run --rm --volume &#34;`pwd`:/data&#34; pandoc/core my_file.html -o my_file.docx   These can be combined in a Makefile, like so:
+ my_file.</description>
+    </item>
+    
+    <item>
       <title>Svelte in Asciidoc</title>
       <link>/posts/svelte-in-asciidoc/</link>
       <pubDate>Thu, 07 Jul 2022 14:16:08 +0200</pubDate>
