@@ -1,0 +1,58 @@
+---
+title: "Svelte/ArangoDB development and docker-compose"
+date: 2022-07-18T14:39:00+02:00
+draft: false
+tags: ['svelte','docker','arangodb']
+---
+:imagesdir: /assets/
+
+Another one for my personal notebook...
+
+I'm running a docker-based application which includes a svelte front/backend and an ArangoDB database that are orchestrated using docker-compose. 
+
+Part of the `docker-compose.yml` file:
+
+{{< highlight yaml >}}
+services:
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    ports:
+      - 5050:3000
+    networks:
+      - my_docker_network
+  arangodb:
+    image: arangodb:3.9
+    restart: always
+    ports:
+      - 8529:8529
+    networks:
+      - my_docker_network
+    volumes:
+      - arangodb_data_container:/var/lib/arangodb3
+      - arangodb_apps_data_container:/var/lib/arangodb3-apps
+networks:
+  my_docker_network:
+volumes:
+  arangodb_data_container:
+  arangodb_apps_data_container:
+{{< /highlight >}}
+
+The `frontend` can access the database because they are on the same docker network: a `database.js` file in svelte points to the database at http://arangodb:8529, because `arangodb` is known to svelte.
+
+This is good when running the application, but what if you want to develop instead (using the regular `npm run dev`) and still need access to the database? Also: how do you access the database directly without going through the frontend docker container?
+
+== Accessing the ArangoDB database directly
+The `arangodb` service in the `docker-compose.yml` file exposes port 8529. This can be accessed directly, so don't try things like https://arangodb:8529: it's just available on http://localhost:8529 as if you're running ArangoDB on the host.
+
+== Developing the svelte part
+If you want to further develop the svelte app but need the ArangoDB instance running from docker-compose, just run that `docker-compose up`. In the `docker-compose.yml` file, we forwarded port 3000 from the container to 5050 on the host. This means that port 3000 is still available.
+
+- Start the dockerised application with `docker-compose up`. The app is now available on localhost:5050.
+- In the `database.js` file, change the URL of the database from http://arangodb:8529 to http://localhost:8529.
+- In the svelte directory, just run `npm run dev`. This makes the app available on localhost:3000.
+
+Now you can access the app both at ports 5050 and 3000. As you edit the svelte code, the version on 3000 will update, but the one on 5050 will not change because that is running from the frontend image.
+
+CAUTION: **Don't forget to change the URL for the database from http://localhost:8529 back to http://arangodb:8529 before you rebuild the image!**
