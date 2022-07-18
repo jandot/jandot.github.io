@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Jul 2022 14:16:08 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 18 Jul 2022 14:39:00 +0200</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>arangodb</title>
+      <link>/tags/arangodb/</link>
+      <pubDate>Mon, 18 Jul 2022 14:39:00 +0200</pubDate>
+      
+      <guid>/tags/arangodb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>/tags/docker/</link>
+      <pubDate>Mon, 18 Jul 2022 14:39:00 +0200</pubDate>
+      
+      <guid>/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>svelte</title>
+      <link>/tags/svelte/</link>
+      <pubDate>Mon, 18 Jul 2022 14:39:00 +0200</pubDate>
+      
+      <guid>/tags/svelte/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>asciidoc</title>
@@ -17,15 +44,6 @@
       <pubDate>Thu, 07 Jul 2022 14:16:08 +0200</pubDate>
       
       <guid>/tags/asciidoc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>svelte</title>
-      <link>/tags/svelte/</link>
-      <pubDate>Thu, 07 Jul 2022 14:16:08 +0200</pubDate>
-      
-      <guid>/tags/svelte/</guid>
       <description></description>
     </item>
     
@@ -53,24 +71,6 @@
       <pubDate>Tue, 05 Jul 2022 16:04:00 +0200</pubDate>
       
       <guid>/tags/vega/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>arangodb</title>
-      <link>/tags/arangodb/</link>
-      <pubDate>Fri, 24 Jun 2022 22:01:50 +0200</pubDate>
-      
-      <guid>/tags/arangodb/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>docker</title>
-      <link>/tags/docker/</link>
-      <pubDate>Fri, 24 Jun 2022 22:01:50 +0200</pubDate>
-      
-      <guid>/tags/docker/</guid>
       <description></description>
     </item>
     

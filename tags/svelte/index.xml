@@ -6,10 +6,22 @@
     <description>Recent content in svelte on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Jul 2022 14:16:08 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 18 Jul 2022 14:39:00 +0200</lastBuildDate>
     
 	<atom:link href="/tags/svelte/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Svelte/ArangoDB development and docker-compose</title>
+      <link>/posts/svelte-arangodb-development-under-docker-compose/</link>
+      <pubDate>Mon, 18 Jul 2022 14:39:00 +0200</pubDate>
+      
+      <guid>/posts/svelte-arangodb-development-under-docker-compose/</guid>
+      <description>Another one for my personal notebook&amp;#8230;&amp;#8203;
+ I&amp;#8217;m running a docker-based application which includes a svelte front/backend and an ArangoDB database that are orchestrated using docker-compose.
+ Part of the docker-compose.yml file:
+ services: frontend: build: context: frontend dockerfile: Dockerfile ports: - 5050:3000 networks: - my_docker_network arangodb: image: arangodb:3.9 restart: always ports: - 8529:8529 networks: - my_docker_network volumes: - arangodb_data_container:/var/lib/arangodb3 - arangodb_apps_data_container:/var/lib/arangodb3-apps networks: my_docker_network: volumes: arangodb_data_container: arangodb_apps_data_container:  The frontend can access the database because they are on the same docker network: a database.</description>
+    </item>
     
     <item>
       <title>Svelte in Asciidoc</title>

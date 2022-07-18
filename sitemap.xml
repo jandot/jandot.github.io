@@ -4,8 +4,38 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2022-07-07T14:16:08+02:00</lastmod>
+    <lastmod>2022-07-18T14:39:00+02:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/arangodb/</loc>
+    <lastmod>2022-07-18T14:39:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/docker/</loc>
+    <lastmod>2022-07-18T14:39:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/</loc>
+    <lastmod>2022-07-18T14:39:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/svelte/</loc>
+    <lastmod>2022-07-18T14:39:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/svelte-arangodb-development-under-docker-compose/</loc>
+    <lastmod>2022-07-18T14:39:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2022-07-18T14:39:00+02:00</lastmod>
   </url>
   
   <url>
@@ -19,22 +49,7 @@
   </url>
   
   <url>
-    <loc>/posts/</loc>
-    <lastmod>2022-07-07T14:16:08+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/svelte/</loc>
-    <lastmod>2022-07-07T14:16:08+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/posts/svelte-in-asciidoc/</loc>
-    <lastmod>2022-07-07T14:16:08+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2022-07-07T14:16:08+02:00</lastmod>
   </url>
   
@@ -56,16 +71,6 @@
   <url>
     <loc>/posts/vega-lite-in-svelte/</loc>
     <lastmod>2022-07-05T16:04:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/arangodb/</loc>
-    <lastmod>2022-06-24T22:01:50+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/docker/</loc>
-    <lastmod>2022-06-24T22:01:50+02:00</lastmod>
   </url>
   
   <url>
