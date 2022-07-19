@@ -1,7 +1,7 @@
 languageCode = "en-us"
 title = "Saaientist"
 theme = "cactus"
-baseurl = "/"
+baseurl = "https://jandot.github.io/"
 
 [params]
   colortheme = "white"
