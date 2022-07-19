@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>svelte on Saaientist</title>
-    <link>https://jandot.github.io/tags/svelte/</link>
+    <link>/tags/svelte/</link>
     <description>Recent content in svelte on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 18 Jul 2022 14:39:00 +0200</lastBuildDate>
     
-	<atom:link href="https://jandot.github.io/tags/svelte/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/svelte/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Svelte/ArangoDB development and docker-compose</title>
-      <link>https://jandot.github.io/posts/svelte-arangodb-development-under-docker-compose/</link>
+      <link>/posts/svelte-arangodb-development-under-docker-compose/</link>
       <pubDate>Mon, 18 Jul 2022 14:39:00 +0200</pubDate>
       
-      <guid>https://jandot.github.io/posts/svelte-arangodb-development-under-docker-compose/</guid>
+      <guid>/posts/svelte-arangodb-development-under-docker-compose/</guid>
       <description>Another one for my personal notebook&amp;#8230;&amp;#8203;
  I&amp;#8217;m running a docker-based application which includes a svelte front/backend and an ArangoDB database that are orchestrated using docker-compose.
  Part of the docker-compose.yml file:
@@ -25,10 +25,10 @@
     
     <item>
       <title>Svelte in Asciidoc</title>
-      <link>https://jandot.github.io/posts/svelte-in-asciidoc/</link>
+      <link>/posts/svelte-in-asciidoc/</link>
       <pubDate>Thu, 07 Jul 2022 14:16:08 +0200</pubDate>
       
-      <guid>https://jandot.github.io/posts/svelte-in-asciidoc/</guid>
+      <guid>/posts/svelte-in-asciidoc/</guid>
       <description>Sometimes you want to add interactive material or custom visualisations to a site built with asciidoc. Luckily, it is possible to do so. An example can be found in my datavis technologies material here.
  The following steps are based on this blog post:https://dtang.dev/2020-01-25-adding-svelte-3-to-a-jekyll-site
    Step 1: Create a separate directory for the svelte-components, including rollup.config.js, etc.
@@ -38,10 +38,10 @@
     
     <item>
       <title>Vega-lite in svelte</title>
-      <link>https://jandot.github.io/posts/vega-lite-in-svelte/</link>
+      <link>/posts/vega-lite-in-svelte/</link>
       <pubDate>Tue, 05 Jul 2022 16:04:00 +0200</pubDate>
       
-      <guid>https://jandot.github.io/posts/vega-lite-in-svelte/</guid>
+      <guid>/posts/vega-lite-in-svelte/</guid>
       <description>There are many ways of incorporating graphics and plots in svelte and svelte-kit applications. I can definitely recommend checking out this talk by Matthias Stahl, graphics lead at Der Spiegel in Germany. This talk goes specifically through creating animated plots in svelte at the 24:46 mark.
  So you can code your own SVG in svelte, use D3, P5, Three.js, etc. In the code below, we use vega-lite.
  What I wanted to achieve with this component, is that the user can choose which dimensions are plotted against each other in a scatterplot.</description>
@@ -49,10 +49,10 @@
     
     <item>
       <title>Running Docker Command From Svelte</title>
-      <link>https://jandot.github.io/posts/running-docker-command-from-svelte/</link>
+      <link>/posts/running-docker-command-from-svelte/</link>
       <pubDate>Fri, 24 Jun 2022 22:01:50 +0200</pubDate>
       
-      <guid>https://jandot.github.io/posts/running-docker-command-from-svelte/</guid>
+      <guid>/posts/running-docker-command-from-svelte/</guid>
       <description>What we&amp;#8217;re trying to do I have a setup where different docker containers are used in conjunction to provide a single application. More specifically, a database, a sveltekit app, and (at the moment just one) container to run specific analyses. The idea is that the sveltekit app in container 1 triggers a script in container 2 to change data in the database in container 3.
      Directory structure I created the following directory structure for the app:</description>
     </item>

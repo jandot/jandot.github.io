@@ -2,120 +2,120 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Saaientist</title>
-    <link>https://jandot.github.io/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 18 Jul 2022 14:39:00 +0200</lastBuildDate>
     
-	<atom:link href="https://jandot.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>arangodb</title>
-      <link>https://jandot.github.io/tags/arangodb/</link>
+      <link>/tags/arangodb/</link>
       <pubDate>Mon, 18 Jul 2022 14:39:00 +0200</pubDate>
       
-      <guid>https://jandot.github.io/tags/arangodb/</guid>
+      <guid>/tags/arangodb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>docker</title>
-      <link>https://jandot.github.io/tags/docker/</link>
+      <link>/tags/docker/</link>
       <pubDate>Mon, 18 Jul 2022 14:39:00 +0200</pubDate>
       
-      <guid>https://jandot.github.io/tags/docker/</guid>
+      <guid>/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>svelte</title>
-      <link>https://jandot.github.io/tags/svelte/</link>
+      <link>/tags/svelte/</link>
       <pubDate>Mon, 18 Jul 2022 14:39:00 +0200</pubDate>
       
-      <guid>https://jandot.github.io/tags/svelte/</guid>
+      <guid>/tags/svelte/</guid>
       <description></description>
     </item>
     
     <item>
       <title>asciidoc</title>
-      <link>https://jandot.github.io/tags/asciidoc/</link>
+      <link>/tags/asciidoc/</link>
       <pubDate>Thu, 07 Jul 2022 14:16:08 +0200</pubDate>
       
-      <guid>https://jandot.github.io/tags/asciidoc/</guid>
+      <guid>/tags/asciidoc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>visualisation</title>
-      <link>https://jandot.github.io/tags/visualisation/</link>
+      <link>/tags/visualisation/</link>
       <pubDate>Thu, 07 Jul 2022 14:16:08 +0200</pubDate>
       
-      <guid>https://jandot.github.io/tags/visualisation/</guid>
+      <guid>/tags/visualisation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Word</title>
-      <link>https://jandot.github.io/tags/word/</link>
+      <link>/tags/word/</link>
       <pubDate>Thu, 07 Jul 2022 14:16:08 +0200</pubDate>
       
-      <guid>https://jandot.github.io/tags/word/</guid>
+      <guid>/tags/word/</guid>
       <description></description>
     </item>
     
     <item>
       <title>vega</title>
-      <link>https://jandot.github.io/tags/vega/</link>
+      <link>/tags/vega/</link>
       <pubDate>Tue, 05 Jul 2022 16:04:00 +0200</pubDate>
       
-      <guid>https://jandot.github.io/tags/vega/</guid>
+      <guid>/tags/vega/</guid>
       <description></description>
     </item>
     
     <item>
       <title>javascript</title>
-      <link>https://jandot.github.io/tags/javascript/</link>
+      <link>/tags/javascript/</link>
       <pubDate>Fri, 24 Jun 2022 22:01:50 +0200</pubDate>
       
-      <guid>https://jandot.github.io/tags/javascript/</guid>
+      <guid>/tags/javascript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>clojure</title>
-      <link>https://jandot.github.io/tags/clojure/</link>
+      <link>/tags/clojure/</link>
       <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://jandot.github.io/tags/clojure/</guid>
+      <guid>/tags/clojure/</guid>
       <description></description>
     </item>
     
     <item>
       <title>datavis</title>
-      <link>https://jandot.github.io/tags/datavis/</link>
+      <link>/tags/datavis/</link>
       <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://jandot.github.io/tags/datavis/</guid>
+      <guid>/tags/datavis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>jupyter</title>
-      <link>https://jandot.github.io/tags/jupyter/</link>
+      <link>/tags/jupyter/</link>
       <pubDate>Sun, 31 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://jandot.github.io/tags/jupyter/</guid>
+      <guid>/tags/jupyter/</guid>
       <description></description>
     </item>
     
     <item>
       <title>teaching</title>
-      <link>https://jandot.github.io/tags/teaching/</link>
+      <link>/tags/teaching/</link>
       <pubDate>Sun, 31 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://jandot.github.io/tags/teaching/</guid>
+      <guid>/tags/teaching/</guid>
       <description></description>
     </item>
     

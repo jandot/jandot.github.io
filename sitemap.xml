@@ -3,128 +3,123 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://jandot.github.io/</loc>
+    <loc>/</loc>
     <lastmod>2022-07-18T14:39:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/tags/arangodb/</loc>
+    <loc>/tags/arangodb/</loc>
     <lastmod>2022-07-18T14:39:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/tags/docker/</loc>
+    <loc>/tags/docker/</loc>
     <lastmod>2022-07-18T14:39:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/posts/</loc>
+    <loc>/posts/</loc>
     <lastmod>2022-07-18T14:39:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/tags/svelte/</loc>
+    <loc>/tags/svelte/</loc>
     <lastmod>2022-07-18T14:39:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/posts/svelte-arangodb-development-under-docker-compose/</loc>
+    <loc>/posts/svelte-arangodb-development-under-docker-compose/</loc>
     <lastmod>2022-07-18T14:39:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2022-07-18T14:39:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/tags/asciidoc/</loc>
+    <loc>/tags/asciidoc/</loc>
     <lastmod>2022-07-07T14:16:08+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/posts/how-to-create-word-file-from-asciidoc/</loc>
+    <loc>/posts/how-to-create-word-file-from-asciidoc/</loc>
     <lastmod>2022-07-07T14:16:08+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/posts/svelte-in-asciidoc/</loc>
+    <loc>/posts/svelte-in-asciidoc/</loc>
     <lastmod>2022-07-07T14:16:08+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/tags/visualisation/</loc>
+    <loc>/tags/visualisation/</loc>
     <lastmod>2022-07-07T14:16:08+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/tags/word/</loc>
+    <loc>/tags/word/</loc>
     <lastmod>2022-07-07T14:16:08+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/tags/vega/</loc>
+    <loc>/tags/vega/</loc>
     <lastmod>2022-07-05T16:04:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/posts/vega-lite-in-svelte/</loc>
+    <loc>/posts/vega-lite-in-svelte/</loc>
     <lastmod>2022-07-05T16:04:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/tags/javascript/</loc>
+    <loc>/tags/javascript/</loc>
     <lastmod>2022-06-24T22:01:50+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/posts/running-docker-command-from-svelte/</loc>
+    <loc>/posts/running-docker-command-from-svelte/</loc>
     <lastmod>2022-06-24T22:01:50+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/tags/clojure/</loc>
+    <loc>/tags/clojure/</loc>
     <lastmod>2019-04-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/posts/clojure-reframe-vis/</loc>
+    <loc>/posts/clojure-reframe-vis/</loc>
     <lastmod>2019-04-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/tags/datavis/</loc>
+    <loc>/tags/datavis/</loc>
     <lastmod>2019-04-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/tags/jupyter/</loc>
+    <loc>/tags/jupyter/</loc>
     <lastmod>2019-03-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/posts/jupyter-notebooks-docker/</loc>
+    <loc>/posts/jupyter-notebooks-docker/</loc>
     <lastmod>2019-03-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/tags/teaching/</loc>
+    <loc>/tags/teaching/</loc>
     <lastmod>2019-03-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/posts/saaientist20/</loc>
+    <loc>/posts/saaientist20/</loc>
     <lastmod>2019-03-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jandot.github.io/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jandot.github.io/categories/</loc>
+    <loc>/categories/</loc>
   </url>
   
 </urlset>

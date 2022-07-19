@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Word on Saaientist</title>
-    <link>https://jandot.github.io/tags/word/</link>
+    <link>/tags/word/</link>
     <description>Recent content in Word on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 07 Jul 2022 14:16:08 +0200</lastBuildDate>
     
-	<atom:link href="https://jandot.github.io/tags/word/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/word/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>How to create Word file from asciidoc</title>
-      <link>https://jandot.github.io/posts/how-to-create-word-file-from-asciidoc/</link>
+      <link>/posts/how-to-create-word-file-from-asciidoc/</link>
       <pubDate>Thu, 07 Jul 2022 14:16:08 +0200</pubDate>
       
-      <guid>https://jandot.github.io/posts/how-to-create-word-file-from-asciidoc/</guid>
+      <guid>/posts/how-to-create-word-file-from-asciidoc/</guid>
       <description>The easiest way to create Microsoft Word files (.docx) from asciidoc, is to generate the .html using asciidoctor and then using pandoc to convert that .html to .docx.
  In the code below, we avoid having to install pandoc by running it from a docker container.
  asciidoctor my_file.adoc docker run --rm --volume &#34;`pwd`:/data&#34; pandoc/core my_file.html -o my_file.docx   These can be combined in a Makefile, like so:
