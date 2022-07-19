@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vega on Saaientist</title>
-    <link>/tags/vega/</link>
+    <link>https://jandot.github.io/tags/vega/</link>
     <description>Recent content in vega on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 05 Jul 2022 16:04:00 +0200</lastBuildDate>
     
-	<atom:link href="/tags/vega/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jandot.github.io/tags/vega/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Vega-lite in svelte</title>
-      <link>/posts/vega-lite-in-svelte/</link>
+      <link>https://jandot.github.io/posts/vega-lite-in-svelte/</link>
       <pubDate>Tue, 05 Jul 2022 16:04:00 +0200</pubDate>
       
-      <guid>/posts/vega-lite-in-svelte/</guid>
+      <guid>https://jandot.github.io/posts/vega-lite-in-svelte/</guid>
       <description>There are many ways of incorporating graphics and plots in svelte and svelte-kit applications. I can definitely recommend checking out this talk by Matthias Stahl, graphics lead at Der Spiegel in Germany. This talk goes specifically through creating animated plots in svelte at the 24:46 mark.
  So you can code your own SVG in svelte, use D3, P5, Three.js, etc. In the code below, we use vega-lite.
  What I wanted to achieve with this component, is that the user can choose which dimensions are plotted against each other in a scatterplot.</description>
