@@ -1,0 +1,56 @@
+---
+title: "Using git worktree"
+date: 2022-09-17T16:04:00+02:00
+draft: false
+tags: ['git']
+---
+:imagesdir: /assets/
+
+Working on a project under git and pushing it to a central repository makes sure that you have history of the files preserved etc. Also: it enables experimentation. However, there are instances where things might get tricky. Case in point: hot fixes. When working on a feature branch and having to make a quick fix in the main branch, you would either `stash` all changes and make the fix, or `commit` everything that you already have even if it's not completed yet.
+
+Enter `git worktree`. Git `worktree` allows you to checkout multiple branches at once. From a post at the https://opensource.com/article/21/4/git-worktreeopensource.com website]:
+
+[quote, Seth Kenlon]
+____
+The advantage of a new worktree in Git is that you can make a change unrelated to your current task, commit the change, and then merge it at a later date, all without disturbing your current work environment.
+____
+
+The following steps are taken from https://morgan.cugerone.com/blog/how-to-use-git-worktree-and-in-a-clean-way/[this blog post].
+
+== Create a `bare` clone of the repository
+```
+mkdir my-project
+cd my-project
+git clone --bare git@github.com:myname:my-project.git .bare
+echo "gitdir: ./.bare" > .git
+```
+
+IMPORTANT: Instead of just doing the git clone, create the directory first, and put the clone in a separate subdirectory.
+
+Your directory will have the following files and subdirectories:
+
+* HEAD
+* config
+* description
+* hooks/
+* info/
+* objects/
+* packed-refs
+* refs/
+* worktrees/
+
+== Work on the main branch
+```
+git worktree add main
+```
+This is the second step necessary, which would normally already be handled by a regular `git clone`. The `my-project` directory now also has a `master` directory that holds the actual code.
+
+== Start a new worktree for the hotfix
+```
+git worktree add hotfix
+```
+You'll now have a `hotfix` directory as well, with another copy of the code.
+
+Use `git worktree list` and `git worktree remove <name-of-tree>` to do the obvious things.
+
+Voila.
