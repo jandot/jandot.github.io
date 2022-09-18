@@ -6,10 +6,19 @@
     <description>Recent content on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Jul 2022 14:39:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 17 Sep 2022 16:04:00 +0200</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using git worktree</title>
+      <link>/posts/git-worktree/</link>
+      <pubDate>Sat, 17 Sep 2022 16:04:00 +0200</pubDate>
+      
+      <guid>/posts/git-worktree/</guid>
+      <description>Working on a project under git and pushing it to a central repository makes sure that you have history of the files preserved etc. Also: it enables experimentation. However, there are instances where things might get tricky. Case in point: hot fixes. When working on a feature branch and having to make a quick fix in the main branch, you would either stash all changes and make the fix, or commit everything that you already have even if it&amp;#8217;s not completed yet.</description>
+    </item>
     
     <item>
       <title>Svelte/ArangoDB development and docker-compose</title>
