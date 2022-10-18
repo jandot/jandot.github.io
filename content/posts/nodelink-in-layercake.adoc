@@ -1,0 +1,158 @@
+---
+title: "Node-link diagram in layercake.graphics"
+date: 2022-10-17T20:45:00+02:00
+draft: false
+tags: ['svelte','layercake','graph']
+---
+:imagesdir: /assets/
+
+Creating visualisations in svelte is easy, but I've been willing to try out layercake.graphics for a while. Unfortunately, the framework didn't have an example for node-link diagrams. With the help of https://github.com/jelmerbot we got it to work, including node dragging.
+
+Let `_data/graph.json` look like this:
+{{< highlight json >}}
+{ "nodes": [
+    {"id": 1, "name": "a"},
+    {"id": 2, "name": "b"},
+    {"id": 3, "name": "c"},
+    {"id": 4, "name": "d"},
+    {"id": 5, "name": "e"}
+    ],
+  "links": [
+    {"source": 1, "target": 2},
+    {"source": 1, "target": 3},
+    {"source": 2, "target": 3},
+    {"source": 3, "target": 4},
+    {"source": 3, "target": 5}
+  ]}
+{{< /highlight >}}
+
+and let `index.svelte` look like this:
+
+{{< highlight html "linenos=table" >}}
+<script>
+	import { LayerCake, Svg } from 'layercake';
+    import NodeLink from './_components/NodeLink.svelte';
+	import data from './_data/graph.json';
+</script>
+
+<style>
+	.chart-container {
+		width: 400px;
+		height: 200px;
+	}
+</style>
+
+<div class="chart-container">
+    <LayerCake
+        data={data}
+    >
+        <Svg>
+            <NodeLink/>
+        </Svg>
+    </LayerCake>
+</div>
+{{< /highlight >}}
+
+, then this `NodeLink` component will do the trick:
+
+{{< highlight html "linenos=table" >}}
+<script>
+	import { LayerCake, Svg } from 'layercake';
+	
+    import NodeLink from './_components/NodeLink.svelte';
+	
+	import data from './_data/graph.json';
+    $: console.log(data)
+
+</script>
+
+<style>
+	.chart-container {
+		width: 400px;
+		height: 200px;
+	}
+</style>
+
+<div class="chart-container">
+    <LayerCake
+        data={data}
+    >
+        <Svg>
+            <NodeLink/>
+        </Svg>
+    </LayerCake>
+</div>
+{{< /highlight >}}
+
+{{< highlight html "linenos=table" >}}
+<script>
+  import { getContext } from 'svelte';
+  import {
+    forceSimulation,
+    forceLink,
+    forceManyBody,
+    forceCenter,
+  } from 'd3-force';
+  import { drag } from 'd3-drag'
+  import { select } from 'd3-selection';
+
+  const { data, width, height } = getContext('LayerCake');
+
+  export let manyBodyStrength = -50;
+
+  const initialNodes = $data.nodes
+  const initialLinks = $data.links
+
+  const simulation = forceSimulation(initialNodes)
+  const dragger = (el, node) => {
+    const d = drag()
+      .on('drag', ({x, y}) => {
+        node.fx = x;
+        node.fy = y;
+      })
+      .on('end', () => {
+        node.fx = null;
+        node.fy = null;
+      });
+    select(el).call(d);
+  }
+
+  let nodes = [];
+  let links = [];
+
+  simulation.on("tick", () => {
+    nodes = simulation.nodes()
+    links = initialLinks
+  })
+
+  $: {
+    simulation
+      .force("link", forceLink(links).id(d => d.id))
+      .force('charge', forceManyBody().strength(manyBodyStrength))
+      .force('center', forceCenter($width / 2, $height / 2))
+      .alpha(0.8)
+      .restart()
+  }
+</script>
+
+{#each links as link}
+  <line
+    class='link'
+    x1='{link.source.x}'
+    x2='{link.target.x}'
+    y1='{link.source.y}'
+    y2='{link.target.y}'
+    stroke="black"/>
+{/each}
+{#each nodes as point}
+  <circle
+    use:dragger={point}
+    class='node'
+    r=5
+    fill="steelblue"
+    cx='{point.x}'
+    cy='{point.y}'
+  />
+{/each}
+
+{{< /highlight >}}
