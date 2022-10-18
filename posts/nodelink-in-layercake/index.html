@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Node-link diagram in layercake.graphics | Saaientist</title>
+  <link rel = 'canonical' href = '/posts/nodelink-in-layercake/'>
+  <meta name="description" content="My external memory. See http://saaientist.blogspot.com for old posts.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Node-link diagram in layercake.graphics" />
+<meta property="og:description" content="Creating visualisations in svelte is easy, but I&#8217;ve been willing to try out layercake.graphics for a while. Unfortunately, the framework didn&#8217;t have an example for node-link diagrams. With the help of https://github.com/jelmerbot we got it to work, including node dragging.
+ Let _data/graph.json look like this: { &#34;nodes&#34;: [ {&#34;id&#34;: 1, &#34;name&#34;: &#34;a&#34;}, {&#34;id&#34;: 2, &#34;name&#34;: &#34;b&#34;}, {&#34;id&#34;: 3, &#34;name&#34;: &#34;c&#34;}, {&#34;id&#34;: 4, &#34;name&#34;: &#34;d&#34;}, {&#34;id&#34;: 5, &#34;name&#34;: &#34;e&#34;} ], &#34;links&#34;: [ {&#34;source&#34;: 1, &#34;target&#34;: 2}, {&#34;source&#34;: 1, &#34;target&#34;: 3}, {&#34;source&#34;: 2, &#34;target&#34;: 3}, {&#34;source&#34;: 3, &#34;target&#34;: 4}, {&#34;source&#34;: 3, &#34;target&#34;: 5} ]}" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/nodelink-in-layercake/" />
+<meta property="article:published_time" content="2022-10-17T20:45:00+02:00" />
+<meta property="article:modified_time" content="2022-10-17T20:45:00+02:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Node-link diagram in layercake.graphics"/>
+<meta name="twitter:description" content="Creating visualisations in svelte is easy, but I&#8217;ve been willing to try out layercake.graphics for a while. Unfortunately, the framework didn&#8217;t have an example for node-link diagrams. With the help of https://github.com/jelmerbot we got it to work, including node dragging.
+ Let _data/graph.json look like this: { &#34;nodes&#34;: [ {&#34;id&#34;: 1, &#34;name&#34;: &#34;a&#34;}, {&#34;id&#34;: 2, &#34;name&#34;: &#34;b&#34;}, {&#34;id&#34;: 3, &#34;name&#34;: &#34;c&#34;}, {&#34;id&#34;: 4, &#34;name&#34;: &#34;d&#34;}, {&#34;id&#34;: 5, &#34;name&#34;: &#34;e&#34;} ], &#34;links&#34;: [ {&#34;source&#34;: 1, &#34;target&#34;: 2}, {&#34;source&#34;: 1, &#34;target&#34;: 3}, {&#34;source&#34;: 2, &#34;target&#34;: 3}, {&#34;source&#34;: 3, &#34;target&#34;: 4}, {&#34;source&#34;: 3, &#34;target&#34;: 5} ]}"/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" /posts/git-worktree/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2fnodelink-in-layercake%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=%2fposts%2fnodelink-in-layercake%2f&text=Node-link%20diagram%20in%20layercake.graphics" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2fnodelink-in-layercake%2f&title=Node-link%20diagram%20in%20layercake.graphics" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2fnodelink-in-layercake%2f&is_video=false&description=Node-link%20diagram%20in%20layercake.graphics" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Node-link%20diagram%20in%20layercake.graphics&body=Check out this article: %2fposts%2fnodelink-in-layercake%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2fnodelink-in-layercake%2f&title=Node-link%20diagram%20in%20layercake.graphics" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2fnodelink-in-layercake%2f&title=Node-link%20diagram%20in%20layercake.graphics" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2fnodelink-in-layercake%2f&name=Node-link%20diagram%20in%20layercake.graphics&description=Creating%20visualisations%20in%20svelte%20is%20easy%2c%20but%20I%26%238217%3bve%20been%20willing%20to%20try%20out%20layercake.graphics%20for%20a%20while.%20Unfortunately%2c%20the%20framework%20didn%26%238217%3bt%20have%20an%20example%20for%20node-link%20diagrams.%20With%20the%20help%20of%20https%3a%2f%2fgithub.com%2fjelmerbot%20we%20got%20it%20to%20work%2c%20including%20node%20dragging.%0a%20Let%20_data%2fgraph.json%20look%20like%20this%3a%20%7b%20%26%2334%3bnodes%26%2334%3b%3a%20%5b%20%7b%26%2334%3bid%26%2334%3b%3a%201%2c%20%26%2334%3bname%26%2334%3b%3a%20%26%2334%3ba%26%2334%3b%7d%2c%20%7b%26%2334%3bid%26%2334%3b%3a%202%2c%20%26%2334%3bname%26%2334%3b%3a%20%26%2334%3bb%26%2334%3b%7d%2c%20%7b%26%2334%3bid%26%2334%3b%3a%203%2c%20%26%2334%3bname%26%2334%3b%3a%20%26%2334%3bc%26%2334%3b%7d%2c%20%7b%26%2334%3bid%26%2334%3b%3a%204%2c%20%26%2334%3bname%26%2334%3b%3a%20%26%2334%3bd%26%2334%3b%7d%2c%20%7b%26%2334%3bid%26%2334%3b%3a%205%2c%20%26%2334%3bname%26%2334%3b%3a%20%26%2334%3be%26%2334%3b%7d%20%5d%2c%20%26%2334%3blinks%26%2334%3b%3a%20%5b%20%7b%26%2334%3bsource%26%2334%3b%3a%201%2c%20%26%2334%3btarget%26%2334%3b%3a%202%7d%2c%20%7b%26%2334%3bsource%26%2334%3b%3a%201%2c%20%26%2334%3btarget%26%2334%3b%3a%203%7d%2c%20%7b%26%2334%3bsource%26%2334%3b%3a%202%2c%20%26%2334%3btarget%26%2334%3b%3a%203%7d%2c%20%7b%26%2334%3bsource%26%2334%3b%3a%203%2c%20%26%2334%3btarget%26%2334%3b%3a%204%7d%2c%20%7b%26%2334%3bsource%26%2334%3b%3a%203%2c%20%26%2334%3btarget%26%2334%3b%3a%205%7d%20%5d%7d" aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2fnodelink-in-layercake%2f&t=Node-link%20diagram%20in%20layercake.graphics" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Node-link diagram in layercake.graphics
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2022-10-17 20:45:00 &#43;0200 &#43;0200" itemprop="datePublished">2022-10-17</time>
+          
+        </div>
+        
+        
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/svelte" rel="tag">svelte</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/layercake" rel="tag">layercake</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/graph" rel="tag">graph</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <div class="paragraph">
+<p>Creating visualisations in svelte is easy, but I&#8217;ve been willing to try out layercake.graphics for a while. Unfortunately, the framework didn&#8217;t have an example for node-link diagrams. With the help of <a href="https://github.com/jelmerbot" class="bare">https://github.com/jelmerbot</a> we got it to work, including node dragging.</p>
+</div>
+<div class="paragraph">
+<p>Let <code>_data/graph.json</code> look like this:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{ <span style="color:#f92672">&#34;nodes&#34;</span>: [
+    {<span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;a&#34;</span>},
+    {<span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">2</span>, <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;b&#34;</span>},
+    {<span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">3</span>, <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;c&#34;</span>},
+    {<span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">4</span>, <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;d&#34;</span>},
+    {<span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">5</span>, <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;e&#34;</span>}
+    ],
+  <span style="color:#f92672">&#34;links&#34;</span>: [
+    {<span style="color:#f92672">&#34;source&#34;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#f92672">&#34;target&#34;</span>: <span style="color:#ae81ff">2</span>},
+    {<span style="color:#f92672">&#34;source&#34;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#f92672">&#34;target&#34;</span>: <span style="color:#ae81ff">3</span>},
+    {<span style="color:#f92672">&#34;source&#34;</span>: <span style="color:#ae81ff">2</span>, <span style="color:#f92672">&#34;target&#34;</span>: <span style="color:#ae81ff">3</span>},
+    {<span style="color:#f92672">&#34;source&#34;</span>: <span style="color:#ae81ff">3</span>, <span style="color:#f92672">&#34;target&#34;</span>: <span style="color:#ae81ff">4</span>},
+    {<span style="color:#f92672">&#34;source&#34;</span>: <span style="color:#ae81ff">3</span>, <span style="color:#f92672">&#34;target&#34;</span>: <span style="color:#ae81ff">5</span>}
+  ]}</code></pre></div></p>
+</div>
+<div class="paragraph">
+<p>and let <code>index.svelte</code> look like this:</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span>&gt;
+	<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">LayerCake</span>, <span style="color:#a6e22e">Svg</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;layercake&#39;</span>;
+    <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">NodeLink</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./_components/NodeLink.svelte&#39;</span>;
+	<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">data</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./_data/graph.json&#39;</span>;
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">style</span>&gt;
+	.<span style="color:#a6e22e">chart-container</span> {
+		<span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">400</span><span style="color:#66d9ef">px</span>;
+		<span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">200</span><span style="color:#66d9ef">px</span>;
+	}
+&lt;/<span style="color:#f92672">style</span>&gt;
+
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chart-container&#34;</span>&gt;
+    &lt;<span style="color:#f92672">LayerCake</span>
+        <span style="color:#a6e22e">data</span><span style="color:#f92672">=</span><span style="color:#e6db74">{data}</span>
+    &gt;
+        &lt;<span style="color:#f92672">Svg</span>&gt;
+            &lt;<span style="color:#f92672">NodeLink</span>/&gt;
+        &lt;/<span style="color:#f92672">Svg</span>&gt;
+    &lt;/<span style="color:#f92672">LayerCake</span>&gt;
+&lt;/<span style="color:#f92672">div</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>, then this <code>NodeLink</code> component will do the trick:</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span>&gt;
+	<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">LayerCake</span>, <span style="color:#a6e22e">Svg</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;layercake&#39;</span>;
+	
+    <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">NodeLink</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./_components/NodeLink.svelte&#39;</span>;
+	
+	<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">data</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./_data/graph.json&#39;</span>;
+    <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>)
+
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">style</span>&gt;
+	.<span style="color:#a6e22e">chart-container</span> {
+		<span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">400</span><span style="color:#66d9ef">px</span>;
+		<span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">200</span><span style="color:#66d9ef">px</span>;
+	}
+&lt;/<span style="color:#f92672">style</span>&gt;
+
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chart-container&#34;</span>&gt;
+    &lt;<span style="color:#f92672">LayerCake</span>
+        <span style="color:#a6e22e">data</span><span style="color:#f92672">=</span><span style="color:#e6db74">{data}</span>
+    &gt;
+        &lt;<span style="color:#f92672">Svg</span>&gt;
+            &lt;<span style="color:#f92672">NodeLink</span>/&gt;
+        &lt;/<span style="color:#f92672">Svg</span>&gt;
+    &lt;/<span style="color:#f92672">LayerCake</span>&gt;
+&lt;/<span style="color:#f92672">div</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">getContext</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;svelte&#39;</span>;
+  <span style="color:#66d9ef">import</span> {
+    <span style="color:#a6e22e">forceSimulation</span>,
+    <span style="color:#a6e22e">forceLink</span>,
+    <span style="color:#a6e22e">forceManyBody</span>,
+    <span style="color:#a6e22e">forceCenter</span>,
+  } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;d3-force&#39;</span>;
+  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">drag</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;d3-drag&#39;</span>
+  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">select</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;d3-selection&#39;</span>;
+
+  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">getContext</span>(<span style="color:#e6db74">&#39;LayerCake&#39;</span>);
+
+  <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">manyBodyStrength</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">50</span>;
+
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">initialNodes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$data</span>.<span style="color:#a6e22e">nodes</span>
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">initialLinks</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$data</span>.<span style="color:#a6e22e">links</span>
+
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">simulation</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">forceSimulation</span>(<span style="color:#a6e22e">initialNodes</span>)
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dragger</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">el</span>, <span style="color:#a6e22e">node</span>) =&gt; {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">d</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">drag</span>()
+      .<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;drag&#39;</span>, ({<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>}) =&gt; {
+        <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">fx</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span>;
+        <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">fy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">y</span>;
+      })
+      .<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;end&#39;</span>, () =&gt; {
+        <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">fx</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+        <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">fy</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+      });
+    <span style="color:#a6e22e">select</span>(<span style="color:#a6e22e">el</span>).<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">d</span>);
+  }
+
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">nodes</span> <span style="color:#f92672">=</span> [];
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">links</span> <span style="color:#f92672">=</span> [];
+
+  <span style="color:#a6e22e">simulation</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;tick&#34;</span>, () =&gt; {
+    <span style="color:#a6e22e">nodes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">simulation</span>.<span style="color:#a6e22e">nodes</span>()
+    <span style="color:#a6e22e">links</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">initialLinks</span>
+  })
+
+  <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">simulation</span>
+      .<span style="color:#a6e22e">force</span>(<span style="color:#e6db74">&#34;link&#34;</span>, <span style="color:#a6e22e">forceLink</span>(<span style="color:#a6e22e">links</span>).<span style="color:#a6e22e">id</span>(<span style="color:#a6e22e">d</span> =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">id</span>))
+      .<span style="color:#a6e22e">force</span>(<span style="color:#e6db74">&#39;charge&#39;</span>, <span style="color:#a6e22e">forceManyBody</span>().<span style="color:#a6e22e">strength</span>(<span style="color:#a6e22e">manyBodyStrength</span>))
+      .<span style="color:#a6e22e">force</span>(<span style="color:#e6db74">&#39;center&#39;</span>, <span style="color:#a6e22e">forceCenter</span>(<span style="color:#a6e22e">$width</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">$height</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>))
+      .<span style="color:#a6e22e">alpha</span>(<span style="color:#ae81ff">0.8</span>)
+      .<span style="color:#a6e22e">restart</span>()
+  }
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+{#each links as link}
+  &lt;<span style="color:#f92672">line</span>
+    <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;link&#39;</span>
+    <span style="color:#a6e22e">x1</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{link.source.x}&#39;</span>
+    <span style="color:#a6e22e">x2</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{link.target.x}&#39;</span>
+    <span style="color:#a6e22e">y1</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{link.source.y}&#39;</span>
+    <span style="color:#a6e22e">y2</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{link.target.y}&#39;</span>
+    <span style="color:#a6e22e">stroke</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;black&#34;</span>/&gt;
+{/each}
+{#each nodes as point}
+  &lt;<span style="color:#f92672">circle</span>
+    <span style="color:#a6e22e">use:dragger</span><span style="color:#f92672">=</span><span style="color:#e6db74">{point}</span>
+    <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;node&#39;</span>
+    <span style="color:#a6e22e">r</span><span style="color:#f92672">=</span><span style="color:#e6db74">5</span>
+    <span style="color:#a6e22e">fill</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;steelblue&#34;</span>
+    <span style="color:#a6e22e">cx</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{point.x}&#39;</span>
+    <span style="color:#a6e22e">cy</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{point.y}&#39;</span>
+  /&gt;
+{/each}</code></pre></td></tr></table>
+</div>
+</div>
+</div>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Posts</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2fnodelink-in-layercake%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=%2fposts%2fnodelink-in-layercake%2f&text=Node-link%20diagram%20in%20layercake.graphics" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2fnodelink-in-layercake%2f&title=Node-link%20diagram%20in%20layercake.graphics" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2fnodelink-in-layercake%2f&is_video=false&description=Node-link%20diagram%20in%20layercake.graphics" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Node-link%20diagram%20in%20layercake.graphics&body=Check out this article: %2fposts%2fnodelink-in-layercake%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2fnodelink-in-layercake%2f&title=Node-link%20diagram%20in%20layercake.graphics" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2fnodelink-in-layercake%2f&title=Node-link%20diagram%20in%20layercake.graphics" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2fnodelink-in-layercake%2f&name=Node-link%20diagram%20in%20layercake.graphics&description=Creating%20visualisations%20in%20svelte%20is%20easy%2c%20but%20I%26%238217%3bve%20been%20willing%20to%20try%20out%20layercake.graphics%20for%20a%20while.%20Unfortunately%2c%20the%20framework%20didn%26%238217%3bt%20have%20an%20example%20for%20node-link%20diagrams.%20With%20the%20help%20of%20https%3a%2f%2fgithub.com%2fjelmerbot%20we%20got%20it%20to%20work%2c%20including%20node%20dragging.%0a%20Let%20_data%2fgraph.json%20look%20like%20this%3a%20%7b%20%26%2334%3bnodes%26%2334%3b%3a%20%5b%20%7b%26%2334%3bid%26%2334%3b%3a%201%2c%20%26%2334%3bname%26%2334%3b%3a%20%26%2334%3ba%26%2334%3b%7d%2c%20%7b%26%2334%3bid%26%2334%3b%3a%202%2c%20%26%2334%3bname%26%2334%3b%3a%20%26%2334%3bb%26%2334%3b%7d%2c%20%7b%26%2334%3bid%26%2334%3b%3a%203%2c%20%26%2334%3bname%26%2334%3b%3a%20%26%2334%3bc%26%2334%3b%7d%2c%20%7b%26%2334%3bid%26%2334%3b%3a%204%2c%20%26%2334%3bname%26%2334%3b%3a%20%26%2334%3bd%26%2334%3b%7d%2c%20%7b%26%2334%3bid%26%2334%3b%3a%205%2c%20%26%2334%3bname%26%2334%3b%3a%20%26%2334%3be%26%2334%3b%7d%20%5d%2c%20%26%2334%3blinks%26%2334%3b%3a%20%5b%20%7b%26%2334%3bsource%26%2334%3b%3a%201%2c%20%26%2334%3btarget%26%2334%3b%3a%202%7d%2c%20%7b%26%2334%3bsource%26%2334%3b%3a%201%2c%20%26%2334%3btarget%26%2334%3b%3a%203%7d%2c%20%7b%26%2334%3bsource%26%2334%3b%3a%202%2c%20%26%2334%3btarget%26%2334%3b%3a%203%7d%2c%20%7b%26%2334%3bsource%26%2334%3b%3a%203%2c%20%26%2334%3btarget%26%2334%3b%3a%204%7d%2c%20%7b%26%2334%3bsource%26%2334%3b%3a%203%2c%20%26%2334%3btarget%26%2334%3b%3a%205%7d%20%5d%7d" aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2fnodelink-in-layercake%2f&t=Node-link%20diagram%20in%20layercake.graphics" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  Saaientist 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>

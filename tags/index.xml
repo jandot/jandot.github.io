@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Sep 2022 16:04:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 17 Oct 2022 20:45:00 +0200</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>graph</title>
+      <link>/tags/graph/</link>
+      <pubDate>Mon, 17 Oct 2022 20:45:00 +0200</pubDate>
+      
+      <guid>/tags/graph/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>layercake</title>
+      <link>/tags/layercake/</link>
+      <pubDate>Mon, 17 Oct 2022 20:45:00 +0200</pubDate>
+      
+      <guid>/tags/layercake/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>svelte</title>
+      <link>/tags/svelte/</link>
+      <pubDate>Mon, 17 Oct 2022 20:45:00 +0200</pubDate>
+      
+      <guid>/tags/svelte/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>git</title>
@@ -35,15 +62,6 @@
       <pubDate>Mon, 18 Jul 2022 14:39:00 +0200</pubDate>
       
       <guid>/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>svelte</title>
-      <link>/tags/svelte/</link>
-      <pubDate>Mon, 18 Jul 2022 14:39:00 +0200</pubDate>
-      
-      <guid>/tags/svelte/</guid>
       <description></description>
     </item>
     

@@ -4,22 +4,42 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2022-09-17T16:04:00+02:00</lastmod>
+    <lastmod>2022-10-17T20:45:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/git/</loc>
-    <lastmod>2022-09-17T16:04:00+02:00</lastmod>
+    <loc>/tags/graph/</loc>
+    <lastmod>2022-10-17T20:45:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/layercake/</loc>
+    <lastmod>2022-10-17T20:45:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/nodelink-in-layercake/</loc>
+    <lastmod>2022-10-17T20:45:00+02:00</lastmod>
   </url>
   
   <url>
     <loc>/posts/</loc>
-    <lastmod>2022-09-17T16:04:00+02:00</lastmod>
+    <lastmod>2022-10-17T20:45:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/svelte/</loc>
+    <lastmod>2022-10-17T20:45:00+02:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/</loc>
+    <lastmod>2022-10-17T20:45:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/git/</loc>
     <lastmod>2022-09-17T16:04:00+02:00</lastmod>
   </url>
   
@@ -35,11 +55,6 @@
   
   <url>
     <loc>/tags/docker/</loc>
-    <lastmod>2022-07-18T14:39:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/svelte/</loc>
     <lastmod>2022-07-18T14:39:00+02:00</lastmod>
   </url>
   
