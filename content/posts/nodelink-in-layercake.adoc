@@ -57,35 +57,6 @@ and let `index.svelte` look like this:
 
 {{< highlight html "linenos=table" >}}
 <script>
-	import { LayerCake, Svg } from 'layercake';
-	
-    import NodeLink from './_components/NodeLink.svelte';
-	
-	import data from './_data/graph.json';
-    $: console.log(data)
-
-</script>
-
-<style>
-	.chart-container {
-		width: 400px;
-		height: 200px;
-	}
-</style>
-
-<div class="chart-container">
-    <LayerCake
-        data={data}
-    >
-        <Svg>
-            <NodeLink/>
-        </Svg>
-    </LayerCake>
-</div>
-{{< /highlight >}}
-
-{{< highlight html "linenos=table" >}}
-<script>
   import { getContext } from 'svelte';
   import {
     forceSimulation,
