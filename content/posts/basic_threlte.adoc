@@ -1,0 +1,116 @@
+---
+title: "Basic scatterplots in Threlte"
+date: 2022-11-17T21:45:00+02:00
+draft: false
+tags: ['svelte','visualisation','threejs']
+---
+:imagesdir: /assets/
+
+Svelte is great for data visualisation, but for larger datasets the simple declarative approach to drawing `<circle>`-s inside an `<svg>` doesn't cut it anymore. Other libraries like http://threejs.org[three.js] _are_ capable of handling more data, but they are written for 3D visualisation instead of 2D plots.
+
+Below, I show a proof-of-concept for a three.js-based 2D scatterplot with 5,000 points.
+
+.The final image...
+image::threlte_basic_scatterplot.png[width=50%]
+
+For installation of http://kit.svelte.dev[svelte-kit] and http://threlte.xyz[threlte], I refer to their own websites.
+
+== Proof-of-principle scatterplot
+In `+page.svelte` we just load `SceneOne` that we'll write later.
+
+.+page.svelte
+{{< highlight html "linenos=table" >}}
+<script>
+    import SceneOne from '$lib/SceneOne.svelte'
+</script>
+
+<h2>A Threlte visualisation</h2>
+<SceneOne />
+{{< /highlight >}}
+
+Now for the actual code.
+
+For a 2D plot in a 3D world, you basically just make sure that all points are on the same plane. In Threlte, `x` is left-right, `y` is `top-bottom`, and `z` is near-far. We'll put all our points on `z` equal to 0.
+
+The tricky bit was finding out how the camera worked, with the `position`, `fov` (field of view), etc. We want to zoom in/out, and pan the plot as well.
+
+Here is the full code that I'll explain below.
+
+.lib/SceneOne.svelte
+{{< highlight html "linenos=table" >}}
+<script>
+    import {
+        Canvas,
+        OrthographicCamera,
+        AmbientLight,
+        Mesh,
+        OrbitControls,
+        Object3DInstance
+    } from "@threlte/core";
+    import {
+        MeshStandardMaterial,
+        SphereGeometry,
+        GridHelper
+    } from 'three';
+    let points = []
+    $: {
+        for ( let i = 0; i < 5000; i++ ) {
+            points = [...points, [Math.random()*400-200,Math.random()*400-200]]
+        }
+    }
+
+    const gridHelper = new GridHelper(400,10)
+    $: gridHelper.rotation.x=Math.PI/2;
+</script>
+
+<div class="canvas-wrapper">
+	<Canvas>
+		<OrthographicCamera position={{z:50}}>
+			<OrbitControls enableRotate={false} />
+		</OrthographicCamera>
+
+		<AmbientLight />
+
+		<Object3DInstance object={gridHelper} />
+
+		{#each points as point}
+			<Mesh
+				position={{ x:point[0], y:point[1], z:0 }}
+				geometry={new SphereGeometry(1)}
+				material={new MeshStandardMaterial({color: "black"})}
+			/>
+		{/each}
+	</Canvas>
+</div>
+
+<style>
+	div.canvas-wrapper {
+        border: solid 1px;
+		height: 500px;
+		width: 500px;
+        position: relative;
+	}
+</style>
+{{< /highlight >}}
+
+* Lines 49 to 50: The actual image that we create is 500x500 pixels.
+* Lines 15 to 20: We create 5,000 datapoints with `x` and `y` values between -200 and 200. In contrast to e.g. D3, the origin is not necessarily in the top-left corner, but depends on where you set your camera.
+* Lines 36 to 42: This is where the actual points are drawn. As mentioned above, the `z` position for all of them is set to 0. `x` and `y` are read from the `point` variable. Each mesh has a `geometry` and a `material`. For the geometry, we use a sphere with radius 1.
+* Lines 28 to 30: To see the data, we need to add a camera. Instead of a `PerspectiveCamera` we use an `OrthographicCamera` as we're living in 2D world now. This camera takes different parameters, but we only need to set the `position`. By default, this is `[0,0,0]` but than we wouldn't see anything because the camera is in the same plane as the datapoints themselves. We therefore pull the camera closer to us. In this case, we take `z` of 50.
+** Being an orthographic camera, the actual value of `z` is not so important. You'll get the same image if you'd use 5 or 5,000. _However_, it should not be smaller than the radius you give your `SphereGeometry`. If the radius of the points is 50 and you set the `z` of the camera to 30, it will be in the plane of the points.
+* Line 29: We add `OrbitalControls` so that we're able to zoom in/out and pan the image. As this is 3D, we could also rotate the point cloud, but we want to prevent this by setting `enableRotate={false}`.
+* Lines 22, 23 and 34: Although not that visible in the image, we want to add a grid as well. By default, this grid is in the `yz` plane, so it needs to be rotated towards the `xy` plane.
+
+== What is not yet included
+This is just a proof-of-concept. Still to be added/changed:
+
+* discs instead of spheres
+* interaction with the points (e.g. showing tooltips)
+* something similar to a D3 brush to select a group of datapoints
+
+== Sources
+The following sources were used to figure this out:
+
+* the http://threlte.xyz[threlte] website
+* the http://threejs.org[three.js] documentation
+* a https://www.youtube.com/watch?v=89LYeHOncVk[YouTube tutorial by Joy Of Code]
