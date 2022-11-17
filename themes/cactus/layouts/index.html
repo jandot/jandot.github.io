@@ -11,6 +11,10 @@
         <a class="icon" target="_blank" rel="noopener" href="mailto:{{ $elem.link }}" aria-label="Email">
           <i class="fas fa-envelope" aria-hidden="true"></i>
         </a>
+        {{ else if eq $elem.name "mastodon" }}
+        <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}" aria-label="RSS">
+          <i class="fab fa-mastodon" aria-hidden="true"></i>
+        </a>
         {{ else if eq $elem.name "rss" }}
         <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}" aria-label="RSS">
           <i class="fas fa-rss" aria-hidden="true"></i>

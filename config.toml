@@ -11,6 +11,9 @@ baseurl = "/"
   rss = true
 
 [[params.social]]
+name = "mastodon"
+link = "https://vis.social/@jandot"
+[[params.social]]
 name = "github"
 link = "https://github.com/jandot"
 [[params.social]]
