@@ -127,3 +127,5 @@ and let `index.svelte` look like this:
 {/each}
 
 {{< /highlight >}}
+
+EDIT: Sebastian Lammers (https://vis.social/@seblammers) created a https://svelte.dev/repl/ee8961e46af34593be9dce5645057696?version=3.53.1[REPL version] so that you can play with this yourself.
