@@ -1,0 +1,46 @@
+---
+title: "Molecular structures in svelte"
+date: 2022-12-23T14:50+02:00
+draft: false
+tags: ['svelte','visualisation','molecules']
+---
+:imagesdir: /assets/
+
+Different javascript libraries are available for displaying molecular structures, such as https://github.com/nglviewer/ngl[NGL] and https://3dmol.csb.pitt.edu[3Dmol.js].
+
+image::3Dmoljs.png[width=50%]
+
+We've integrated a structure viewer in our (award-winning) proof-of-concept tool for exploring protein post-translational modifications http://biovis2022.vercel.app[EProm], but that required quite a bit of tweaking.
+
+But here's a minimal example for viewing the structure for CYP2D6, using NGL.
+
+{{< highlight html "linenos=table" >}}
+<svelte:head>
+  <script src="https://unpkg.com/ngl"></script>
+</svelte:head>
+
+<script>
+  import { Stage } from 'ngl';
+  import { onMount } from 'svelte';
+
+  let stage;
+
+  onMount(async () => {
+    stage = new Stage("viewport", { backgroundColor: "lightgrey" })
+    fetch("https://alphafold.ebi.ac.uk/api/prediction/P10635")
+      .then(response => response.json())
+      .then(data => { console.log(data[0].pdbUrl); return data[0].pdbUrl })
+      .then(pdbUrl => {
+        stage.loadFile(pdbUrl, {defaultRepresentation: true})})
+
+  });
+</script>
+
+<div id="viewport" style="width:600px; height:400px;"></div>
+{{< /highlight >}}
+
+The alphafold call returns a JSON object that includes the PDB URL, which we first need to extract.
+
+The end result:
+
+image::cyp2d6_structure.png[width=50%]
