@@ -6,10 +6,22 @@
     <description>Recent content on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Nov 2022 21:45:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Molecular structures in svelte</title>
+      <link>/posts/molecule_viewer/</link>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/molecule_viewer/</guid>
+      <description>Different javascript libraries are available for displaying molecular structures, such as NGL and 3Dmol.js.
+   We&amp;#8217;ve integrated a structure viewer in our (award-winning) proof-of-concept tool for exploring protein post-translational modifications EProm, but that required quite a bit of tweaking.
+ But here&amp;#8217;s a minimal example for viewing the structure for CYP2D6, using NGL.
+ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  &amp;lt;svelte:head&amp;gt; &amp;lt;script src=&amp;#34;https://unpkg.</description>
+    </item>
     
     <item>
       <title>Basic scatterplots in Threlte</title>
@@ -126,18 +138,6 @@
       
       <guid>/posts/saaientist20/</guid>
       <description>This is a reboot of the saaientist blog that I kept many years ago. As I said then: &#34;It started out long ago as a personal notebook to help me remind how to do things, but evolved to cover more opinionated posts as well.&#34; That blog was very useful, as it helped me to organise my thoughts, served as my personal labjournal/notebook, and helped me to come in contact with many interesting people.</description>
-    </item>
-    
-    <item>
-      <title>Molecular structures in svelte</title>
-      <link>/posts/molecule_viewer/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/molecule_viewer/</guid>
-      <description>Different javascript libraries are available for displaying molecular structures, such as NGL and 3Dmol.js.
-   We&amp;#8217;ve integrated a structure viewer in our (award-winning) proof-of-concept tool for exploring protein post-translational modifications EProm, but that required quite a bit of tweaking.
- But here&amp;#8217;s a minimal example for viewing the structure for CYP2D6, using NGL.
- 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  &amp;lt;svelte:head&amp;gt; &amp;lt;script src=&amp;#34;https://unpkg.</description>
     </item>
     
   </channel>

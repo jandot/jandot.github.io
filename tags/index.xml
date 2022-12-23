@@ -6,17 +6,35 @@
     <description>Recent content in Tags on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Nov 2022 21:45:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>molecules</title>
+      <link>/tags/molecules/</link>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/molecules/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>svelte</title>
       <link>/tags/svelte/</link>
-      <pubDate>Thu, 17 Nov 2022 21:45:00 +0200</pubDate>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>/tags/svelte/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>visualisation</title>
+      <link>/tags/visualisation/</link>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/visualisation/</guid>
       <description></description>
     </item>
     
@@ -26,15 +44,6 @@
       <pubDate>Thu, 17 Nov 2022 21:45:00 +0200</pubDate>
       
       <guid>/tags/threejs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>visualisation</title>
-      <link>/tags/visualisation/</link>
-      <pubDate>Thu, 17 Nov 2022 21:45:00 +0200</pubDate>
-      
-      <guid>/tags/visualisation/</guid>
       <description></description>
     </item>
     
@@ -152,15 +161,6 @@
       <pubDate>Sun, 31 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/teaching/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>molecules</title>
-      <link>/tags/molecules/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/molecules/</guid>
       <description></description>
     </item>
     

@@ -6,10 +6,22 @@
     <description>Recent content in visualisation on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Nov 2022 21:45:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/visualisation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Molecular structures in svelte</title>
+      <link>/posts/molecule_viewer/</link>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/molecule_viewer/</guid>
+      <description>Different javascript libraries are available for displaying molecular structures, such as NGL and 3Dmol.js.
+   We&amp;#8217;ve integrated a structure viewer in our (award-winning) proof-of-concept tool for exploring protein post-translational modifications EProm, but that required quite a bit of tweaking.
+ But here&amp;#8217;s a minimal example for viewing the structure for CYP2D6, using NGL.
+ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  &amp;lt;svelte:head&amp;gt; &amp;lt;script src=&amp;#34;https://unpkg.</description>
+    </item>
     
     <item>
       <title>Basic scatterplots in Threlte</title>
@@ -44,18 +56,6 @@
       <description>There are many ways of incorporating graphics and plots in svelte and svelte-kit applications. I can definitely recommend checking out this talk by Matthias Stahl, graphics lead at Der Spiegel in Germany. This talk goes specifically through creating animated plots in svelte at the 24:46 mark.
  So you can code your own SVG in svelte, use D3, P5, Three.js, etc. In the code below, we use vega-lite.
  What I wanted to achieve with this component, is that the user can choose which dimensions are plotted against each other in a scatterplot.</description>
-    </item>
-    
-    <item>
-      <title>Molecular structures in svelte</title>
-      <link>/posts/molecule_viewer/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/molecule_viewer/</guid>
-      <description>Different javascript libraries are available for displaying molecular structures, such as NGL and 3Dmol.js.
-   We&amp;#8217;ve integrated a structure viewer in our (award-winning) proof-of-concept tool for exploring protein post-translational modifications EProm, but that required quite a bit of tweaking.
- But here&amp;#8217;s a minimal example for viewing the structure for CYP2D6, using NGL.
- 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  &amp;lt;svelte:head&amp;gt; &amp;lt;script src=&amp;#34;https://unpkg.</description>
     </item>
     
   </channel>

@@ -6,6 +6,7 @@
     <description>Recent content in molecules on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/molecules/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,7 +14,7 @@
     <item>
       <title>Molecular structures in svelte</title>
       <link>/posts/molecule_viewer/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>/posts/molecule_viewer/</guid>
       <description>Different javascript libraries are available for displaying molecular structures, such as NGL and 3Dmol.js.

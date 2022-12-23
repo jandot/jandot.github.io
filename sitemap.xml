@@ -4,8 +4,38 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2022-11-17T21:45:00+02:00</lastmod>
+    <lastmod>2022-12-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/posts/molecule_viewer/</loc>
+    <lastmod>2022-12-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/molecules/</loc>
+    <lastmod>2022-12-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/</loc>
+    <lastmod>2022-12-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/svelte/</loc>
+    <lastmod>2022-12-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2022-12-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/visualisation/</loc>
+    <lastmod>2022-12-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -14,27 +44,7 @@
   </url>
   
   <url>
-    <loc>/posts/</loc>
-    <lastmod>2022-11-17T21:45:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/svelte/</loc>
-    <lastmod>2022-11-17T21:45:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2022-11-17T21:45:00+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/threejs/</loc>
-    <lastmod>2022-11-17T21:45:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/visualisation/</loc>
     <lastmod>2022-11-17T21:45:00+02:00</lastmod>
   </url>
   
@@ -155,14 +165,6 @@
   
   <url>
     <loc>/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>/posts/molecule_viewer/</loc>
-  </url>
-  
-  <url>
-    <loc>/tags/molecules/</loc>
   </url>
   
 </urlset>
