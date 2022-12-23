@@ -1,6 +1,6 @@
 ---
 title: "Molecular structures in svelte"
-date: 2022-12-23T12:50+02:00
+date: 2022-12-23
 draft: false
 tags: ['svelte','visualisation','molecules']
 ---
