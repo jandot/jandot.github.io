@@ -1,6 +1,6 @@
 ---
 title: "Molecular structures in svelte"
-date: 2022-12-23T14:50+02:00
+date: 2022-12-23T12:50+02:00
 draft: false
 tags: ['svelte','visualisation','molecules']
 ---
@@ -30,9 +30,7 @@ But here's a minimal example for viewing the structure for CYP2D6, using NGL.
     fetch("https://alphafold.ebi.ac.uk/api/prediction/P10635")
       .then(response => response.json())
       .then(data => { console.log(data[0].pdbUrl); return data[0].pdbUrl })
-      .then(pdbUrl => {
-        stage.loadFile(pdbUrl, {defaultRepresentation: true})})
-
+      .then(pdbUrl => stage.loadFile(pdbUrl, {defaultRepresentation: true}))
   });
 </script>
 
@@ -44,3 +42,27 @@ The alphafold call returns a JSON object that includes the PDB URL, which we fir
 The end result:
 
 image::cyp2d6_structure.png[width=50%]
+
+If you don't want the default representation, you can remove that option from line 16, and add the representation separately on the component:
+
+{{< highlight html "linenos=table" >}}
+...
+    stage = new Stage("viewport", { backgroundColor: "lightgrey" })
+    fetch("https://alphafold.ebi.ac.uk/api/prediction/P10635")
+      .then(response => response.json())
+      .then(data => { console.log(data[0].pdbUrl); return data[0].pdbUrl })
+      .then(pdbUrl => stage.loadFile(pdbUrl))
+      .then(component => { component.addRepresentation("ball+stick", { colorScheme: "atomindex" });
+                           component.autoView() })
+  });
+</script>
+
+<div id="viewport" style="width:600px; height:400px;"></div>
+{{< /highlight >}}
+
+Some useful http://nglviewer.org/ngl/api/manual/coloring.html[colour schemes] are
+
+- `sstruc`: see the secondary structure
+- `residueindex`: so you know which residues are in proximity in the primary structure
+
+For a full list of possible representations, see http://nglviewer.org/ngl/api/manual/molecular-representations.html[here].
