@@ -157,4 +157,12 @@
     <loc>/categories/</loc>
   </url>
   
+  <url>
+    <loc>/posts/molecule_viewer/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/molecules/</loc>
+  </url>
+  
 </urlset>
