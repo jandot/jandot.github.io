@@ -47,6 +47,8 @@ If you don't want the default representation, you can remove that option from li
 
 {{< highlight html "linenos=table" >}}
 ...
+<script>
+...
     stage = new Stage("viewport", { backgroundColor: "lightgrey" })
     fetch("https://alphafold.ebi.ac.uk/api/prediction/P10635")
       .then(response => response.json())
@@ -66,3 +68,39 @@ Some useful http://nglviewer.org/ngl/api/manual/coloring.html[colour schemes] ar
 - `residueindex`: so you know which residues are in proximity in the primary structure
 
 For a full list of possible representations, see http://nglviewer.org/ngl/api/manual/molecular-representations.html[here].
+
+We can also add representations _after_ the `onMount`. This will make it possible to change those and the colours interactively. For example (also using `async`-`await` instead of `then` for my own reference):
+
+{{< highlight html "linenos=table" >}}
+<svelte:head>
+  <script src="https://unpkg.com/ngl"></script>
+</svelte:head>
+
+<script>
+  import { Stage } from 'ngl';
+  import { onMount } from 'svelte';
+
+  let stage;
+  let my_representation = 'cartoon'
+  let my_colours = 'atomindex'
+
+  onMount(async () => {
+    stage = new Stage("viewport", { backgroundColor: "#eeeeee" })
+
+    const response = await fetch("https://alphafold.ebi.ac.uk/api/prediction/P10635")
+    const data = await response.json()
+    const pdbUrl = await data[0].pdbUrl
+    component = await stage.loadFile(pdbUrl)   
+  });
+
+  $: {
+    if ( typeof component === 'object' ) {
+      component.removeAllRepresentations();
+      component.addRepresentation(my_representation, {colorScheme: my_colours})
+      component.autoView()
+    }
+  }
+</script>
+
+<div id="viewport" style="width:600px; height:400px;"></div>
+{{< /highlight >}}
