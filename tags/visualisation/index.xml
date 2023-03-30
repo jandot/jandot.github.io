@@ -6,10 +6,21 @@
     <description>Recent content in visualisation on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Mar 2023 18:45:00 +0200</lastBuildDate>
     
 	<atom:link href="/tags/visualisation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Clojurescript, re-frame and P5</title>
+      <link>/posts/reframe-vis-part2/</link>
+      <pubDate>Thu, 30 Mar 2023 18:45:00 +0200</pubDate>
+      
+      <guid>/posts/reframe-vis-part2/</guid>
+      <description>I&amp;#8217;m trying out creating generative art using clojurescript and quil (a clojurescript implementation of P5).
+ Routing and directory structure The main issue to be solved was to get routing working, so that I don&amp;#8217;t have to go into the source code to switch between visuals.
+   In the previous post of visualisation in clojurescript I created rect and circle in the views.cljs file. That&amp;#8217;s not how it should be done.</description>
+    </item>
     
     <item>
       <title>Molecular structures in svelte</title>
@@ -56,6 +67,16 @@
       <description>There are many ways of incorporating graphics and plots in svelte and svelte-kit applications. I can definitely recommend checking out this talk by Matthias Stahl, graphics lead at Der Spiegel in Germany. This talk goes specifically through creating animated plots in svelte at the 24:46 mark.
  So you can code your own SVG in svelte, use D3, P5, Three.js, etc. In the code below, we use vega-lite.
  What I wanted to achieve with this component, is that the user can choose which dimensions are plotted against each other in a scatterplot.</description>
+    </item>
+    
+    <item>
+      <title>Clojurescript, re-frame and modular data visualisation</title>
+      <link>/posts/clojure-reframe-vis/</link>
+      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/clojure-reframe-vis/</guid>
+      <description>One of the issues we still have is how to combine our custom data visualisations in multi-view dashboards with brushing/linking. We&amp;#8217;ll have a programmer work on this for the next two years, but as clojure is a bit of a hobby I&amp;#8217;d like to try that out as well. It appears that clojurescript re-frame fits the bill.
+ Get set up: 1 2 3  lein new re-frame my-project cd my-project lein figwheel dev</description>
     </item>
     
   </channel>

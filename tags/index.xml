@@ -6,10 +6,46 @@
     <description>Recent content in Tags on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Mar 2023 18:45:00 +0200</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>clojure</title>
+      <link>/tags/clojure/</link>
+      <pubDate>Thu, 30 Mar 2023 18:45:00 +0200</pubDate>
+      
+      <guid>/tags/clojure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>p5</title>
+      <link>/tags/p5/</link>
+      <pubDate>Thu, 30 Mar 2023 18:45:00 +0200</pubDate>
+      
+      <guid>/tags/p5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>quil</title>
+      <link>/tags/quil/</link>
+      <pubDate>Thu, 30 Mar 2023 18:45:00 +0200</pubDate>
+      
+      <guid>/tags/quil/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>visualisation</title>
+      <link>/tags/visualisation/</link>
+      <pubDate>Thu, 30 Mar 2023 18:45:00 +0200</pubDate>
+      
+      <guid>/tags/visualisation/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>molecules</title>
@@ -26,15 +62,6 @@
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>/tags/svelte/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>visualisation</title>
-      <link>/tags/visualisation/</link>
-      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/visualisation/</guid>
       <description></description>
     </item>
     
@@ -125,24 +152,6 @@
       <pubDate>Fri, 24 Jun 2022 22:01:50 +0200</pubDate>
       
       <guid>/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>clojure</title>
-      <link>/tags/clojure/</link>
-      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/clojure/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>datavis</title>
-      <link>/tags/datavis/</link>
-      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/datavis/</guid>
       <description></description>
     </item>
     
