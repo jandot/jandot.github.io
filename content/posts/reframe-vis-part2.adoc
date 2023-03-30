@@ -1,0 +1,115 @@
+---
+title: "Clojurescript, re-frame and P5"
+date: 2023-03-30T18:45:00+02:00
+draft: false
+tags: ['clojure','visualisation','p5','quil']
+---
+:imagesdir: /assets/
+
+I'm trying out creating generative art using clojurescript and http://quil.info/[quil] (a clojurescript implementation of http://www.p5js.org[P5]).
+
+== Routing and directory structure
+The main issue to be solved was to get _routing_ working, so that I don't have to go into the source code to switch between visuals.
+
+image::quil-routing.png[width=50%]
+
+In https://jandot.github.io/posts/clojure-reframe-vis/[the previous post of visualisation in clojurescript] I created `rect` and `circle` in the `views.cljs` file. That's not how it should be done. The `views.cljs` file should contain the different pages instead.
+
+{{< highlight clojure "linenos=table" >}}
+(defn home-panel []
+  (let [name (re-frame/subscribe [::subs/name])]
+    [:div
+     [:h1
+      (str "Art generator")]
+     [:p (str "Name: " @name)]]))
+
+(defmethod routes/panels :home-panel [] [home-panel])
+
+;; about
+
+(defn about-panel []
+  [:div
+   [:h1 "This is the About Page."]])
+
+(defmethod routes/panels :about-panel [] [about-panel])
+{{< /highlight >}}
+
+To add a tab that shows circles (using http://quil.info[quil]), we create a new file `generators/circles.cljs`:
+
+{{< highlight clojure "linenos=table" >}}
+(ns genart-clj.generators.circles
+  (:require [quil.core :as q]
+            [quil.middleware :as middleware]))
+
+(defn sketch-setup []
+    ;; set up here
+)
+
+(defn sketch-draw []
+    ;; draw here
+)
+
+(defn create []
+    (q/defsketch sketch
+      :size [width height]
+      :setup #'sketch-setup
+      :draw #'sketch-draw
+      :middleware [middleware/fun-mode]))
+{{< /highlight >}}
+
+In the `views.cljs` file we add `circles.cljs` to the `:require` and create a new view:
+
+{{< highlight clojure "linenos=table" >}}
+(ns genart-clj.views
+  (:require
+   [re-frame.core :as re-frame]
+   [genart-clj.events :as events]
+   [genart-clj.routes :as routes]
+   [genart-clj.subs :as subs]
+   [genart-clj.generators.circles :as circles]))
+
+;; ...
+
+(defn circles-panel []
+  [:div
+   [:h1 "Circles"]
+   [:div#sketch]
+   (circles/create)
+   ])
+
+(defmethod routes/panels :circles-panel [] [circles-panel])
+{{< /highlight >}}
+
+Unfortunately, this does _not_ always work. The problem seems to be that the `div` with id `sketch` is not mounted yet before the image is created and is attached to this (non-existing) div.
+
+== Workaround
+A possible workaround is to - instead of generating the image immediately - ask for the user to click a button first. When clicked, the image is created and mounted in that div.
+
+{{< highlight clojure "linenos=table" >}}
+;; ...
+
+(defn generate-image [generator]
+  (-> js/document
+      (.querySelectorAll "p5Canvas")
+      (map #(.remove %)))
+  (.log js/console "hi")
+  (generator))
+
+(defn circles-panel []
+  [:div
+   [:h1 "Circles"]
+   [:button {:class "btn btn-primary"
+             :on-click #(generate-image circles/create)} "Generate..."]
+   [:div#sketch]
+   ])
+
+;; ...
+{{< /highlight >}}
+
+The result before clicking:
+
+image::genart-button.png[width=50%]
+
+After clicking:
+
+image::genart-button-clicked.png[]

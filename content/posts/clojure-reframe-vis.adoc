@@ -1,7 +1,7 @@
 ---
 title: "Clojurescript, re-frame and modular data visualisation"
 date: 2019-04-06
-tags: ["clojure","datavis"]
+tags: ["clojure","visualisation"]
 draft: false
 ---
 :imagesdir: /assets/
