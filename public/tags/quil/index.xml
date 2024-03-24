@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>quil on Saaientist</title>
+    <link>/tags/quil/</link>
+    <description>Recent content in quil on Saaientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 30 Mar 2023 18:45:00 +0200</lastBuildDate><atom:link href="/tags/quil/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Clojurescript, re-frame and P5</title>
+      <link>/posts/reframe-vis-part2/</link>
+      <pubDate>Thu, 30 Mar 2023 18:45:00 +0200</pubDate>
+      
+      <guid>/posts/reframe-vis-part2/</guid>
+      <description>I’m trying out creating generative art using clojurescript and quil (a clojurescript implementation of P5).
+Routing and directory structure The main issue to be solved was to get routing working, so that I don’t have to go into the source code to switch between visuals.
+In the previous post of visualisation in clojurescript I created rect and circle in the views.cljs file. That’s not how it should be done. The views.</description>
+    </item>
+    
+  </channel>
+</rss>

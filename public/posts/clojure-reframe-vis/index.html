@@ -10,30 +10,30 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title> Clojurescript, re-frame and modular data visualisation | Saaientist</title>
-  <link rel = 'canonical' href = 'https://jandot.github.io/posts/clojure-reframe-vis/'>
-  <meta name="description" content="My external memory">
+  <link rel = 'canonical' href = '/posts/clojure-reframe-vis/'>
+  <meta name="description" content="My external memory. See http://saaientist.blogspot.com for old posts.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="Clojurescript, re-frame and modular data visualisation" />
 <meta property="og:description" content="One of the issues we still have is how to combine our custom data visualisations in multi-view dashboards with brushing/linking. We’ll have a programmer work on this for the next two years, but as clojure is a bit of a hobby I’d like to try that out as well. It appears that clojurescript re-frame fits the bill.
- Get set up: 1 2 3  lein new re-frame my-project cd my-project lein figwheel dev" />
+Get set up: 1 2 3 lein new re-frame my-project cd my-project lein figwheel dev my-project/resources/public/index." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jandot.github.io/posts/clojure-reframe-vis/" />
+<meta property="og:url" content="/posts/clojure-reframe-vis/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-04-06T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-04-06T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Clojurescript, re-frame and modular data visualisation"/>
 <meta name="twitter:description" content="One of the issues we still have is how to combine our custom data visualisations in multi-view dashboards with brushing/linking. We’ll have a programmer work on this for the next two years, but as clojure is a bit of a hobby I’d like to try that out as well. It appears that clojurescript re-frame fits the bill.
- Get set up: 1 2 3  lein new re-frame my-project cd my-project lein figwheel dev"/>
+Get set up: 1 2 3 lein new re-frame my-project cd my-project lein figwheel dev my-project/resources/public/index."/>
 
   
   
     
   
   
-  <link rel="stylesheet" href="https://jandot.github.io/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
+  <link rel="stylesheet" href="/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
 
   
   
@@ -45,7 +45,7 @@
   
 
   
-<link rel="icon" type="image/png" href="https://jandot.github.io/images/favicon.ico" />
+<link rel="icon" type="image/png" href="/images/favicon.ico" />
 
   
   
@@ -79,14 +79,14 @@
       <ul>
         
         <li>
-          <a class="icon" href=" https://jandot.github.io/posts/jupyter-notebooks-docker/" aria-label="Previous">
+          <a class="icon" href=" /posts/jupyter-notebooks-docker/" aria-label="Previous">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
         
         <li>
-          <a class="icon" href="https://jandot.github.io/posts/running-docker-command-from-svelte/" aria-label="Next">
+          <a class="icon" href="/posts/running-docker-command-from-svelte/" aria-label="Next">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
@@ -117,47 +117,47 @@
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2fclojure-reframe-vis%2f" aria-label="Facebook">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f&text=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=%2fposts%2fclojure-reframe-vis%2f&text=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Twitter">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f&title=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2fclojure-reframe-vis%2f&title=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Linkedin">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f&is_video=false&description=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2fclojure-reframe-vis%2f&is_video=false&description=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Pinterest">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation&body=Check out this article: https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation&body=Check out this article: %2fposts%2fclojure-reframe-vis%2f" aria-label="Email">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f&title=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2fclojure-reframe-vis%2f&title=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Pocket">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f&title=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2fclojure-reframe-vis%2f&title=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="reddit">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f&name=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation&description=One%20of%20the%20issues%20we%20still%20have%20is%20how%20to%20combine%20our%20custom%20data%20visualisations%20in%20multi-view%20dashboards%20with%20brushing%2flinking.%20We%e2%80%99ll%20have%20a%20programmer%20work%20on%20this%20for%20the%20next%20two%20years%2c%20but%20as%20clojure%20is%20a%20bit%20of%20a%20hobby%20I%e2%80%99d%20like%20to%20try%20that%20out%20as%20well.%20It%20appears%20that%20clojurescript%20re-frame%20fits%20the%20bill.%0a%20Get%20set%20up%3a%201%202%203%20%20lein%20new%20re-frame%20my-project%20cd%20my-project%20lein%20figwheel%20dev" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2fclojure-reframe-vis%2f&name=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation&description=One%20of%20the%20issues%20we%20still%20have%20is%20how%20to%20combine%20our%20custom%20data%20visualisations%20in%20multi-view%20dashboards%20with%20brushing%2flinking.%20We%e2%80%99ll%20have%20a%20programmer%20work%20on%20this%20for%20the%20next%20two%20years%2c%20but%20as%20clojure%20is%20a%20bit%20of%20a%20hobby%20I%e2%80%99d%20like%20to%20try%20that%20out%20as%20well.%20It%20appears%20that%20clojurescript%20re-frame%20fits%20the%20bill.%0aGet%20set%20up%3a%201%202%203%20lein%20new%20re-frame%20my-project%20cd%20my-project%20lein%20figwheel%20dev%20my-project%2fresources%2fpublic%2findex." aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f&t=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2fclojure-reframe-vis%2f&t=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Hacker News">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -166,7 +166,7 @@
     </div>
     
     <div id="toc">
-      <nav id="TableOfContents"></nav>
+      
     </div>
     
   </span>
@@ -196,7 +196,7 @@
             <a class="tag-link" href="/tags/clojure" rel="tag">clojure</a>
             
              ,  
-            <a class="tag-link" href="/tags/datavis" rel="tag">datavis</a>
+            <a class="tag-link" href="/tags/visualisation" rel="tag">visualisation</a>
             
         </div>
         
@@ -211,16 +211,16 @@
 </div>
 <div class="paragraph">
 <p>Get set up:
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">lein new re-frame my-project
-cd my-project
-lein figwheel dev</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>lein new re-frame my-project
+</span></span><span style="display:flex;"><span>cd my-project
+</span></span><span style="display:flex;"><span>lein figwheel dev</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 </div>
@@ -229,36 +229,36 @@ lein figwheel dev</code></pre></td></tr></table>
 </div>
 <div class="paragraph">
 <div class="title"><code>index.html</code></div>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
-&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
-  &lt;<span style="color:#f92672">head</span>&gt;
-    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;utf-8&#39;</span>&gt;
-
-
-  &lt;/<span style="color:#f92672">head</span>&gt;
-  &lt;<span style="color:#f92672">body</span>&gt;
-    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
-    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;js/compiled/app.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
-    &lt;<span style="color:#f92672">script</span>&gt;<span style="color:#a6e22e">my_re_frame</span>.<span style="color:#a6e22e">core</span>.<span style="color:#a6e22e">init</span>();&lt;/<span style="color:#f92672">script</span>&gt;
-  &lt;/<span style="color:#f92672">body</span>&gt;
-&lt;/<span style="color:#f92672">html</span>&gt;</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!doctype html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;utf-8&#39;</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;js/compiled/app.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span>&gt;<span style="color:#a6e22e">my_re_frame</span>.<span style="color:#a6e22e">core</span>.<span style="color:#a6e22e">init</span>();&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
@@ -292,245 +292,245 @@ lein figwheel dev</code></pre></td></tr></table>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>core.cljs</code>: didn’t touch this
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#66d9ef">ns </span>my-re-frame.core
-  (<span style="color:#e6db74">:require</span>
-   [reagent.core <span style="color:#e6db74">:as</span> reagent]
-   [re-frame.core <span style="color:#e6db74">:as</span> re-frame]
-   [my-re-frame.events <span style="color:#e6db74">:as</span> events]
-   [my-re-frame.views <span style="color:#e6db74">:as</span> views]
-   [my-re-frame.config <span style="color:#e6db74">:as</span> config]
-   ))
-
-(<span style="color:#66d9ef">defn </span>dev-setup []
-  (when config/debug?
-    (<span style="color:#a6e22e">enable-console-print!</span>)
-    (println <span style="color:#e6db74">&#34;dev mode&#34;</span>)))
-
-(<span style="color:#66d9ef">defn </span>mount-root []
-  (<span style="color:#a6e22e">re-frame/clear-subscription-cache!</span>)
-  (<span style="color:#a6e22e">reagent/render</span> [views/main-panel]
-                  (<span style="color:#a6e22e">.getElementById</span> js/document <span style="color:#e6db74">&#34;app&#34;</span>)))
-
-(<span style="color:#66d9ef">defn </span><span style="color:#f92672">^</span><span style="color:#e6db74">:export</span> init []
-  (<span style="color:#a6e22e">re-frame/dispatch-sync</span> [<span style="color:#e6db74">::events/initialize-db</span>])
-  (<span style="color:#a6e22e">dev-setup</span>)
-  (<span style="color:#a6e22e">mount-root</span>))</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#66d9ef">ns </span>my-re-frame.core
+</span></span><span style="display:flex;"><span>  (<span style="color:#e6db74">:require</span>
+</span></span><span style="display:flex;"><span>   [reagent.core <span style="color:#e6db74">:as</span> reagent]
+</span></span><span style="display:flex;"><span>   [re-frame.core <span style="color:#e6db74">:as</span> re-frame]
+</span></span><span style="display:flex;"><span>   [my-re-frame.events <span style="color:#e6db74">:as</span> events]
+</span></span><span style="display:flex;"><span>   [my-re-frame.views <span style="color:#e6db74">:as</span> views]
+</span></span><span style="display:flex;"><span>   [my-re-frame.config <span style="color:#e6db74">:as</span> config]
+</span></span><span style="display:flex;"><span>   ))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">defn </span>dev-setup []
+</span></span><span style="display:flex;"><span>  (when config/debug?
+</span></span><span style="display:flex;"><span>    (<span style="color:#a6e22e">enable-console-print!</span>)
+</span></span><span style="display:flex;"><span>    (println <span style="color:#e6db74">&#34;dev mode&#34;</span>)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">defn </span>mount-root []
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">re-frame/clear-subscription-cache!</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">reagent/render</span> [views/main-panel]
+</span></span><span style="display:flex;"><span>                  (<span style="color:#a6e22e">.getElementById</span> js/document <span style="color:#e6db74">&#34;app&#34;</span>)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">defn </span><span style="color:#f92672">^</span><span style="color:#e6db74">:export</span> init []
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">re-frame/dispatch-sync</span> [<span style="color:#e6db74">::events/initialize-db</span>])
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">dev-setup</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">mount-root</span>))</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 </div>
 <div class="paragraph">
 <p><code>db.cljs</code> holds the app state
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#66d9ef">ns </span>my-re-frame.db)
-
-(<span style="color:#66d9ef">def </span>default-db
-  {<span style="color:#e6db74">:name</span> <span style="color:#e6db74">&#34;re-frame&#34;</span>
-   <span style="color:#e6db74">:data</span> [<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">5</span> <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">21</span> <span style="color:#ae81ff">34</span> <span style="color:#ae81ff">55</span> <span style="color:#ae81ff">89</span>]})</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#66d9ef">ns </span>my-re-frame.db)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">def </span>default-db
+</span></span><span style="display:flex;"><span>  {<span style="color:#e6db74">:name</span> <span style="color:#e6db74">&#34;re-frame&#34;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:data</span> [<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">5</span> <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">21</span> <span style="color:#ae81ff">34</span> <span style="color:#ae81ff">55</span> <span style="color:#ae81ff">89</span>]})</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 </div>
 <div class="paragraph">
 <p><code>events.cljs</code>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#66d9ef">ns </span>my-re-frame.events
-  (<span style="color:#e6db74">:require</span>
-   [re-frame.core <span style="color:#e6db74">:as</span> re-frame]
-   [my-re-frame.db <span style="color:#e6db74">:as</span> db]
-   ))
-
-(<span style="color:#a6e22e">re-frame/reg-event-db</span>
- <span style="color:#e6db74">::initialize-db</span>
- (<span style="color:#66d9ef">fn </span>[_ _]
-   db/default-db))</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#66d9ef">ns </span>my-re-frame.events
+</span></span><span style="display:flex;"><span>  (<span style="color:#e6db74">:require</span>
+</span></span><span style="display:flex;"><span>   [re-frame.core <span style="color:#e6db74">:as</span> re-frame]
+</span></span><span style="display:flex;"><span>   [my-re-frame.db <span style="color:#e6db74">:as</span> db]
+</span></span><span style="display:flex;"><span>   ))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">re-frame/reg-event-db</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">::initialize-db</span>
+</span></span><span style="display:flex;"><span> (<span style="color:#66d9ef">fn </span>[_ _]
+</span></span><span style="display:flex;"><span>   db/default-db))</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 </div>
 <div class="paragraph">
 <p><code>subs.cljs</code>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#66d9ef">ns </span>my-re-frame.subs
-  (<span style="color:#e6db74">:require</span>
-   [re-frame.core <span style="color:#e6db74">:as</span> re-frame]))
-
-(<span style="color:#a6e22e">re-frame/reg-sub</span>
- <span style="color:#e6db74">::name</span>
- (<span style="color:#66d9ef">fn </span>[db]
-   (<span style="color:#e6db74">:name</span> db)))
-
-(<span style="color:#a6e22e">re-frame/reg-sub</span>
-  <span style="color:#e6db74">::data</span>
-  (<span style="color:#66d9ef">fn </span>[db]
-    (<span style="color:#e6db74">:data</span> db)))</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#66d9ef">ns </span>my-re-frame.subs
+</span></span><span style="display:flex;"><span>  (<span style="color:#e6db74">:require</span>
+</span></span><span style="display:flex;"><span>   [re-frame.core <span style="color:#e6db74">:as</span> re-frame]))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">re-frame/reg-sub</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">::name</span>
+</span></span><span style="display:flex;"><span> (<span style="color:#66d9ef">fn </span>[db]
+</span></span><span style="display:flex;"><span>   (<span style="color:#e6db74">:name</span> db)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">re-frame/reg-sub</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">::data</span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">fn </span>[db]
+</span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">:data</span> db)))</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 </div>
 <div class="paragraph">
 <p><code>views.cljs</code> is where I define the main panel, as well as the functions to draw circle and rectangle. These latter two should later be moved to separate files so as to make this truly modular.
 Note the <code>:on-mouse-over</code> and <code>:on-click</code> (and keep a look at your browser console); we’ll probably use that later for brushing/linking.
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#66d9ef">ns </span>my-re-frame.views
-  (<span style="color:#e6db74">:require</span>
-   [re-frame.core <span style="color:#e6db74">:as</span> re-frame]
-   [my-re-frame.subs <span style="color:#e6db74">:as</span> subs]))
-
-(<span style="color:#66d9ef">defn </span>rect
-  [pos]
-  [<span style="color:#e6db74">:rect</span> {
-    <span style="color:#e6db74">:style</span> {
-      <span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(0,0,128,0.3)&#34;</span>
-      <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>}
-    <span style="color:#e6db74">:key</span> (str <span style="color:#e6db74">&#34;r&#34;</span> pos)
-    <span style="color:#e6db74">:x</span> (+ <span style="color:#ae81ff">50</span> pos)
-    <span style="color:#e6db74">:y</span> (+ <span style="color:#ae81ff">50</span> pos)
-    <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">10</span>
-    <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">10</span>
-    <span style="color:#e6db74">:on-mouse-over</span> <span style="color:#f92672">#</span>(println (str <span style="color:#e6db74">&#34;rect&#34;</span> pos))
-  }])
-
-(<span style="color:#66d9ef">defn </span>circle
-  [pos]
-  [<span style="color:#e6db74">:ellipse</span> {
-    <span style="color:#e6db74">:style</span> {
-      <span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>
-      <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>}
-    <span style="color:#e6db74">:key</span> (str <span style="color:#e6db74">&#34;c&#34;</span> pos)
-    <span style="color:#e6db74">:cx</span> (+ (+ pos <span style="color:#ae81ff">50</span>) <span style="color:#ae81ff">50</span>)
-    <span style="color:#e6db74">:cy</span> (+ pos <span style="color:#ae81ff">50</span>)
-    <span style="color:#e6db74">:rx</span> <span style="color:#ae81ff">10</span>
-    <span style="color:#e6db74">:ry</span> <span style="color:#ae81ff">10</span>
-    <span style="color:#e6db74">:on-mouse-over</span> <span style="color:#f92672">#</span>(println (str <span style="color:#e6db74">&#34;circle&#34;</span> pos))
-  }])
-
-(<span style="color:#66d9ef">defn </span>main-panel []
-  (<span style="color:#66d9ef">let </span>[name (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/name</span>])
-        data (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/data</span>])]
-    [<span style="color:#e6db74">:div</span>
-      [<span style="color:#e6db74">:h1</span> <span style="color:#e6db74">&#34;Hello from &#34;</span> <span style="color:#f92672">@</span>name]
-      [<span style="color:#e6db74">:p</span> <span style="color:#e6db74">&#34;Before&#34;</span>]
-      [<span style="color:#e6db74">:br</span>]
-      [<span style="color:#e6db74">:svg</span> {<span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:y</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">400</span> <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">200</span> <span style="color:#e6db74">:on-click</span> <span style="color:#f92672">#</span>(println <span style="color:#e6db74">&#34;Clicked&#34;</span>)}
-        (map rect <span style="color:#f92672">@</span>data)
-        (map circle <span style="color:#f92672">@</span>data)
-      ]
-      [<span style="color:#e6db74">:br</span>]
-      [<span style="color:#e6db74">:p</span> <span style="color:#e6db74">&#34;After&#34;</span>]
-
-    ]))</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#66d9ef">ns </span>my-re-frame.views
+</span></span><span style="display:flex;"><span>  (<span style="color:#e6db74">:require</span>
+</span></span><span style="display:flex;"><span>   [re-frame.core <span style="color:#e6db74">:as</span> re-frame]
+</span></span><span style="display:flex;"><span>   [my-re-frame.subs <span style="color:#e6db74">:as</span> subs]))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">defn </span>rect
+</span></span><span style="display:flex;"><span>  [pos]
+</span></span><span style="display:flex;"><span>  [<span style="color:#e6db74">:rect</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:style</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(0,0,128,0.3)&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:key</span> (str <span style="color:#e6db74">&#34;r&#34;</span> pos)
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:x</span> (+ <span style="color:#ae81ff">50</span> pos)
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:y</span> (+ <span style="color:#ae81ff">50</span> pos)
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:on-mouse-over</span> <span style="color:#f92672">#</span>(println (str <span style="color:#e6db74">&#34;rect&#34;</span> pos))
+</span></span><span style="display:flex;"><span>  }])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">defn </span>circle
+</span></span><span style="display:flex;"><span>  [pos]
+</span></span><span style="display:flex;"><span>  [<span style="color:#e6db74">:ellipse</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:style</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:key</span> (str <span style="color:#e6db74">&#34;c&#34;</span> pos)
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:cx</span> (+ (+ pos <span style="color:#ae81ff">50</span>) <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:cy</span> (+ pos <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:rx</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:ry</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:on-mouse-over</span> <span style="color:#f92672">#</span>(println (str <span style="color:#e6db74">&#34;circle&#34;</span> pos))
+</span></span><span style="display:flex;"><span>  }])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">defn </span>main-panel []
+</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">let </span>[name (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/name</span>])
+</span></span><span style="display:flex;"><span>        data (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/data</span>])]
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">:div</span>
+</span></span><span style="display:flex;"><span>      [<span style="color:#e6db74">:h1</span> <span style="color:#e6db74">&#34;Hello from &#34;</span> <span style="color:#f92672">@</span>name]
+</span></span><span style="display:flex;"><span>      [<span style="color:#e6db74">:p</span> <span style="color:#e6db74">&#34;Before&#34;</span>]
+</span></span><span style="display:flex;"><span>      [<span style="color:#e6db74">:br</span>]
+</span></span><span style="display:flex;"><span>      [<span style="color:#e6db74">:svg</span> {<span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:y</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">400</span> <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">200</span> <span style="color:#e6db74">:on-click</span> <span style="color:#f92672">#</span>(println <span style="color:#e6db74">&#34;Clicked&#34;</span>)}
+</span></span><span style="display:flex;"><span>        (map rect <span style="color:#f92672">@</span>data)
+</span></span><span style="display:flex;"><span>        (map circle <span style="color:#f92672">@</span>data)
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>      [<span style="color:#e6db74">:br</span>]
+</span></span><span style="display:flex;"><span>      [<span style="color:#e6db74">:p</span> <span style="color:#e6db74">&#34;After&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ]))</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 </div>
@@ -555,38 +555,38 @@ image::re-frame_screenshot.png[width=25%]</p>
 <p>This is also very simple: we only have to create a <code>scatterplot</code> function, and replace the call in the <code>main-panel</code>.</p>
 </div>
 <div class="paragraph">
-<p><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+<p><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#66d9ef">defn </span>scatterplot
-  [data]
-  (map circle data)</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#66d9ef">defn </span>scatterplot
+</span></span><span style="display:flex;"><span>  [data]
+</span></span><span style="display:flex;"><span>  (map circle data)</span></span></code></pre></td></tr></table>
 </div>
 </div>
 Make sure to put this function <em>after</em> the definition of the <code>circle</code> function, otherwise it will complain.</p>
 </div>
 <div class="paragraph">
 <p>We now have to replace the call in the <code>main-panel</code>:
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">...
-[<span style="color:#e6db74">:svg</span> {<span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:y</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">400</span> <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">200</span> <span style="color:#e6db74">:on-click</span> <span style="color:#f92672">#</span>(println <span style="color:#e6db74">&#34;Clicked&#34;</span>)}
-  (map rect <span style="color:#f92672">@</span>data)
-  (<span style="color:#a6e22e">scatterplot</span> <span style="color:#f92672">@</span>data)
-]
-...</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>[<span style="color:#e6db74">:svg</span> {<span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:y</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">400</span> <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">200</span> <span style="color:#e6db74">:on-click</span> <span style="color:#f92672">#</span>(println <span style="color:#e6db74">&#34;Clicked&#34;</span>)}
+</span></span><span style="display:flex;"><span>  (map rect <span style="color:#f92672">@</span>data)
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">scatterplot</span> <span style="color:#f92672">@</span>data)
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>...</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 </div>
@@ -597,22 +597,22 @@ Make sure to put this function <em>after</em> the definition of the <code>circle
 <p>We might have a border around our scatterplot. Or not…​ Of course we can create different functions: one for scatterplot without border, and one with border. This obviously is not scalable to other options. So let’s see if we can get this working: draw a scatterplot <em>with</em> a border next to one <em>without</em>.</p>
 </div>
 <div class="paragraph">
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">...
-[<span style="color:#e6db74">:svg</span> {<span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:y</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">200</span> <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">200</span> <span style="color:#e6db74">:on-click</span> <span style="color:#f92672">#</span>(println <span style="color:#e6db74">&#34;Clicked&#34;</span>)}
-        (<span style="color:#a6e22e">scatterplot</span> {<span style="color:#e6db74">:border</span> true} <span style="color:#f92672">@</span>data)
-        (<span style="color:#a6e22e">scatterplot</span> {<span style="color:#e6db74">:border</span> false} <span style="color:#f92672">@</span>data)
-]
-...</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>[<span style="color:#e6db74">:svg</span> {<span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:y</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">200</span> <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">200</span> <span style="color:#e6db74">:on-click</span> <span style="color:#f92672">#</span>(println <span style="color:#e6db74">&#34;Clicked&#34;</span>)}
+</span></span><span style="display:flex;"><span>        (<span style="color:#a6e22e">scatterplot</span> {<span style="color:#e6db74">:border</span> true} <span style="color:#f92672">@</span>data)
+</span></span><span style="display:flex;"><span>        (<span style="color:#a6e22e">scatterplot</span> {<span style="color:#e6db74">:border</span> false} <span style="color:#f92672">@</span>data)
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>...</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
@@ -620,26 +620,26 @@ Make sure to put this function <em>after</em> the definition of the <code>circle
 <p>This took a while to figure out, simply because the <code>scatterplot</code> function needs to return a single data structure. I must say: figwheel helped a <em>lot</em> here.</p>
 </div>
 <div class="paragraph">
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#66d9ef">defn </span>scatterplot
-  [opts data]
-  (<span style="color:#a6e22e">-&gt;&gt;</span> []
-       (<span style="color:#f92672">#</span>(<span style="color:#66d9ef">if </span>(= (<span style="color:#e6db74">:border</span> opts) true) (conj % (<span style="color:#a6e22e">border</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">200</span> <span style="color:#ae81ff">200</span>))))
-       (<span style="color:#f92672">#</span>(conj % (map circle data)))
-       (<span style="color:#a6e22e">flatten</span>)
-       (<span style="color:#a6e22e">partition</span> <span style="color:#ae81ff">2</span>)
-       (map vec)))</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#66d9ef">defn </span>scatterplot
+</span></span><span style="display:flex;"><span>  [opts data]
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">-&gt;&gt;</span> []
+</span></span><span style="display:flex;"><span>       (<span style="color:#f92672">#</span>(<span style="color:#66d9ef">if </span>(= (<span style="color:#e6db74">:border</span> opts) true) (conj % (<span style="color:#a6e22e">border</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">200</span> <span style="color:#ae81ff">200</span>))))
+</span></span><span style="display:flex;"><span>       (<span style="color:#f92672">#</span>(conj % (map circle data)))
+</span></span><span style="display:flex;"><span>       (<span style="color:#a6e22e">flatten</span>)
+</span></span><span style="display:flex;"><span>       (<span style="color:#a6e22e">partition</span> <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>       (map vec)))</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
@@ -647,83 +647,83 @@ Make sure to put this function <em>after</em> the definition of the <code>circle
 <p>Having access to a REPL that is connected to the browser works wonders. The <code>lein figwheel dev</code> mentioned above starts a REPL that is connected live to your code. Whenever you save your file, these changes are reflected here as well. To investigate what the <code>scatterplot</code> function returned, I’d just run it in that REPL:</p>
 </div>
 <div class="paragraph">
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#66d9ef">ns </span>my-re-frame.views)
-(<span style="color:#a6e22e">scatterplot</span> {<span style="color:#e6db74">:border</span> true} [<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span>])</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#66d9ef">ns </span>my-re-frame.views)
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">scatterplot</span> {<span style="color:#e6db74">:border</span> true} [<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span>])</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
 <div class="paragraph">
 <p>This returns
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">([<span style="color:#e6db74">:rect</span>
-  {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;none&#34;</span>, <span style="color:#e6db74">:stroke</span> <span style="color:#e6db74">&#34;black&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">1</span>},
-   <span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span>,
-   <span style="color:#e6db74">:y</span> <span style="color:#ae81ff">0</span>,
-   <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">200</span>,
-   <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">200</span>}]
- [<span style="color:#e6db74">:ellipse</span>
-  {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>},
-   <span style="color:#e6db74">:key</span> <span style="color:#e6db74">&#34;c0.5915471522077664&#34;</span>,
-   <span style="color:#e6db74">:cx</span> <span style="color:#ae81ff">1</span>,
-   <span style="color:#e6db74">:cy</span> <span style="color:#ae81ff">1</span>,
-   <span style="color:#e6db74">:rx</span> <span style="color:#ae81ff">10</span>,
-   <span style="color:#e6db74">:ry</span> <span style="color:#ae81ff">10</span>,
-   <span style="color:#e6db74">:on-mouse-over</span> <span style="color:#f92672">#</span>object[Function]}]
- [<span style="color:#e6db74">:ellipse</span>
-  {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>},
-   <span style="color:#e6db74">:key</span> <span style="color:#e6db74">&#34;c0.6396423198112418&#34;</span>,
-   <span style="color:#e6db74">:cx</span> <span style="color:#ae81ff">2</span>,
-   <span style="color:#e6db74">:cy</span> <span style="color:#ae81ff">2</span>,
-   <span style="color:#e6db74">:rx</span> <span style="color:#ae81ff">10</span>,
-   <span style="color:#e6db74">:ry</span> <span style="color:#ae81ff">10</span>,
-   <span style="color:#e6db74">:on-mouse-over</span> <span style="color:#f92672">#</span>object[Function]}]
- [<span style="color:#e6db74">:ellipse</span>
-  {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>},
-   <span style="color:#e6db74">:key</span> <span style="color:#e6db74">&#34;c0.7417803449596954&#34;</span>,
-   <span style="color:#e6db74">:cx</span> <span style="color:#ae81ff">3</span>,
-   <span style="color:#e6db74">:cy</span> <span style="color:#ae81ff">3</span>,
-   <span style="color:#e6db74">:rx</span> <span style="color:#ae81ff">10</span>,
-   <span style="color:#e6db74">:ry</span> <span style="color:#ae81ff">10</span>,
-   <span style="color:#e6db74">:on-mouse-over</span> <span style="color:#f92672">#</span>object[Function]}])</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>([<span style="color:#e6db74">:rect</span>
+</span></span><span style="display:flex;"><span>  {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;none&#34;</span>, <span style="color:#e6db74">:stroke</span> <span style="color:#e6db74">&#34;black&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">1</span>},
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:y</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">200</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">200</span>}]
+</span></span><span style="display:flex;"><span> [<span style="color:#e6db74">:ellipse</span>
+</span></span><span style="display:flex;"><span>  {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>},
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:key</span> <span style="color:#e6db74">&#34;c0.5915471522077664&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:cx</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:cy</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:rx</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:ry</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:on-mouse-over</span> <span style="color:#f92672">#</span>object[Function]}]
+</span></span><span style="display:flex;"><span> [<span style="color:#e6db74">:ellipse</span>
+</span></span><span style="display:flex;"><span>  {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>},
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:key</span> <span style="color:#e6db74">&#34;c0.6396423198112418&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:cx</span> <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:cy</span> <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:rx</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:ry</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:on-mouse-over</span> <span style="color:#f92672">#</span>object[Function]}]
+</span></span><span style="display:flex;"><span> [<span style="color:#e6db74">:ellipse</span>
+</span></span><span style="display:flex;"><span>  {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>},
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:key</span> <span style="color:#e6db74">&#34;c0.7417803449596954&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:cx</span> <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:cy</span> <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:rx</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:ry</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:on-mouse-over</span> <span style="color:#f92672">#</span>object[Function]}])</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 </div>
@@ -731,42 +731,42 @@ Make sure to put this function <em>after</em> the definition of the <code>circle
 <p>Initially, I’d get output where the <code>:rect</code> was not really part of the same data structure. Hence the <code>flatten</code> → <code>partition</code> → <code>map vec</code>.</p>
 </div>
 <div class="paragraph">
-<p><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+<p><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">[[<span style="color:#e6db74">:rect</span>
-  {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;none&#34;</span>, <span style="color:#e6db74">:stroke</span> <span style="color:#e6db74">&#34;black&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">1</span>},
-   <span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span>,
-   ...}]
- ([<span style="color:#e6db74">:ellipse</span>
-   {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>},
-    <span style="color:#e6db74">:key</span> <span style="color:#e6db74">&#34;c0.6519528849418721&#34;</span>,
-    ...}]
-  [<span style="color:#e6db74">:ellipse</span>
-   {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>},
-    <span style="color:#e6db74">:key</span> <span style="color:#e6db74">&#34;c0.9563097578789714&#34;</span>,
-    ...}]
-  [<span style="color:#e6db74">:ellipse</span>
-   {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>},
-    <span style="color:#e6db74">:key</span> <span style="color:#e6db74">&#34;c0.449294105728856&#34;</span>,
-    ...}])]</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>[[<span style="color:#e6db74">:rect</span>
+</span></span><span style="display:flex;"><span>  {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;none&#34;</span>, <span style="color:#e6db74">:stroke</span> <span style="color:#e6db74">&#34;black&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">1</span>},
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>   ...}]
+</span></span><span style="display:flex;"><span> ([<span style="color:#e6db74">:ellipse</span>
+</span></span><span style="display:flex;"><span>   {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>},
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:key</span> <span style="color:#e6db74">&#34;c0.6519528849418721&#34;</span>,
+</span></span><span style="display:flex;"><span>    ...}]
+</span></span><span style="display:flex;"><span>  [<span style="color:#e6db74">:ellipse</span>
+</span></span><span style="display:flex;"><span>   {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>},
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:key</span> <span style="color:#e6db74">&#34;c0.9563097578789714&#34;</span>,
+</span></span><span style="display:flex;"><span>    ...}]
+</span></span><span style="display:flex;"><span>  [<span style="color:#e6db74">:ellipse</span>
+</span></span><span style="display:flex;"><span>   {<span style="color:#e6db74">:style</span> {<span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>, <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>},
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:key</span> <span style="color:#e6db74">&#34;c0.449294105728856&#34;</span>,
+</span></span><span style="display:flex;"><span>    ...}])]</span></span></code></pre></td></tr></table>
 </div>
 </div>
 (To be clear: this last bit of output is the <em>wrong, not working</em> one…​)</p>
@@ -798,24 +798,24 @@ image::re-frame_screenshot_borders.png[width=25%]</p>
 <p>In order to get the mouse position, we need to unfortunately dig into javascript itself. The code block below prints the mouse position to console whenever the mouse moves over the scatterplot.</p>
 </div>
 <div class="paragraph">
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">[<span style="color:#e6db74">:svg</span> {<span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span>
-       <span style="color:#e6db74">:y</span> <span style="color:#ae81ff">0</span>
-       <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">200</span>
-       <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">200</span>
-       <span style="color:#e6db74">:on-mouse-move</span> (<span style="color:#66d9ef">fn </span>[e] (println (<span style="color:#a6e22e">.-clientX</span> e)))}
-  (<span style="color:#a6e22e">scatterplot</span> {<span style="color:#e6db74">:border</span> true} <span style="color:#f92672">@</span>data)
-]</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>[<span style="color:#e6db74">:svg</span> {<span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">:y</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">:on-mouse-move</span> (<span style="color:#66d9ef">fn </span>[e] (println (<span style="color:#a6e22e">.-clientX</span> e)))}
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">scatterplot</span> {<span style="color:#e6db74">:border</span> true} <span style="color:#f92672">@</span>data)
+</span></span><span style="display:flex;"><span>]</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
@@ -829,120 +829,120 @@ image::re-frame_screenshot_borders.png[width=25%]</p>
 </div>
 <div class="paragraph">
 <p>Changes to <code>db.cljs</code>:
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#66d9ef">def </span>default-db
-  {<span style="color:#e6db74">:name</span> <span style="color:#e6db74">&#34;imp&#34;</span>
-   <span style="color:#e6db74">:data</span> [<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">5</span> <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">21</span> <span style="color:#ae81ff">34</span> <span style="color:#ae81ff">55</span> <span style="color:#ae81ff">89</span>]
-   <span style="color:#e6db74">:selected</span> nil
-   })</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#66d9ef">def </span>default-db
+</span></span><span style="display:flex;"><span>  {<span style="color:#e6db74">:name</span> <span style="color:#e6db74">&#34;imp&#34;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:data</span> [<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">5</span> <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">21</span> <span style="color:#ae81ff">34</span> <span style="color:#ae81ff">55</span> <span style="color:#ae81ff">89</span>]
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:selected</span> nil
+</span></span><span style="display:flex;"><span>   })</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 </div>
 <div class="paragraph">
 <p>In <code>subs.cljs</code>:
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#a6e22e">re-frame/reg-sub</span>
-  <span style="color:#e6db74">::selected-point</span>
-  (<span style="color:#66d9ef">fn </span>[db]
-    (<span style="color:#e6db74">:selected-point</span> db)))</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#a6e22e">re-frame/reg-sub</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">::selected-point</span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">fn </span>[db]
+</span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">:selected-point</span> db)))</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 </div>
 <div class="paragraph">
 <p>In <code>events.cljs</code>:
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#a6e22e">re-frame/reg-event-db</span>
- <span style="color:#e6db74">:selected-point-change</span>
- (<span style="color:#66d9ef">fn </span>[db [_ new-value]]
-   (assoc db <span style="color:#e6db74">:selected-point</span> new-value)))</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#a6e22e">re-frame/reg-event-db</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">:selected-point-change</span>
+</span></span><span style="display:flex;"><span> (<span style="color:#66d9ef">fn </span>[db [_ new-value]]
+</span></span><span style="display:flex;"><span>   (assoc db <span style="color:#e6db74">:selected-point</span> new-value)))</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 </div>
 <div class="paragraph">
 <p>In <code>views.cljs</code>, we change <code>circle</code> so that the <code>selected-point</code> stores the value of any point that is clicked on:
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#66d9ef">defn </span>circle
-  [pos]
-  [<span style="color:#e6db74">:ellipse</span> {
-    <span style="color:#e6db74">:style</span> {
-      <span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>
-      <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>}
-    <span style="color:#e6db74">:key</span> (str <span style="color:#e6db74">&#34;c&#34;</span> (<span style="color:#a6e22e">rand</span>))
-    <span style="color:#e6db74">:cx</span> pos
-    <span style="color:#e6db74">:cy</span> pos
-    <span style="color:#e6db74">:rx</span> <span style="color:#ae81ff">10</span>
-    <span style="color:#e6db74">:ry</span> <span style="color:#ae81ff">10</span>
-    <span style="color:#e6db74">:on-mouse-over</span> <span style="color:#f92672">#</span>(println (str <span style="color:#e6db74">&#34;circle&#34;</span> pos))
-    <span style="color:#e6db74">:on-mouse-down</span> <span style="color:#f92672">#</span>(<span style="color:#a6e22e">re-frame/dispatch</span> [<span style="color:#e6db74">:selected-point-change</span> pos])
-  }])</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#66d9ef">defn </span>circle
+</span></span><span style="display:flex;"><span>  [pos]
+</span></span><span style="display:flex;"><span>  [<span style="color:#e6db74">:ellipse</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:style</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">:fill</span> <span style="color:#e6db74">&#34;rgba(128,0,0,0.3)&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">:stroke-width</span> <span style="color:#ae81ff">0</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:key</span> (str <span style="color:#e6db74">&#34;c&#34;</span> (<span style="color:#a6e22e">rand</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:cx</span> pos
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:cy</span> pos
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:rx</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:ry</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:on-mouse-over</span> <span style="color:#f92672">#</span>(println (str <span style="color:#e6db74">&#34;circle&#34;</span> pos))
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">:on-mouse-down</span> <span style="color:#f92672">#</span>(<span style="color:#a6e22e">re-frame/dispatch</span> [<span style="color:#e6db74">:selected-point-change</span> pos])
+</span></span><span style="display:flex;"><span>  }])</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 </div>
 <div class="paragraph">
 <p>We can then show that e.g. if you click on one of the SVGs. We need to add <code>selected-point</code> to the <code>let</code>, and add an <code>on-click</code> event to an SVG:
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#66d9ef">defn </span>main-panel []
-  (<span style="color:#66d9ef">let </span>[name (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/name</span>])
-        data (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/data</span>])
-        selected-point (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/selected-point</span>])]
-    ...
-    [<span style="color:#e6db74">:svg</span> {<span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:y</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">200</span> <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">200</span>
-           <span style="color:#e6db74">:on-click</span> <span style="color:#f92672">#</span>(println <span style="color:#f92672">@</span>selected-point)}
-      (<span style="color:#a6e22e">scatterplot</span> {<span style="color:#e6db74">:border</span> true} <span style="color:#f92672">@</span>data)
-    ]
-    ...</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#66d9ef">defn </span>main-panel []
+</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">let </span>[name (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/name</span>])
+</span></span><span style="display:flex;"><span>        data (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/data</span>])
+</span></span><span style="display:flex;"><span>        selected-point (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/selected-point</span>])]
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">:svg</span> {<span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:y</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">200</span> <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#e6db74">:on-click</span> <span style="color:#f92672">#</span>(println <span style="color:#f92672">@</span>selected-point)}
+</span></span><span style="display:flex;"><span>      (<span style="color:#a6e22e">scatterplot</span> {<span style="color:#e6db74">:border</span> true} <span style="color:#f92672">@</span>data)
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>    ...</span></span></code></pre></td></tr></table>
 </div>
 </div>
 Don’t have a clue yet why the double <code>::</code>…​</p>
@@ -959,20 +959,20 @@ Don’t have a clue yet why the double <code>::</code>…​</p>
 <p>At this point we need to add CSS to the picture. For the moment I have just put this in the head of the main <code>index.html</code>…​</p>
 </div>
 <div class="paragraph">
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">style</span>&gt;
-  <span style="color:#f92672">rect</span> {fill: rgba(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">128</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0.3</span>)}
-  <span style="color:#f92672">ellipse</span> {fill: rgba(<span style="color:#ae81ff">128</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0.3</span>)}
-  .<span style="color:#a6e22e">selected</span> {stroke: <span style="color:#66d9ef">red</span>; stroke-width: <span style="color:#ae81ff">2</span>}
-&lt;/<span style="color:#f92672">style</span>&gt;</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">style</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rect</span> {fill: rgba(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">128</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0.3</span>)}
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ellipse</span> {fill: rgba(<span style="color:#ae81ff">128</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0.3</span>)}
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">selected</span> {stroke: <span style="color:#66d9ef">red</span>; stroke-width: <span style="color:#ae81ff">2</span>}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">style</span>&gt;</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
@@ -981,35 +981,35 @@ Don’t have a clue yet why the double <code>::</code>…​</p>
 </div>
 <div class="paragraph">
 <p>In <code>db.cljs</code> we need to add an additional piece of state in the <code>default-db</code>, namely which is the selected point:
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#66d9ef">def </span>default-db
-  {<span style="color:#e6db74">:name</span> <span style="color:#e6db74">&#34;imp&#34;</span>
-   <span style="color:#e6db74">:data</span> [<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">5</span> <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">21</span> <span style="color:#ae81ff">34</span> <span style="color:#ae81ff">55</span> <span style="color:#ae81ff">89</span>]
-   <span style="color:#e6db74">:selected-point</span> nil
-   })</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#66d9ef">def </span>default-db
+</span></span><span style="display:flex;"><span>  {<span style="color:#e6db74">:name</span> <span style="color:#e6db74">&#34;imp&#34;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:data</span> [<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">5</span> <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">21</span> <span style="color:#ae81ff">34</span> <span style="color:#ae81ff">55</span> <span style="color:#ae81ff">89</span>]
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">:selected-point</span> nil
+</span></span><span style="display:flex;"><span>   })</span></span></code></pre></td></tr></table>
 </div>
 </div>
 which we will access through a function in <code>subs.cljs</code>:
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#a6e22e">re-frame/reg-sub</span>
-  <span style="color:#e6db74">::selected-point</span>
-  (<span style="color:#66d9ef">fn </span>[db]
-    (<span style="color:#e6db74">:selected-point</span> db)))</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#a6e22e">re-frame/reg-sub</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">::selected-point</span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">fn </span>[db]
+</span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">:selected-point</span> db)))</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 </div>
@@ -1017,28 +1017,28 @@ which we will access through a function in <code>subs.cljs</code>:
 <p>And here’s the tricky part: in the view we need to toggle the class of an SVG element between &#34;selected&#34; and an empty string so as to apply the correct CSS. An element is only redrawn if its parent (i.c. <code>scatterplot</code> or <code>barchart</code>) is redrawn, or if one of its properties changes. At this moment, the only property of <code>scatterplot</code> are <code>opts</code> and <code>data</code>, but we need to add <code>selected</code> to that.</p>
 </div>
 <div class="paragraph">
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#66d9ef">defn </span>scatterplot
-  [opts selected data]
-  (<span style="color:#a6e22e">-&gt;&gt;</span> []
-       (<span style="color:#f92672">#</span>(<span style="color:#66d9ef">if </span>(= (<span style="color:#e6db74">:border</span> opts) true) (conj % (<span style="color:#a6e22e">border</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">200</span> <span style="color:#ae81ff">200</span>))))
-       (<span style="color:#f92672">#</span>(conj % (map circle data)))
-       (<span style="color:#a6e22e">flatten</span>)
-       (<span style="color:#a6e22e">partition</span> <span style="color:#ae81ff">2</span>)
-       (map vec)
-       ))</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#66d9ef">defn </span>scatterplot
+</span></span><span style="display:flex;"><span>  [opts selected data]
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">-&gt;&gt;</span> []
+</span></span><span style="display:flex;"><span>       (<span style="color:#f92672">#</span>(<span style="color:#66d9ef">if </span>(= (<span style="color:#e6db74">:border</span> opts) true) (conj % (<span style="color:#a6e22e">border</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">200</span> <span style="color:#ae81ff">200</span>))))
+</span></span><span style="display:flex;"><span>       (<span style="color:#f92672">#</span>(conj % (map circle data)))
+</span></span><span style="display:flex;"><span>       (<span style="color:#a6e22e">flatten</span>)
+</span></span><span style="display:flex;"><span>       (<span style="color:#a6e22e">partition</span> <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>       (map vec)
+</span></span><span style="display:flex;"><span>       ))</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </div>
@@ -1047,63 +1047,63 @@ which we will access through a function in <code>subs.cljs</code>:
 </div>
 <div class="paragraph">
 <p>In the <code>main-panel</code> we need to call <code>scatterplot</code> differently of course: we will add the @selected-point parameter.
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#66d9ef">defn </span>main-panel []
-  (<span style="color:#66d9ef">let </span>[name (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/name</span>])
-        data (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/data</span>])
-        selected-point (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/selected-point</span>])]
-    [<span style="color:#e6db74">:div</span>
-    ...
-      [<span style="color:#e6db74">:svg</span> {<span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:y</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">200</span> <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">200</span>}
-        (<span style="color:#a6e22e">scatterplot</span> {<span style="color:#e6db74">:border</span> false} <span style="color:#f92672">@</span>selected-point <span style="color:#f92672">@</span>data)
-      ]
-    ...</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#66d9ef">defn </span>main-panel []
+</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">let </span>[name (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/name</span>])
+</span></span><span style="display:flex;"><span>        data (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/data</span>])
+</span></span><span style="display:flex;"><span>        selected-point (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/selected-point</span>])]
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">:div</span>
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>      [<span style="color:#e6db74">:svg</span> {<span style="color:#e6db74">:x</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:y</span> <span style="color:#ae81ff">0</span> <span style="color:#e6db74">:width</span> <span style="color:#ae81ff">200</span> <span style="color:#e6db74">:height</span> <span style="color:#ae81ff">200</span>}
+</span></span><span style="display:flex;"><span>        (<span style="color:#a6e22e">scatterplot</span> {<span style="color:#e6db74">:border</span> false} <span style="color:#f92672">@</span>selected-point <span style="color:#f92672">@</span>data)
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    ...</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 </div>
 <div class="paragraph">
 <p>Finally, in the circle function we add a <code>:class</code> parameter which is either &#34;selected&#34; or &#34;&#34; based on whether or not that datapoint is the same as <code>@selected-point</code> or not. The <code>:on-mouse-over</code> makes sure that we actually change the selected point when we move our mouse.
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#66d9ef">defn </span>circle
-  [pos]
-  (<span style="color:#66d9ef">let </span>[selected-point (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/selected-point</span>])]
-    [<span style="color:#e6db74">:ellipse</span> {
-      <span style="color:#e6db74">:key</span> (str <span style="color:#e6db74">&#34;c&#34;</span> (<span style="color:#a6e22e">rand</span>))
-      <span style="color:#e6db74">:cx</span> pos
-      <span style="color:#e6db74">:cy</span> pos
-      <span style="color:#e6db74">:rx</span> <span style="color:#ae81ff">10</span>
-      <span style="color:#e6db74">:ry</span> <span style="color:#ae81ff">10</span>
-      <span style="color:#e6db74">:class</span> (<span style="color:#66d9ef">if </span>(= pos <span style="color:#f92672">@</span>selected-point) <span style="color:#e6db74">&#34;selected&#34;</span> <span style="color:#e6db74">&#34;&#34;</span>)
-      <span style="color:#e6db74">:on-mouse-over</span> <span style="color:#f92672">#</span>(<span style="color:#a6e22e">re-frame/dispatch</span> [<span style="color:#e6db74">:selected-point-change</span> pos])
-    }]))</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#66d9ef">defn </span>circle
+</span></span><span style="display:flex;"><span>  [pos]
+</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">let </span>[selected-point (<span style="color:#a6e22e">re-frame/subscribe</span> [<span style="color:#e6db74">::subs/selected-point</span>])]
+</span></span><span style="display:flex;"><span>    [<span style="color:#e6db74">:ellipse</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">:key</span> (str <span style="color:#e6db74">&#34;c&#34;</span> (<span style="color:#a6e22e">rand</span>))
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">:cx</span> pos
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">:cy</span> pos
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">:rx</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">:ry</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">:class</span> (<span style="color:#66d9ef">if </span>(= pos <span style="color:#f92672">@</span>selected-point) <span style="color:#e6db74">&#34;selected&#34;</span> <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">:on-mouse-over</span> <span style="color:#f92672">#</span>(<span style="color:#a6e22e">re-frame/dispatch</span> [<span style="color:#e6db74">:selected-point-change</span> pos])
+</span></span><span style="display:flex;"><span>    }]))</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 </div>
@@ -1148,7 +1148,7 @@ which we will access through a function in <code>subs.cljs</code>:
 
     
     <div id="toc-footer" style="display: none">
-      <nav id="TableOfContents"></nav>
+      
     </div>
     
 
@@ -1161,47 +1161,47 @@ which we will access through a function in <code>subs.cljs</code>:
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2fclojure-reframe-vis%2f" aria-label="Facebook">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f&text=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=%2fposts%2fclojure-reframe-vis%2f&text=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Twitter">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f&title=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2fclojure-reframe-vis%2f&title=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Linkedin">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f&is_video=false&description=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2fclojure-reframe-vis%2f&is_video=false&description=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Pinterest">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation&body=Check out this article: https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation&body=Check out this article: %2fposts%2fclojure-reframe-vis%2f" aria-label="Email">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f&title=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2fclojure-reframe-vis%2f&title=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Pocket">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f&title=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2fclojure-reframe-vis%2f&title=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="reddit">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f&name=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation&description=One%20of%20the%20issues%20we%20still%20have%20is%20how%20to%20combine%20our%20custom%20data%20visualisations%20in%20multi-view%20dashboards%20with%20brushing%2flinking.%20We%e2%80%99ll%20have%20a%20programmer%20work%20on%20this%20for%20the%20next%20two%20years%2c%20but%20as%20clojure%20is%20a%20bit%20of%20a%20hobby%20I%e2%80%99d%20like%20to%20try%20that%20out%20as%20well.%20It%20appears%20that%20clojurescript%20re-frame%20fits%20the%20bill.%0a%20Get%20set%20up%3a%201%202%203%20%20lein%20new%20re-frame%20my-project%20cd%20my-project%20lein%20figwheel%20dev" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2fclojure-reframe-vis%2f&name=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation&description=One%20of%20the%20issues%20we%20still%20have%20is%20how%20to%20combine%20our%20custom%20data%20visualisations%20in%20multi-view%20dashboards%20with%20brushing%2flinking.%20We%e2%80%99ll%20have%20a%20programmer%20work%20on%20this%20for%20the%20next%20two%20years%2c%20but%20as%20clojure%20is%20a%20bit%20of%20a%20hobby%20I%e2%80%99d%20like%20to%20try%20that%20out%20as%20well.%20It%20appears%20that%20clojurescript%20re-frame%20fits%20the%20bill.%0aGet%20set%20up%3a%201%202%203%20lein%20new%20re-frame%20my-project%20cd%20my-project%20lein%20figwheel%20dev%20my-project%2fresources%2fpublic%2findex." aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f&t=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2fclojure-reframe-vis%2f&t=Clojurescript%2c%20re-frame%20and%20modular%20data%20visualisation" aria-label="Hacker News">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>
@@ -1229,7 +1229,7 @@ which we will access through a function in <code>subs.cljs</code>:
 
   <footer id="footer">
   <div class="footer-left">
-    Copyright  &copy; 2022  Saaientist 
+    Copyright  &copy; 2024  Saaientist 
   </div>
   <div class="footer-right">
     <nav>

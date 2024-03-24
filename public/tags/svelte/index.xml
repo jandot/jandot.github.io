@@ -2,19 +2,109 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>svelte on Saaientist</title>
-    <link>https://jandot.github.io/tags/svelte/</link>
+    <link>/tags/svelte/</link>
     <description>Recent content in svelte on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Jun 2022 22:01:50 +0200</lastBuildDate><atom:link href="https://jandot.github.io/tags/svelte/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Mar 2024 15:06:00 +0200</lastBuildDate><atom:link href="/tags/svelte/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Basic D3 brush in svelte</title>
+      <link>/posts/brush-in-svelte/</link>
+      <pubDate>Sun, 24 Mar 2024 15:06:00 +0200</pubDate>
+      
+      <guid>/posts/brush-in-svelte/</guid>
+      <description>Single plot A simple proof-of-principle to create brushing-linking between 2 SVG scatterplots in svelte. Based on the Observable notebook at https://observablehq.com/@d3/brush-filter, I was able to distill the following. The idea is that we have a RectangularBrush component that can wrap around an SVG with circles (or whatever). The brush component checks if each datapoint is within its boundaries, and sets the value for that component’s ID to true in a selected object.</description>
+    </item>
+    
+    <item>
+      <title>Scatterplot in regl</title>
+      <link>/posts/scatterplot_in_regl/</link>
+      <pubDate>Wed, 17 May 2023 17:45:00 +0200</pubDate>
+      
+      <guid>/posts/scatterplot_in_regl/</guid>
+      <description>During our biological data visualisation workshop at the EBI I was made aware of a javascript library that makes it straightforward to create scatterplots of large datasets. How large? The demo at https://flekschas.github.io/regl-scatterplot/ includes an example of 20M datapoints. That library is regl-scatterplot which is available at https://github.com/flekschas/regl-scatterplot, and based on regl which &amp;#34;simplifies WebGL programming by removing as much shared state as it can get away with&amp;#34;.
+Figure 1.</description>
+    </item>
+    
+    <item>
+      <title>Molecular structures in svelte</title>
+      <link>/posts/molecule_viewer/</link>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/molecule_viewer/</guid>
+      <description>Different javascript libraries are available for displaying molecular structures, such as NGL and 3Dmol.js.
+We’ve integrated a structure viewer in our (award-winning) proof-of-concept tool for exploring protein post-translational modifications EProm, but that required quite a bit of tweaking.
+But here’s a minimal example for viewing the structure for CYP2D6, using NGL.
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 &amp;lt;svelte:head&amp;gt; &amp;lt;script src=&amp;#34;https://unpkg.</description>
+    </item>
+    
+    <item>
+      <title>Basic scatterplots in Threlte</title>
+      <link>/posts/basic_threlte/</link>
+      <pubDate>Thu, 17 Nov 2022 21:45:00 +0200</pubDate>
+      
+      <guid>/posts/basic_threlte/</guid>
+      <description>Svelte is great for data visualisation, but for larger datasets the simple declarative approach to drawing &amp;lt;circle&amp;gt;-s inside an &amp;lt;svg&amp;gt; doesn’t cut it anymore. Other libraries like three.js are capable of handling more data, but they are written for 3D visualisation instead of 2D plots.
+Below, I show a proof-of-concept for a three.js-based 2D scatterplot with 5,000 points.
+Figure 1. The final image…​ For installation of svelte-kit and threlte, I refer to their own websites.</description>
+    </item>
+    
+    <item>
+      <title>Node-link diagram in layercake.graphics</title>
+      <link>/posts/nodelink-in-layercake/</link>
+      <pubDate>Mon, 17 Oct 2022 20:45:00 +0200</pubDate>
+      
+      <guid>/posts/nodelink-in-layercake/</guid>
+      <description>Creating visualisations in svelte is easy, but I’ve been willing to try out layercake.graphics for a while. Unfortunately, the framework didn’t have an example for node-link diagrams. With the help of https://github.com/jelmerbot we got it to work, including node dragging.
+Let _data/graph.json look like this: { &amp;#34;nodes&amp;#34;: [ {&amp;#34;id&amp;#34;: 1, &amp;#34;name&amp;#34;: &amp;#34;a&amp;#34;}, {&amp;#34;id&amp;#34;: 2, &amp;#34;name&amp;#34;: &amp;#34;b&amp;#34;}, {&amp;#34;id&amp;#34;: 3, &amp;#34;name&amp;#34;: &amp;#34;c&amp;#34;}, {&amp;#34;id&amp;#34;: 4, &amp;#34;name&amp;#34;: &amp;#34;d&amp;#34;}, {&amp;#34;id&amp;#34;: 5, &amp;#34;name&amp;#34;: &amp;#34;e&amp;#34;} ], &amp;#34;links&amp;#34;: [ {&amp;#34;source&amp;#34;: 1, &amp;#34;target&amp;#34;: 2}, {&amp;#34;source&amp;#34;: 1, &amp;#34;target&amp;#34;: 3}, {&amp;#34;source&amp;#34;: 2, &amp;#34;target&amp;#34;: 3}, {&amp;#34;source&amp;#34;: 3, &amp;#34;target&amp;#34;: 4}, {&amp;#34;source&amp;#34;: 3, &amp;#34;target&amp;#34;: 5} ]}</description>
+    </item>
+    
+    <item>
+      <title>Svelte/ArangoDB development and docker-compose</title>
+      <link>/posts/svelte-arangodb-development-under-docker-compose/</link>
+      <pubDate>Mon, 18 Jul 2022 14:39:00 +0200</pubDate>
+      
+      <guid>/posts/svelte-arangodb-development-under-docker-compose/</guid>
+      <description>Another one for my personal notebook…​
+I’m running a docker-based application which includes a svelte front/backend and an ArangoDB database that are orchestrated using docker-compose.
+Part of the docker-compose.yml file:
+services: frontend: build: context: frontend dockerfile: Dockerfile ports: - 5050:3000 networks: - my_docker_network arangodb: image: arangodb:3.9 restart: always ports: - 8529:8529 networks: - my_docker_network volumes: - arangodb_data_container:/var/lib/arangodb3 - arangodb_apps_data_container:/var/lib/arangodb3-apps networks: my_docker_network: volumes: arangodb_data_container: arangodb_apps_data_container: The frontend can access the database because they are on the same docker network: a database.</description>
+    </item>
+    
+    <item>
+      <title>Svelte in Asciidoc</title>
+      <link>/posts/svelte-in-asciidoc/</link>
+      <pubDate>Thu, 07 Jul 2022 14:16:08 +0200</pubDate>
+      
+      <guid>/posts/svelte-in-asciidoc/</guid>
+      <description>Sometimes you want to add interactive material or custom visualisations to a site built with asciidoc. Luckily, it is possible to do so. An example can be found in my datavis technologies material here.
+The following steps are based on this blog post:https://dtang.dev/2020-01-25-adding-svelte-3-to-a-jekyll-site
+Step 1: Create a separate directory for the svelte-components, including rollup.config.js, etc.
+Step 2: Create a svelte-components/src directory with:
+the svelte component files
+main.js
+Step 3: For each component you want to use, add the following to main.</description>
+    </item>
+    
+    <item>
+      <title>Vega-lite in svelte</title>
+      <link>/posts/vega-lite-in-svelte/</link>
+      <pubDate>Tue, 05 Jul 2022 16:04:00 +0200</pubDate>
+      
+      <guid>/posts/vega-lite-in-svelte/</guid>
+      <description>There are many ways of incorporating graphics and plots in svelte and svelte-kit applications. I can definitely recommend checking out this talk by Matthias Stahl, graphics lead at Der Spiegel in Germany. This talk goes specifically through creating animated plots in svelte at the 24:46 mark.
+So you can code your own SVG in svelte, use D3, P5, Three.js, etc. In the code below, we use vega-lite.
+What I wanted to achieve with this component, is that the user can choose which dimensions are plotted against each other in a scatterplot.</description>
+    </item>
+    
     <item>
       <title>Running Docker Command From Svelte</title>
-      <link>https://jandot.github.io/posts/running-docker-command-from-svelte/</link>
+      <link>/posts/running-docker-command-from-svelte/</link>
       <pubDate>Fri, 24 Jun 2022 22:01:50 +0200</pubDate>
       
-      <guid>https://jandot.github.io/posts/running-docker-command-from-svelte/</guid>
+      <guid>/posts/running-docker-command-from-svelte/</guid>
       <description>What we’re trying to do I have a setup where different docker containers are used in conjunction to provide a single application. More specifically, a database, a sveltekit app, and (at the moment just one) container to run specific analyses. The idea is that the sveltekit app in container 1 triggers a script in container 2 to change data in the database in container 3.
-     Directory structure I created the following directory structure for the app:</description>
+Directory structure I created the following directory structure for the app:</description>
     </item>
     
   </channel>

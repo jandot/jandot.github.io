@@ -2,19 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>arangodb on Saaientist</title>
-    <link>https://jandot.github.io/tags/arangodb/</link>
+    <link>/tags/arangodb/</link>
     <description>Recent content in arangodb on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Jun 2022 22:01:50 +0200</lastBuildDate><atom:link href="https://jandot.github.io/tags/arangodb/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Jul 2022 14:39:00 +0200</lastBuildDate><atom:link href="/tags/arangodb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Svelte/ArangoDB development and docker-compose</title>
+      <link>/posts/svelte-arangodb-development-under-docker-compose/</link>
+      <pubDate>Mon, 18 Jul 2022 14:39:00 +0200</pubDate>
+      
+      <guid>/posts/svelte-arangodb-development-under-docker-compose/</guid>
+      <description>Another one for my personal notebook…​
+I’m running a docker-based application which includes a svelte front/backend and an ArangoDB database that are orchestrated using docker-compose.
+Part of the docker-compose.yml file:
+services: frontend: build: context: frontend dockerfile: Dockerfile ports: - 5050:3000 networks: - my_docker_network arangodb: image: arangodb:3.9 restart: always ports: - 8529:8529 networks: - my_docker_network volumes: - arangodb_data_container:/var/lib/arangodb3 - arangodb_apps_data_container:/var/lib/arangodb3-apps networks: my_docker_network: volumes: arangodb_data_container: arangodb_apps_data_container: The frontend can access the database because they are on the same docker network: a database.</description>
+    </item>
+    
     <item>
       <title>Running Docker Command From Svelte</title>
-      <link>https://jandot.github.io/posts/running-docker-command-from-svelte/</link>
+      <link>/posts/running-docker-command-from-svelte/</link>
       <pubDate>Fri, 24 Jun 2022 22:01:50 +0200</pubDate>
       
-      <guid>https://jandot.github.io/posts/running-docker-command-from-svelte/</guid>
+      <guid>/posts/running-docker-command-from-svelte/</guid>
       <description>What we’re trying to do I have a setup where different docker containers are used in conjunction to provide a single application. More specifically, a database, a sveltekit app, and (at the moment just one) container to run specific analyses. The idea is that the sveltekit app in container 1 triggers a script in container 2 to change data in the database in container 3.
-     Directory structure I created the following directory structure for the app:</description>
+Directory structure I created the following directory structure for the app:</description>
     </item>
     
   </channel>

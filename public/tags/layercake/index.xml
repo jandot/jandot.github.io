@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>layercake on Saaientist</title>
+    <link>/tags/layercake/</link>
+    <description>Recent content in layercake on Saaientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 17 Oct 2022 20:45:00 +0200</lastBuildDate><atom:link href="/tags/layercake/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Node-link diagram in layercake.graphics</title>
+      <link>/posts/nodelink-in-layercake/</link>
+      <pubDate>Mon, 17 Oct 2022 20:45:00 +0200</pubDate>
+      
+      <guid>/posts/nodelink-in-layercake/</guid>
+      <description>Creating visualisations in svelte is easy, but I’ve been willing to try out layercake.graphics for a while. Unfortunately, the framework didn’t have an example for node-link diagrams. With the help of https://github.com/jelmerbot we got it to work, including node dragging.
+Let _data/graph.json look like this: { &amp;#34;nodes&amp;#34;: [ {&amp;#34;id&amp;#34;: 1, &amp;#34;name&amp;#34;: &amp;#34;a&amp;#34;}, {&amp;#34;id&amp;#34;: 2, &amp;#34;name&amp;#34;: &amp;#34;b&amp;#34;}, {&amp;#34;id&amp;#34;: 3, &amp;#34;name&amp;#34;: &amp;#34;c&amp;#34;}, {&amp;#34;id&amp;#34;: 4, &amp;#34;name&amp;#34;: &amp;#34;d&amp;#34;}, {&amp;#34;id&amp;#34;: 5, &amp;#34;name&amp;#34;: &amp;#34;e&amp;#34;} ], &amp;#34;links&amp;#34;: [ {&amp;#34;source&amp;#34;: 1, &amp;#34;target&amp;#34;: 2}, {&amp;#34;source&amp;#34;: 1, &amp;#34;target&amp;#34;: 3}, {&amp;#34;source&amp;#34;: 2, &amp;#34;target&amp;#34;: 3}, {&amp;#34;source&amp;#34;: 3, &amp;#34;target&amp;#34;: 4}, {&amp;#34;source&amp;#34;: 3, &amp;#34;target&amp;#34;: 5} ]}</description>
+    </item>
+    
+  </channel>
+</rss>

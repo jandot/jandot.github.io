@@ -1,0 +1,222 @@
+---
+title: "Basic D3 brush in svelte"
+date: 2024-03-24T15:06:00+02:00
+tags: ['svelte','visualisation','d3','brush']
+---
+:imagesdir: /assets/
+
+== Single plot
+
+A simple proof-of-principle to create brushing-linking between 2 SVG scatterplots in svelte. Based on the Observable notebook at https://observablehq.com/@d3/brush-filter, I was able to distill the following. The idea is that we have a `RectangularBrush` component that can wrap around an SVG with circles (or whatever). The brush component checks if each datapoint is within its boundaries, and sets the value for that component's ID to `true` in a `selected` object. That info is used to define the class of the circles which has an effect on their appearance.
+
+image::brush_1.png[width=200]
+
+.App.svelte
+{{< highlight html "linenos=table" >}}
+<script>
+	import RectangularBrush from './RectangularBrush.svelte'
+	let width = 300
+	let height = 300
+	let selected = {}
+	let datapoints = [];
+	for ( let i = 0; i < 10 ; i++ ) {
+		datapoints.push({x: Math.random()*width,
+                         y: Math.random()*height,
+						 z: Math.random()*width,
+                         id: i})
+	}
+	
+</script>
+
+<style>
+	svg {
+		background: white;
+	}
+	circle {
+		fill: black;
+		fill-opacity: 0.2;
+		stroke: none;
+	}
+	circle.selected {
+		stroke: red;
+		stroke-width: 3;
+	}
+</style>
+
+<RectangularBrush bind:datapoints={datapoints} bind:selected={selected}>
+	<svg {width} {height}>
+		{#each datapoints as dp}
+			<circle cx={dp.x} cy={dp.y} r=5 id={dp.id}
+                    class:selected={selected[dp.id] == 1}/>
+		{/each}
+	</svg>
+</RectangularBrush>
+{{< /highlight >}}
+
+.RectangularBrush.svelte
+{{< highlight html "linenos=table" >}}
+<script>
+	import * as d3 from 'd3'
+	import { onMount } from 'svelte'
+	export let selected = {}
+	export let datapoints = []
+
+	const brush = d3.brush()
+	      .on("start brush end", brushed);
+	
+	onMount(() => {
+    const g = document.createElement('g');
+		let svg = d3.select('svg')
+		svg.insert("g","circle")
+	      .attr("class", "brush")
+	      .call(brush)
+	      .call(g => g.select(".overlay").style("cursor", "default"));
+	})
+	
+  function brushed({selection}) {
+    if (selection === null) {
+      selected = {}
+    } else {
+      const [[x0, y0], [x1, y1]] = selection;
+			datapoints.forEach((d) => {
+				( inBrush(x0,y0,x1,y1,d) )
+                    ? selected[d.id] = 1
+                    : selected[d.id] = 0
+			})
+    }
+  }
+	const inBrush = (brush_x0, brush_y0, brush_x1, brush_y1, datapoint) => {
+		if ( brush_x0 > datapoint.x ) { return false }
+		if ( brush_x1 < datapoint.x ) { return false }
+		if ( brush_y0 > datapoint.y ) { return false }
+		if ( brush_y1 < datapoint.y ) { return false }
+		return true
+	}
+</script>
+
+<slot />
+{{< /highlight >}}
+
+== Brushing & linking 2 plots
+We need to change some things if we want to really use brushing and linking, though. The key is to give each SVG an ID, and refer to that ID in the `RectangularBrush` call: `<RectangularBrush bind:datapoints={datapoints} bind:selected={selected} svg_id="svg1">`. Note that we also added `x` and `y` as parameters just because we want to have 2 different plots...
+
+image::brush_2.png[width=400]
+
+.App.svelte
+{{< highlight html "linenos=table" >}}
+<script>
+	import RectangularBrush from './RectangularBrush.svelte'
+	let width = 300
+	let height = 300
+	let selected = {}
+	let datapoints = [];
+	for ( let i = 0; i < 40 ; i++ ) {
+		datapoints.push({x: Math.random()*width,
+                         y: Math.random()*height,
+						 z: Math.random()*width,
+                         id: i})
+	}
+</script>
+
+<style>
+	svg {
+		background: white;
+	}
+	circle {
+		fill: black;
+		fill-opacity: 0.2;
+		stroke: none;
+	}
+	circle.selected {
+		stroke: red;
+		stroke-width: 3;
+	}
+</style>
+
+<RectangularBrush bind:datapoints={datapoints}
+                  bind:selected={selected}
+                  svg_id="svg1"
+                  x="x"
+                  y="y">
+	<svg id="svg1" {width} {height}>
+			{#each datapoints as dp}
+				<circle cx={dp.x} cy={dp.y} r=5 id={dp.id} 
+                        class:selected={selected[dp.id] == 1}/>
+			{/each}
+	</svg>
+</RectangularBrush>
+
+<RectangularBrush bind:datapoints={datapoints}
+                  bind:selected={selected}
+                  svg_id="svg2"
+                  x="x"
+                  y="z">
+	<svg id="svg2" {width} {height}>
+			{#each datapoints as dp}
+				<circle cx={dp.x} cy={dp.z} r=5 id={dp.id}
+                        class:selected={selected[dp.id] == 1}/>
+			{/each}
+</svg>
+</RectangularBrush>
+{{< /highlight >}}
+
+.RectangularBrush.svelte
+{{< highlight html "linenos=table" >}}
+<script>
+	import * as d3 from 'd3'
+	import { onMount } from 'svelte'
+	export let selected = {}
+	export let datapoints = []
+	export let x = "x";
+	export let y = "y";
+	export let svg_id;
+
+	const brush = d3.brush()
+	      .on("start brush end", brushed);
+	
+	onMount(() => {
+    const g = document.createElement('g');
+		let svg = d3.select('#' + svg_id)
+		svg.insert("g",":first-child")
+	      .attr("class", "brush")
+	      .call(brush)
+	      .call(g => g.select(".overlay").style("cursor", "default"));
+	})
+	
+  function brushed({selection}) {
+    if (selection === null) {
+      selected = {}
+    } else {
+      let [[x0, y0], [x1, y1]] = selection;
+			console.log(x0)
+			datapoints.forEach((d) => {
+				( inBrush(x0,y0,x1,y1,d) )
+                    ? selected[d.id] = 1
+                    : selected[d.id] = 0
+			})
+    }
+  }
+
+	const inBrush = (brush_x0, brush_y0, brush_x1, brush_y1, datapoint) => {
+		if ( brush_x0 > datapoint[x] ) { return false }
+		if ( brush_x1 < datapoint[x] ) { return false }
+		if ( brush_y0 > datapoint[y] ) { return false }
+		if ( brush_y1 < datapoint[y] ) { return false }
+		return true
+	}
+</script>
+
+<slot />
+{{< /highlight >}}
+
+== Only selecting when holding Cmd-key
+If you want to only select when holding the Cmd-key, we can change the `brush` function as follows:
+
+{{< highlight javascript "linenos=table" >}}
+const brush = d3.brush()
+        .filter(event => !event.ctrlKey
+            && !event.button
+            && (event.metaKey
+            || event.target.__data__.type !== "overlay"))
+        .on("start brush end", brushed);
+{{< /highlight >}}

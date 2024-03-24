@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>javascript on Saaientist</title>
-    <link>https://jandot.github.io/tags/javascript/</link>
+    <link>/tags/javascript/</link>
     <description>Recent content in javascript on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Jun 2022 22:01:50 +0200</lastBuildDate><atom:link href="https://jandot.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Jun 2022 22:01:50 +0200</lastBuildDate><atom:link href="/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Running Docker Command From Svelte</title>
-      <link>https://jandot.github.io/posts/running-docker-command-from-svelte/</link>
+      <link>/posts/running-docker-command-from-svelte/</link>
       <pubDate>Fri, 24 Jun 2022 22:01:50 +0200</pubDate>
       
-      <guid>https://jandot.github.io/posts/running-docker-command-from-svelte/</guid>
+      <guid>/posts/running-docker-command-from-svelte/</guid>
       <description>What we’re trying to do I have a setup where different docker containers are used in conjunction to provide a single application. More specifically, a database, a sveltekit app, and (at the moment just one) container to run specific analyses. The idea is that the sveltekit app in container 1 triggers a script in container 2 to change data in the database in container 3.
-     Directory structure I created the following directory structure for the app:</description>
+Directory structure I created the following directory structure for the app:</description>
     </item>
     
   </channel>

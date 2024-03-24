@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>regl on Saaientist</title>
+    <link>/tags/regl/</link>
+    <description>Recent content in regl on Saaientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 May 2023 17:45:00 +0200</lastBuildDate><atom:link href="/tags/regl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Scatterplot in regl</title>
+      <link>/posts/scatterplot_in_regl/</link>
+      <pubDate>Wed, 17 May 2023 17:45:00 +0200</pubDate>
+      
+      <guid>/posts/scatterplot_in_regl/</guid>
+      <description>During our biological data visualisation workshop at the EBI I was made aware of a javascript library that makes it straightforward to create scatterplots of large datasets. How large? The demo at https://flekschas.github.io/regl-scatterplot/ includes an example of 20M datapoints. That library is regl-scatterplot which is available at https://github.com/flekschas/regl-scatterplot, and based on regl which &amp;#34;simplifies WebGL programming by removing as much shared state as it can get away with&amp;#34;.
+Figure 1.</description>
+    </item>
+    
+  </channel>
+</rss>
