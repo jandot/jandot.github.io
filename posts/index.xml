@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 May 2023 17:45:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 Mar 2024 15:06:00 +0200</lastBuildDate>
     
 	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Basic D3 brush in svelte</title>
+      <link>/posts/brush-in-svelte/</link>
+      <pubDate>Sun, 24 Mar 2024 15:06:00 +0200</pubDate>
+      
+      <guid>/posts/brush-in-svelte/</guid>
+      <description>Single plot A simple proof-of-principle to create brushing-linking between 2 SVG scatterplots in svelte. Based on the Observable notebook at https://observablehq.com/@d3/brush-filter, I was able to distill the following. The idea is that we have a RectangularBrush component that can wrap around an SVG with circles (or whatever). The brush component checks if each datapoint is within its boundaries, and sets the value for that component&amp;#8217;s ID to true in a selected object.</description>
+    </item>
     
     <item>
       <title>Scatterplot in regl</title>
