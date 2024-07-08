@@ -1,0 +1,53 @@
+---
+title: "Bringing a d3-force network into the viewport"
+date: 2024-07-08T09:43:00+02:00
+draft: false
+tags: ['svelte','visualisation','d3','graph']
+---
+:imagesdir: /assets/
+
+One of the issues I've always had with node-link diagrams in https://d3js.org[D3] is that nodes tend to migrate out of the viewpoint, forcing you to zoom and pan to get the whole graph into view.
+
+I finally hacked together a piece of code to solve that. Even brushing still works.
+
+{{< highlight javascript >}}
+const rescale_to_viewport = () => {
+    let extentX = extent(nodes.map((d) => transform.applyX(d.x)))
+    let extentY = extent(nodes.map((d) => transform.applyY(d.y)))
+    let scaleX = (extentX[1]-extentX[0])/(0.9*width)
+    let scaleY = (extentY[1]-extentY[0])/(0.9*height)
+    let scale = max([scaleX,scaleY])
+    transform.k /= scale
+    simulationUpdate()
+
+    extentX = extent(nodes.map((d) => transform.applyX(d.x)))
+    extentY = extent(nodes.map((d) => transform.applyY(d.y)))
+
+    let moveX = ((extentX[1]+extentX[0])/2) - (width/2)
+    let moveY = ((extentY[1]+extentY[0])/2) - (height/2)
+    transform.x -= moveX
+    transform.y -= moveY
+    simulationUpdate()
+
+    zoomScale = transform.k;
+    panX = transform.x;
+    panY = transform.y;
+}
+{{< /highlight >}}
+
+The `zoomScale`, `panX` and `panY` are necessary to keep brushing working as it should. My `brushed` function:
+
+{{< highlight javascript >}}
+function brushed(event) {
+    if (event.selection) {
+        brush_active = true;
+        let [[x0, y0], [x1, y1]] = event.selection;
+        let selectedNodes = nodes.filter((d) => {
+            let x = d.x * zoomScale + panX;
+            let y = d.y * zoomScale + panY;
+            return x >= x0 && x < x1 && y >= y0 && y < y1;
+        });
+        $selected = selectedNodes.map((d) => d.id);
+    }
+}
+{{< /highlight >}}
