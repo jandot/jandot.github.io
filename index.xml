@@ -6,10 +6,21 @@
     <description>Recent content on Saaientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Mar 2024 15:06:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jul 2024 09:43:00 +0200</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bringing a d3-force network into the viewport</title>
+      <link>/posts/nodelink_to_viewport/</link>
+      <pubDate>Mon, 08 Jul 2024 09:43:00 +0200</pubDate>
+      
+      <guid>/posts/nodelink_to_viewport/</guid>
+      <description>One of the issues I&amp;#8217;ve always had with node-link diagrams in D3 is that nodes tend to migrate out of the viewpoint, forcing you to zoom and pan to get the whole graph into view.
+ I finally hacked together a piece of code to solve that. Even brushing still works.
+ const rescale_to_viewport = () =&amp;gt; { let extentX = extent(nodes.map((d) =&amp;gt; transform.applyX(d.x))) let extentY = extent(nodes.map((d) =&amp;gt; transform.applyY(d.y))) let scaleX = (extentX[1]-extentX[0])/(0.</description>
+    </item>
     
     <item>
       <title>Basic D3 brush in svelte</title>
