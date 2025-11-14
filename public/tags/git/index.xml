@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>git on Saaientist</title>
-    <link>/tags/git/</link>
-    <description>Recent content in git on Saaientist</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Git on Saaientist</title>
+    <link>//localhost:1313/tags/git/</link>
+    <description>Recent content in Git on Saaientist</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Sep 2022 16:04:00 +0200</lastBuildDate><atom:link href="/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Nov 2025 16:04:00 +0200</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using jujutsu</title>
+      <link>//localhost:1313/posts/jujutsu/</link>
+      <pubDate>Fri, 14 Nov 2025 16:04:00 +0200</pubDate>
+      <guid>//localhost:1313/posts/jujutsu/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_what_is_jujutsu&#34;&gt;What is jujutsu?&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_installation&#34;&gt;Installation&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_basic_usage&#34;&gt;Basic usage&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_initialize_a_repository&#34;&gt;Initialize a repository&lt;/h3&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_clone_a_repository&#34;&gt;Clone a repository&lt;/h3&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_commit_changes&#34;&gt;Commit changes&lt;/h3&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_view_history&#34;&gt;View history&lt;/h3&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
     <item>
       <title>Using git worktree</title>
-      <link>/posts/git-worktree/</link>
+      <link>//localhost:1313/posts/git-worktree/</link>
       <pubDate>Sat, 17 Sep 2022 16:04:00 +0200</pubDate>
-      
-      <guid>/posts/git-worktree/</guid>
-      <description>Working on a project under git and pushing it to a central repository makes sure that you have history of the files preserved etc. Also: it enables experimentation. However, there are instances where things might get tricky. Case in point: hot fixes. When working on a feature branch and having to make a quick fix in the main branch, you would either stash all changes and make the fix, or commit everything that you already have even if it’s not completed yet.</description>
+      <guid>//localhost:1313/posts/git-worktree/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Working on a project under git and pushing it to a central repository makes sure that you have history of the files preserved etc. Also: it enables experimentation. However, there are instances where things might get tricky. Case in point: hot fixes. When working on a feature branch and having to make a quick fix in the main branch, you would either &lt;code&gt;stash&lt;/code&gt; all changes and make the fix, or &lt;code&gt;commit&lt;/code&gt; everything that you already have even if it’s not completed yet.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>

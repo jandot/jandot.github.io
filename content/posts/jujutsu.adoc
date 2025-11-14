@@ -1,0 +1,218 @@
+---
+title: "Using jujutsu"
+date: 2025-11-14T16:04:00+02:00
+draft: false
+tags: ['git','jujutsu']
+---
+:imagesdir: /assets/
+
+## Core Concepts
+- **Working copy = a commit** (no staging area)
+- **Every change creates a new commit** automatically
+- **Bookmarks** = sticky labels on commits
+  - Unlike Git branches, they DON'T move automatically with new commits
+  - You manually move them with `jj bookmark set`
+  - Needed for pushing to Git (bookmarks → Git branches)
+
+---
+
+## Common Patterns
+
+### Pattern: Feature → Review → Push
+```bash
+jj new main           # Start new change based on main
+# ... do work ...
+jj describe -m "..."  # Describe your work
+jj bookmark create my-feature  # Create bookmark at current commit
+jj git push --bookmark my-feature  # Push to remote
+
+# For subsequent updates:
+jj bookmark set my-feature     # Move bookmark to current commit
+jj git push --bookmark my-feature  # Push updated bookmark
+```
+
+### Pattern: Pause current work, do something else
+```bash
+jj new main           # Jump to main and start new work
+# (your previous work is preserved in the log)
+jj log                # See all your changes
+jj new <change-id>    # Resume previous work later
+```
+
+### Pattern: Split mixed work into separate changes
+```bash
+jj split              # Interactive split (select hunks)
+# OR
+jj diff               # Review what you've mixed
+jj new                # Create new change on top
+jj restore --from <previous-change> <files>  # Move specific files
+```
+
+---
+
+## 1. Getting Started
+
+### Start jj in existing Git repo
+```bash
+jj git init --git-repo=.
+```
+
+### Clone a remote Git repo
+```bash
+jj git clone <url> [directory]
+# Automatically creates bookmarks for remote branches
+```
+
+---
+
+## 2. Daily Workflow
+
+### Start new work
+```bash
+jj new [base-revision]    # Create new change (default: @)
+jj describe               # Write commit message (opens editor)
+jj describe -m "message"  # Write message inline
+```
+
+### Check status
+```bash
+jj status          # What files changed
+jj diff            # Show changes
+jj log             # View change history (graph)
+jj log -r @        # Show current change only
+```
+
+### Amend current change
+```bash
+# Just edit files - changes automatically amend current commit!
+jj describe        # Update the description
+```
+
+---
+
+## 3. Working with Remotes
+
+### Push to remote
+```bash
+# First time pushing a feature:
+jj bookmark create feature-name    # Create bookmark at current commit
+
+# Pushing:
+jj git push --bookmark feature-name  # Push specific bookmark
+
+# After more work (bookmark didn't move automatically!):
+jj bookmark set feature-name       # Move bookmark to current commit
+jj git push --bookmark feature-name  # Push updated bookmark
+```
+
+### Fetch and rebase
+```bash
+jj git fetch                    # Fetch from all remotes
+jj rebase -d main               # Rebase current change onto main
+jj rebase -d main -r <change>   # Rebase specific change
+```
+
+### Common bookmark operations
+```bash
+jj bookmark list                # List all bookmarks
+jj bookmark track main@origin   # Track remote bookmark
+jj bookmark set main -r @       # Move 'main' bookmark to current commit
+jj bookmark delete old-feature  # Delete a bookmark
+```
+
+---
+
+## 4. Parallel Workflows
+
+### Put current work aside
+```bash
+jj new main              # Start fresh from main
+# Your previous work stays in history
+```
+
+### Switch between tasks
+```bash
+jj log                   # Find the change you want
+jj new <change-id>       # Continue that change
+# OR
+jj edit <change-id>      # Edit that change directly
+```
+
+### View all your work
+```bash
+jj log                   # See everything
+jj log -r 'mine()'       # See only your changes
+```
+
+---
+
+## 5. History Surgery
+
+### Split a change after the fact
+```bash
+jj split <change-id>     # Interactive split
+# OR manually:
+jj edit <change-id>      # Go to that change
+jj split                 # Split interactively
+jj new @-                # Create new change before current
+# Move files between changes
+```
+
+### Move changes around
+```bash
+jj squash                # Squash current into parent
+jj squash -r <change>    # Squash specific change
+jj rebase -d <dest>      # Move current change
+```
+
+### Edit any change
+```bash
+jj edit <change-id>      # Edit that change directly
+# Make changes, then:
+jj new                   # Return to tip
+```
+
+---
+
+## 6. Safety Net
+
+### Undo mistakes
+```bash
+jj op log                # View operation log
+jj op undo               # Undo last operation
+jj op restore <op-id>    # Restore to specific operation
+```
+
+### Abandon changes
+```bash
+jj abandon <change-id>   # Remove change from history
+jj abandon               # Abandon current change
+```
+
+---
+
+## Quick Reference
+
+| Task | Command |
+|------|---------|
+| New change | `jj new [base]` |
+| Describe change | `jj describe -m "msg"` |
+| View history | `jj log` |
+| View changes | `jj diff` |
+| Create bookmark | `jj bookmark create name` |
+| Push | `jj git push` |
+| Fetch | `jj git fetch` |
+| Rebase | `jj rebase -d destination` |
+| Split work | `jj split` |
+| Undo | `jj op undo` |
+
+---
+
+## Tips
+
+- **No `jj add` or `jj commit`** - changes are automatic!
+- **Change IDs** are stable, commit hashes change with every rebase
+- **Bookmarks don't auto-move** - unlike Git branches, manually update with `jj bookmark set`
+- **Use bookmarks** for anything you want to push to Git
+- **`@` means** the current working copy change
+- **`@-` means** the parent of current change

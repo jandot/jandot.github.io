@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -10,30 +10,37 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title> Scatterplot in regl | Saaientist</title>
-  <link rel = 'canonical' href = '/posts/scatterplot_in_regl/'>
+  <link rel = 'canonical' href = '//localhost:1313/posts/scatterplot_in_regl/'>
   <meta name="description" content="My external memory. See http://saaientist.blogspot.com for old posts.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta property="og:title" content="Scatterplot in regl" />
-<meta property="og:description" content="During our biological data visualisation workshop at the EBI I was made aware of a javascript library that makes it straightforward to create scatterplots of large datasets. How large? The demo at https://flekschas.github.io/regl-scatterplot/ includes an example of 20M datapoints. That library is regl-scatterplot which is available at https://github.com/flekschas/regl-scatterplot, and based on regl which &#34;simplifies WebGL programming by removing as much shared state as it can get away with&#34;.
-Figure 1." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/scatterplot_in_regl/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-05-17T17:45:00+02:00" />
-<meta property="article:modified_time" content="2023-05-17T17:45:00+02:00" />
+  <meta property="og:url" content="//localhost:1313/posts/scatterplot_in_regl/">
+  <meta property="og:site_name" content="Saaientist">
+  <meta property="og:title" content="Scatterplot in regl">
+  <meta property="og:description" content="During our biological data visualisation workshop at the EBI I was made aware of a javascript library that makes it straightforward to create scatterplots of large datasets. How large? The demo at https://flekschas.github.io/regl-scatterplot/ includes an example of 20M datapoints. That library is regl-scatterplot which is available at https://github.com/flekschas/regl-scatterplot, and based on regl which &#34;simplifies WebGL programming by removing as much shared state as it can get away with&#34;.
+Figure 1. Image taken from https://github.com/flekschas/regl-scatterplot">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-05-17T17:45:00+02:00">
+    <meta property="article:modified_time" content="2023-05-17T17:45:00+02:00">
+    <meta property="article:tag" content="Visualisation">
+    <meta property="article:tag" content="Regl">
+    <meta property="article:tag" content="Svelte">
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Scatterplot in regl"/>
-<meta name="twitter:description" content="During our biological data visualisation workshop at the EBI I was made aware of a javascript library that makes it straightforward to create scatterplots of large datasets. How large? The demo at https://flekschas.github.io/regl-scatterplot/ includes an example of 20M datapoints. That library is regl-scatterplot which is available at https://github.com/flekschas/regl-scatterplot, and based on regl which &#34;simplifies WebGL programming by removing as much shared state as it can get away with&#34;.
-Figure 1."/>
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Scatterplot in regl">
+  <meta name="twitter:description" content="During our biological data visualisation workshop at the EBI I was made aware of a javascript library that makes it straightforward to create scatterplots of large datasets. How large? The demo at https://flekschas.github.io/regl-scatterplot/ includes an example of 20M datapoints. That library is regl-scatterplot which is available at https://github.com/flekschas/regl-scatterplot, and based on regl which &#34;simplifies WebGL programming by removing as much shared state as it can get away with&#34;.
+Figure 1. Image taken from https://github.com/flekschas/regl-scatterplot">
 
   
   
     
   
   
-  <link rel="stylesheet" href="/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
+  <link rel="stylesheet" href="//localhost:1313/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
 
   
   
@@ -45,12 +52,8 @@ Figure 1."/>
   
 
   
-<link rel="icon" type="image/png" href="/images/favicon.ico" />
+<link rel="icon" type="image/png" href="//localhost:1313/images/favicon.ico" />
 
-  
-  
-  
-  
 </head>
 
 <body class="max-width mx-auto px3 ltr">
@@ -79,14 +82,14 @@ Figure 1."/>
       <ul>
         
         <li>
-          <a class="icon" href=" /posts/reframe-vis-part2/" aria-label="Previous">
+          <a class="icon" href=" //localhost:1313/posts/reframe-vis-part2/" aria-label="Previous">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
         
         <li>
-          <a class="icon" href="/posts/brush-in-svelte/" aria-label="Next">
+          <a class="icon" href="//localhost:1313/posts/brush-in-svelte/" aria-label="Next">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
@@ -117,47 +120,47 @@ Figure 1."/>
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2fscatterplot_in_regl%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f" aria-label="Facebook">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=%2fposts%2fscatterplot_in_regl%2f&text=Scatterplot%20in%20regl" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f&text=Scatterplot%20in%20regl" aria-label="Twitter">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2fscatterplot_in_regl%2f&title=Scatterplot%20in%20regl" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f&title=Scatterplot%20in%20regl" aria-label="Linkedin">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2fscatterplot_in_regl%2f&is_video=false&description=Scatterplot%20in%20regl" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f&is_video=false&description=Scatterplot%20in%20regl" aria-label="Pinterest">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Scatterplot%20in%20regl&body=Check out this article: %2fposts%2fscatterplot_in_regl%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Scatterplot%20in%20regl&body=Check out this article: %2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f" aria-label="Email">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2fscatterplot_in_regl%2f&title=Scatterplot%20in%20regl" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f&title=Scatterplot%20in%20regl" aria-label="Pocket">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2fscatterplot_in_regl%2f&title=Scatterplot%20in%20regl" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f&title=Scatterplot%20in%20regl" aria-label="reddit">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2fscatterplot_in_regl%2f&name=Scatterplot%20in%20regl&description=During%20our%20biological%20data%20visualisation%20workshop%20at%20the%20EBI%20I%20was%20made%20aware%20of%20a%20javascript%20library%20that%20makes%20it%20straightforward%20to%20create%20scatterplots%20of%20large%20datasets.%20How%20large%3f%20The%20demo%20at%20https%3a%2f%2fflekschas.github.io%2fregl-scatterplot%2f%20includes%20an%20example%20of%2020M%20datapoints.%20That%20library%20is%20regl-scatterplot%20which%20is%20available%20at%20https%3a%2f%2fgithub.com%2fflekschas%2fregl-scatterplot%2c%20and%20based%20on%20regl%20which%20%26%2334%3bsimplifies%20WebGL%20programming%20by%20removing%20as%20much%20shared%20state%20as%20it%20can%20get%20away%20with%26%2334%3b.%0aFigure%201." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f&name=Scatterplot%20in%20regl&description=%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eDuring%20our%20biological%20data%20visualisation%20workshop%20at%20the%20EBI%20I%20was%20made%20aware%20of%20a%20javascript%20library%20that%20makes%20it%20straightforward%20to%20create%20scatterplots%20of%20large%20datasets.%20How%20large%3f%20The%20demo%20at%20%3ca%20href%3d%22https%3a%2f%2fflekschas.github.io%2fregl-scatterplot%2f%22%20class%3d%22bare%22%3ehttps%3a%2f%2fflekschas.github.io%2fregl-scatterplot%2f%3c%2fa%3e%20includes%20an%20example%20of%20%3cstrong%3e20M%20datapoints%3c%2fstrong%3e.%20That%20library%20is%20%3ccode%3eregl-scatterplot%3c%2fcode%3e%20which%20is%20available%20at%20%3ca%20href%3d%22https%3a%2f%2fgithub.com%2fflekschas%2fregl-scatterplot%22%20class%3d%22bare%22%3ehttps%3a%2f%2fgithub.com%2fflekschas%2fregl-scatterplot%3c%2fa%3e%2c%20and%20based%20on%20%3ca%20href%3d%22https%3a%2f%2fgithub.com%2fregl-project%2fregl%22%3eregl%3c%2fa%3e%20which%20%26%2334%3bsimplifies%20WebGL%20programming%20by%20removing%20as%20much%20shared%20state%20as%20it%20can%20get%20away%20with%26%2334%3b.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22imageblock%22%3e%0a%3cdiv%20class%3d%22content%22%3e%0a%3cimg%20src%3d%22%2fassets%2fregl-scatterplot.gif%22%20alt%3d%22regl%20scatterplot%22%2f%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22title%22%3eFigure%201.%20Image%20taken%20from%20%3ca%20href%3d%22https%3a%2f%2fgithub.com%2fflekschas%2fregl-scatterplot%22%20class%3d%22bare%22%3ehttps%3a%2f%2fgithub.com%2fflekschas%2fregl-scatterplot%3c%2fa%3e%3c%2fdiv%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2fscatterplot_in_regl%2f&t=Scatterplot%20in%20regl" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f&t=Scatterplot%20in%20regl" aria-label="Hacker News">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -554,47 +557,47 @@ Figure 1."/>
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2fscatterplot_in_regl%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f" aria-label="Facebook">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=%2fposts%2fscatterplot_in_regl%2f&text=Scatterplot%20in%20regl" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f&text=Scatterplot%20in%20regl" aria-label="Twitter">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2fscatterplot_in_regl%2f&title=Scatterplot%20in%20regl" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f&title=Scatterplot%20in%20regl" aria-label="Linkedin">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2fscatterplot_in_regl%2f&is_video=false&description=Scatterplot%20in%20regl" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f&is_video=false&description=Scatterplot%20in%20regl" aria-label="Pinterest">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Scatterplot%20in%20regl&body=Check out this article: %2fposts%2fscatterplot_in_regl%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Scatterplot%20in%20regl&body=Check out this article: %2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f" aria-label="Email">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2fscatterplot_in_regl%2f&title=Scatterplot%20in%20regl" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f&title=Scatterplot%20in%20regl" aria-label="Pocket">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2fscatterplot_in_regl%2f&title=Scatterplot%20in%20regl" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f&title=Scatterplot%20in%20regl" aria-label="reddit">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2fscatterplot_in_regl%2f&name=Scatterplot%20in%20regl&description=During%20our%20biological%20data%20visualisation%20workshop%20at%20the%20EBI%20I%20was%20made%20aware%20of%20a%20javascript%20library%20that%20makes%20it%20straightforward%20to%20create%20scatterplots%20of%20large%20datasets.%20How%20large%3f%20The%20demo%20at%20https%3a%2f%2fflekschas.github.io%2fregl-scatterplot%2f%20includes%20an%20example%20of%2020M%20datapoints.%20That%20library%20is%20regl-scatterplot%20which%20is%20available%20at%20https%3a%2f%2fgithub.com%2fflekschas%2fregl-scatterplot%2c%20and%20based%20on%20regl%20which%20%26%2334%3bsimplifies%20WebGL%20programming%20by%20removing%20as%20much%20shared%20state%20as%20it%20can%20get%20away%20with%26%2334%3b.%0aFigure%201." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f&name=Scatterplot%20in%20regl&description=%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eDuring%20our%20biological%20data%20visualisation%20workshop%20at%20the%20EBI%20I%20was%20made%20aware%20of%20a%20javascript%20library%20that%20makes%20it%20straightforward%20to%20create%20scatterplots%20of%20large%20datasets.%20How%20large%3f%20The%20demo%20at%20%3ca%20href%3d%22https%3a%2f%2fflekschas.github.io%2fregl-scatterplot%2f%22%20class%3d%22bare%22%3ehttps%3a%2f%2fflekschas.github.io%2fregl-scatterplot%2f%3c%2fa%3e%20includes%20an%20example%20of%20%3cstrong%3e20M%20datapoints%3c%2fstrong%3e.%20That%20library%20is%20%3ccode%3eregl-scatterplot%3c%2fcode%3e%20which%20is%20available%20at%20%3ca%20href%3d%22https%3a%2f%2fgithub.com%2fflekschas%2fregl-scatterplot%22%20class%3d%22bare%22%3ehttps%3a%2f%2fgithub.com%2fflekschas%2fregl-scatterplot%3c%2fa%3e%2c%20and%20based%20on%20%3ca%20href%3d%22https%3a%2f%2fgithub.com%2fregl-project%2fregl%22%3eregl%3c%2fa%3e%20which%20%26%2334%3bsimplifies%20WebGL%20programming%20by%20removing%20as%20much%20shared%20state%20as%20it%20can%20get%20away%20with%26%2334%3b.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22imageblock%22%3e%0a%3cdiv%20class%3d%22content%22%3e%0a%3cimg%20src%3d%22%2fassets%2fregl-scatterplot.gif%22%20alt%3d%22regl%20scatterplot%22%2f%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22title%22%3eFigure%201.%20Image%20taken%20from%20%3ca%20href%3d%22https%3a%2f%2fgithub.com%2fflekschas%2fregl-scatterplot%22%20class%3d%22bare%22%3ehttps%3a%2f%2fgithub.com%2fflekschas%2fregl-scatterplot%3c%2fa%3e%3c%2fdiv%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2fscatterplot_in_regl%2f&t=Scatterplot%20in%20regl" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2f%2flocalhost%3a1313%2fposts%2fscatterplot_in_regl%2f&t=Scatterplot%20in%20regl" aria-label="Hacker News">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>
@@ -622,7 +625,7 @@ Figure 1."/>
 
   <footer id="footer">
   <div class="footer-left">
-    Copyright  &copy; 2024  Saaientist 
+    Copyright  &copy; 2025  Saaientist 
   </div>
   <div class="footer-right">
     <nav>

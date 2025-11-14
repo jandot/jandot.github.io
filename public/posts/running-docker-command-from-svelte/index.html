@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -10,30 +10,38 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title> Running Docker Command From Svelte | Saaientist</title>
-  <link rel = 'canonical' href = '/posts/running-docker-command-from-svelte/'>
+  <link rel = 'canonical' href = '//localhost:1313/posts/running-docker-command-from-svelte/'>
   <meta name="description" content="My external memory. See http://saaientist.blogspot.com for old posts.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta property="og:title" content="Running Docker Command From Svelte" />
-<meta property="og:description" content="What we’re trying to do I have a setup where different docker containers are used in conjunction to provide a single application. More specifically, a database, a sveltekit app, and (at the moment just one) container to run specific analyses. The idea is that the sveltekit app in container 1 triggers a script in container 2 to change data in the database in container 3.
-Directory structure I created the following directory structure for the app:" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/running-docker-command-from-svelte/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-06-24T22:01:50+02:00" />
-<meta property="article:modified_time" content="2022-06-24T22:01:50+02:00" />
+  <meta property="og:url" content="//localhost:1313/posts/running-docker-command-from-svelte/">
+  <meta property="og:site_name" content="Saaientist">
+  <meta property="og:title" content="Running Docker Command From Svelte">
+  <meta property="og:description" content="What we’re trying to do I have a setup where different docker containers are used in conjunction to provide a single application. More specifically, a database, a sveltekit app, and (at the moment just one) container to run specific analyses. The idea is that the sveltekit app in container 1 triggers a script in container 2 to change data in the database in container 3.
+Directory structure I created the following directory structure for the app:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-06-24T22:01:50+02:00">
+    <meta property="article:modified_time" content="2022-06-24T22:01:50+02:00">
+    <meta property="article:tag" content="Svelte">
+    <meta property="article:tag" content="Docker">
+    <meta property="article:tag" content="Javascript">
+    <meta property="article:tag" content="Arangodb">
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Running Docker Command From Svelte"/>
-<meta name="twitter:description" content="What we’re trying to do I have a setup where different docker containers are used in conjunction to provide a single application. More specifically, a database, a sveltekit app, and (at the moment just one) container to run specific analyses. The idea is that the sveltekit app in container 1 triggers a script in container 2 to change data in the database in container 3.
-Directory structure I created the following directory structure for the app:"/>
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Running Docker Command From Svelte">
+  <meta name="twitter:description" content="What we’re trying to do I have a setup where different docker containers are used in conjunction to provide a single application. More specifically, a database, a sveltekit app, and (at the moment just one) container to run specific analyses. The idea is that the sveltekit app in container 1 triggers a script in container 2 to change data in the database in container 3.
+Directory structure I created the following directory structure for the app:">
 
   
   
     
   
   
-  <link rel="stylesheet" href="/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
+  <link rel="stylesheet" href="//localhost:1313/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
 
   
   
@@ -45,12 +53,8 @@ Directory structure I created the following directory structure for the app:"/>
   
 
   
-<link rel="icon" type="image/png" href="/images/favicon.ico" />
+<link rel="icon" type="image/png" href="//localhost:1313/images/favicon.ico" />
 
-  
-  
-  
-  
 </head>
 
 <body class="max-width mx-auto px3 ltr">
@@ -79,14 +83,14 @@ Directory structure I created the following directory structure for the app:"/>
       <ul>
         
         <li>
-          <a class="icon" href=" /posts/clojure-reframe-vis/" aria-label="Previous">
+          <a class="icon" href=" //localhost:1313/posts/clojure-reframe-vis/" aria-label="Previous">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
         
         <li>
-          <a class="icon" href="/posts/vega-lite-in-svelte/" aria-label="Next">
+          <a class="icon" href="//localhost:1313/posts/vega-lite-in-svelte/" aria-label="Next">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
@@ -117,47 +121,47 @@ Directory structure I created the following directory structure for the app:"/>
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2frunning-docker-command-from-svelte%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f" aria-label="Facebook">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=%2fposts%2frunning-docker-command-from-svelte%2f&text=Running%20Docker%20Command%20From%20Svelte" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f&text=Running%20Docker%20Command%20From%20Svelte" aria-label="Twitter">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2frunning-docker-command-from-svelte%2f&title=Running%20Docker%20Command%20From%20Svelte" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f&title=Running%20Docker%20Command%20From%20Svelte" aria-label="Linkedin">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2frunning-docker-command-from-svelte%2f&is_video=false&description=Running%20Docker%20Command%20From%20Svelte" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f&is_video=false&description=Running%20Docker%20Command%20From%20Svelte" aria-label="Pinterest">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Running%20Docker%20Command%20From%20Svelte&body=Check out this article: %2fposts%2frunning-docker-command-from-svelte%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Running%20Docker%20Command%20From%20Svelte&body=Check out this article: %2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f" aria-label="Email">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2frunning-docker-command-from-svelte%2f&title=Running%20Docker%20Command%20From%20Svelte" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f&title=Running%20Docker%20Command%20From%20Svelte" aria-label="Pocket">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2frunning-docker-command-from-svelte%2f&title=Running%20Docker%20Command%20From%20Svelte" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f&title=Running%20Docker%20Command%20From%20Svelte" aria-label="reddit">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2frunning-docker-command-from-svelte%2f&name=Running%20Docker%20Command%20From%20Svelte&description=What%20we%e2%80%99re%20trying%20to%20do%20I%20have%20a%20setup%20where%20different%20docker%20containers%20are%20used%20in%20conjunction%20to%20provide%20a%20single%20application.%20More%20specifically%2c%20a%20database%2c%20a%20sveltekit%20app%2c%20and%20%28at%20the%20moment%20just%20one%29%20container%20to%20run%20specific%20analyses.%20The%20idea%20is%20that%20the%20sveltekit%20app%20in%20container%201%20triggers%20a%20script%20in%20container%202%20to%20change%20data%20in%20the%20database%20in%20container%203.%0aDirectory%20structure%20I%20created%20the%20following%20directory%20structure%20for%20the%20app%3a" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f&name=Running%20Docker%20Command%20From%20Svelte&description=%3cdiv%20class%3d%22sect1%22%3e%0a%3ch2%20id%3d%22_what_were_trying_to_do%22%3eWhat%20we%e2%80%99re%20trying%20to%20do%3c%2fh2%3e%0a%3cdiv%20class%3d%22sectionbody%22%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eI%20have%20a%20setup%20where%20different%20docker%20containers%20are%20used%20in%20conjunction%20to%20provide%20a%20single%20application.%20More%20specifically%2c%20a%20database%2c%20a%20sveltekit%20app%2c%20and%20%28at%20the%20moment%20just%20one%29%20container%20to%20run%20specific%20analyses.%20The%20idea%20is%20that%20the%20sveltekit%20app%20in%20container%201%20triggers%20a%20script%20in%20container%202%20to%20change%20data%20in%20the%20database%20in%20container%203.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22imageblock%22%3e%0a%3cdiv%20class%3d%22content%22%3e%0a%3cimg%20src%3d%22%2fassets%2fdocker-sequence-diagram.png%22%20alt%3d%22docker%20sequence%20diagram%22%2f%3e%0a%3c%2fdiv%3e%0a%3c%2fdiv%3e%0a%3c%2fdiv%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22sect1%22%3e%0a%3ch2%20id%3d%22_directory_structure%22%3eDirectory%20structure%3c%2fh2%3e%0a%3cdiv%20class%3d%22sectionbody%22%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eI%20created%20the%20following%20directory%20structure%20for%20the%20app%3a%3c%2fp%3e%0a%3c%2fdiv%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2frunning-docker-command-from-svelte%2f&t=Running%20Docker%20Command%20From%20Svelte" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f&t=Running%20Docker%20Command%20From%20Svelte" aria-label="Hacker News">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -273,7 +277,7 @@ frontend/
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-docker" data-lang="docker"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">from</span><span style="color:#e6db74"> arango import ArangoClient</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">from</span> <span style="color:#e6db74">arango</span> import ArangoClient<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>client <span style="color:#f92672">=</span> ArangoClient<span style="color:#f92672">(</span>hosts<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://arangodb:8529&#34;</span><span style="color:#f92672">)</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>db <span style="color:#f92672">=</span> client.db<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;oncoviz&#34;</span>,username<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;your_root_username&gt;&#34;</span>,password<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;your_root_pwd&gt;&#34;</span><span style="color:#f92672">)</span><span style="color:#960050;background-color:#1e0010">
@@ -330,7 +334,7 @@ frontend/
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-docker" data-lang="docker"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu</span><span style="color:#960050;background-color:#1e0010">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-docker" data-lang="docker"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">ubuntu</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update -y <span style="color:#f92672">&amp;&amp;</span> apt-get upgrade -y<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
@@ -346,10 +350,10 @@ frontend/
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> python2 get-pip.py<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip install python-arango<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span> <span style="color:#e6db74">/app</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> run_analysis.py .<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 8080</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span> <span style="color:#e6db74">8080</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;/usr/local/bin/shell2http&#34;</span>,<span style="color:#e6db74">&#34;/analyse&#34;</span>,<span style="color:#e6db74">&#34;/usr/bin/python2 /app/run_analysis.py&#34;</span>]</span></span></code></pre></td></tr></table>
 </div>
@@ -414,16 +418,16 @@ frontend/
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-docker" data-lang="docker"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> node:16</span><span style="color:#960050;background-color:#1e0010">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-docker" data-lang="docker"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">node:16</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get upgrade -y<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get install -y sshpass ssh<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span> <span style="color:#e6db74">/app</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> package.json package-lock.json ./<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> npm ci<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . .<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> npm run build <span style="color:#f92672">&amp;&amp;</span> npm prune --production<span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PORT <span style="color:#ae81ff">3000</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 3000</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span> <span style="color:#e6db74">3000</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;node&#34;</span>,<span style="color:#e6db74">&#34;build&#34;</span>]</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
@@ -578,47 +582,47 @@ frontend/
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2frunning-docker-command-from-svelte%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f" aria-label="Facebook">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=%2fposts%2frunning-docker-command-from-svelte%2f&text=Running%20Docker%20Command%20From%20Svelte" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f&text=Running%20Docker%20Command%20From%20Svelte" aria-label="Twitter">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2frunning-docker-command-from-svelte%2f&title=Running%20Docker%20Command%20From%20Svelte" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f&title=Running%20Docker%20Command%20From%20Svelte" aria-label="Linkedin">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2frunning-docker-command-from-svelte%2f&is_video=false&description=Running%20Docker%20Command%20From%20Svelte" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f&is_video=false&description=Running%20Docker%20Command%20From%20Svelte" aria-label="Pinterest">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Running%20Docker%20Command%20From%20Svelte&body=Check out this article: %2fposts%2frunning-docker-command-from-svelte%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Running%20Docker%20Command%20From%20Svelte&body=Check out this article: %2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f" aria-label="Email">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2frunning-docker-command-from-svelte%2f&title=Running%20Docker%20Command%20From%20Svelte" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f&title=Running%20Docker%20Command%20From%20Svelte" aria-label="Pocket">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2frunning-docker-command-from-svelte%2f&title=Running%20Docker%20Command%20From%20Svelte" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f&title=Running%20Docker%20Command%20From%20Svelte" aria-label="reddit">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2frunning-docker-command-from-svelte%2f&name=Running%20Docker%20Command%20From%20Svelte&description=What%20we%e2%80%99re%20trying%20to%20do%20I%20have%20a%20setup%20where%20different%20docker%20containers%20are%20used%20in%20conjunction%20to%20provide%20a%20single%20application.%20More%20specifically%2c%20a%20database%2c%20a%20sveltekit%20app%2c%20and%20%28at%20the%20moment%20just%20one%29%20container%20to%20run%20specific%20analyses.%20The%20idea%20is%20that%20the%20sveltekit%20app%20in%20container%201%20triggers%20a%20script%20in%20container%202%20to%20change%20data%20in%20the%20database%20in%20container%203.%0aDirectory%20structure%20I%20created%20the%20following%20directory%20structure%20for%20the%20app%3a" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f&name=Running%20Docker%20Command%20From%20Svelte&description=%3cdiv%20class%3d%22sect1%22%3e%0a%3ch2%20id%3d%22_what_were_trying_to_do%22%3eWhat%20we%e2%80%99re%20trying%20to%20do%3c%2fh2%3e%0a%3cdiv%20class%3d%22sectionbody%22%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eI%20have%20a%20setup%20where%20different%20docker%20containers%20are%20used%20in%20conjunction%20to%20provide%20a%20single%20application.%20More%20specifically%2c%20a%20database%2c%20a%20sveltekit%20app%2c%20and%20%28at%20the%20moment%20just%20one%29%20container%20to%20run%20specific%20analyses.%20The%20idea%20is%20that%20the%20sveltekit%20app%20in%20container%201%20triggers%20a%20script%20in%20container%202%20to%20change%20data%20in%20the%20database%20in%20container%203.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22imageblock%22%3e%0a%3cdiv%20class%3d%22content%22%3e%0a%3cimg%20src%3d%22%2fassets%2fdocker-sequence-diagram.png%22%20alt%3d%22docker%20sequence%20diagram%22%2f%3e%0a%3c%2fdiv%3e%0a%3c%2fdiv%3e%0a%3c%2fdiv%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22sect1%22%3e%0a%3ch2%20id%3d%22_directory_structure%22%3eDirectory%20structure%3c%2fh2%3e%0a%3cdiv%20class%3d%22sectionbody%22%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eI%20created%20the%20following%20directory%20structure%20for%20the%20app%3a%3c%2fp%3e%0a%3c%2fdiv%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2frunning-docker-command-from-svelte%2f&t=Running%20Docker%20Command%20From%20Svelte" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2f%2flocalhost%3a1313%2fposts%2frunning-docker-command-from-svelte%2f&t=Running%20Docker%20Command%20From%20Svelte" aria-label="Hacker News">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>
@@ -646,7 +650,7 @@ frontend/
 
   <footer id="footer">
   <div class="footer-left">
-    Copyright  &copy; 2024  Saaientist 
+    Copyright  &copy; 2025  Saaientist 
   </div>
   <div class="footer-right">
     <nav>

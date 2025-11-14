@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>threejs on Saaientist</title>
-    <link>/tags/threejs/</link>
-    <description>Recent content in threejs on Saaientist</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Threejs on Saaientist</title>
+    <link>//localhost:1313/tags/threejs/</link>
+    <description>Recent content in Threejs on Saaientist</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Nov 2022 21:45:00 +0200</lastBuildDate><atom:link href="/tags/threejs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Nov 2022 21:45:00 +0200</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/threejs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Basic scatterplots in Threlte</title>
-      <link>/posts/basic_threlte/</link>
+      <link>//localhost:1313/posts/basic_threlte/</link>
       <pubDate>Thu, 17 Nov 2022 21:45:00 +0200</pubDate>
-      
-      <guid>/posts/basic_threlte/</guid>
-      <description>Svelte is great for data visualisation, but for larger datasets the simple declarative approach to drawing &amp;lt;circle&amp;gt;-s inside an &amp;lt;svg&amp;gt; doesn’t cut it anymore. Other libraries like three.js are capable of handling more data, but they are written for 3D visualisation instead of 2D plots.
-Below, I show a proof-of-concept for a three.js-based 2D scatterplot with 5,000 points.
-Figure 1. The final image…​ For installation of svelte-kit and threlte, I refer to their own websites.</description>
+      <guid>//localhost:1313/posts/basic_threlte/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Svelte is great for data visualisation, but for larger datasets the simple declarative approach to drawing &lt;code&gt;&amp;lt;circle&amp;gt;&lt;/code&gt;-s inside an &lt;code&gt;&amp;lt;svg&amp;gt;&lt;/code&gt; doesn’t cut it anymore. Other libraries like &lt;a href=&#34;http://threejs.org&#34;&gt;three.js&lt;/a&gt; &lt;em&gt;are&lt;/em&gt; capable of handling more data, but they are written for 3D visualisation instead of 2D plots.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Below, I show a proof-of-concept for a three.js-based 2D scatterplot with 5,000 points.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;imageblock&#34;&gt;&#xA;&lt;div class=&#34;content&#34;&gt;&#xA;&lt;img src=&#34;//localhost:1313/assets/threlte_basic_scatterplot.png&#34; alt=&#34;threlte basic scatterplot&#34; width=&#34;50%&#34;/&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;title&#34;&gt;Figure 1. The final image…​&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;For installation of &lt;a href=&#34;http://kit.svelte.dev&#34;&gt;svelte-kit&lt;/a&gt; and &lt;a href=&#34;http://threlte.xyz&#34;&gt;threlte&lt;/a&gt;, I refer to their own websites.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>

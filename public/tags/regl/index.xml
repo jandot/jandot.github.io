@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>regl on Saaientist</title>
-    <link>/tags/regl/</link>
-    <description>Recent content in regl on Saaientist</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Regl on Saaientist</title>
+    <link>//localhost:1313/tags/regl/</link>
+    <description>Recent content in Regl on Saaientist</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 May 2023 17:45:00 +0200</lastBuildDate><atom:link href="/tags/regl/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 May 2023 17:45:00 +0200</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/regl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Scatterplot in regl</title>
-      <link>/posts/scatterplot_in_regl/</link>
+      <link>//localhost:1313/posts/scatterplot_in_regl/</link>
       <pubDate>Wed, 17 May 2023 17:45:00 +0200</pubDate>
-      
-      <guid>/posts/scatterplot_in_regl/</guid>
-      <description>During our biological data visualisation workshop at the EBI I was made aware of a javascript library that makes it straightforward to create scatterplots of large datasets. How large? The demo at https://flekschas.github.io/regl-scatterplot/ includes an example of 20M datapoints. That library is regl-scatterplot which is available at https://github.com/flekschas/regl-scatterplot, and based on regl which &amp;#34;simplifies WebGL programming by removing as much shared state as it can get away with&amp;#34;.
-Figure 1.</description>
+      <guid>//localhost:1313/posts/scatterplot_in_regl/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;During our biological data visualisation workshop at the EBI I was made aware of a javascript library that makes it straightforward to create scatterplots of large datasets. How large? The demo at &lt;a href=&#34;https://flekschas.github.io/regl-scatterplot/&#34; class=&#34;bare&#34;&gt;https://flekschas.github.io/regl-scatterplot/&lt;/a&gt; includes an example of &lt;strong&gt;20M datapoints&lt;/strong&gt;. That library is &lt;code&gt;regl-scatterplot&lt;/code&gt; which is available at &lt;a href=&#34;https://github.com/flekschas/regl-scatterplot&#34; class=&#34;bare&#34;&gt;https://github.com/flekschas/regl-scatterplot&lt;/a&gt;, and based on &lt;a href=&#34;https://github.com/regl-project/regl&#34;&gt;regl&lt;/a&gt; which &amp;#34;simplifies WebGL programming by removing as much shared state as it can get away with&amp;#34;.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;imageblock&#34;&gt;&#xA;&lt;div class=&#34;content&#34;&gt;&#xA;&lt;img src=&#34;//localhost:1313/assets/regl-scatterplot.gif&#34; alt=&#34;regl scatterplot&#34;/&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;title&#34;&gt;Figure 1. Image taken from &lt;a href=&#34;https://github.com/flekschas/regl-scatterplot&#34; class=&#34;bare&#34;&gt;https://github.com/flekschas/regl-scatterplot&lt;/a&gt;&lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>

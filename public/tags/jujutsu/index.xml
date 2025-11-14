@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jujutsu on Saaientist</title>
+    <link>//localhost:1313/tags/jujutsu/</link>
+    <description>Recent content in Jujutsu on Saaientist</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Nov 2025 16:04:00 +0200</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/jujutsu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using jujutsu</title>
+      <link>//localhost:1313/posts/jujutsu/</link>
+      <pubDate>Fri, 14 Nov 2025 16:04:00 +0200</pubDate>
+      <guid>//localhost:1313/posts/jujutsu/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_core_concepts&#34;&gt;Core Concepts&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;ulist&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Working copy = a commit&lt;/strong&gt; (no staging area)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Every change creates a new commit&lt;/strong&gt; automatically&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Bookmarks&lt;/strong&gt; = sticky labels on commits&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Unlike Git branches, they DON’T move automatically with new commits&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;You manually move them with &lt;code&gt;jj bookmark set&lt;/code&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Needed for pushing to Git (bookmarks → Git branches)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;hr/&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_common_patterns&#34;&gt;Common Patterns&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_pattern_feature_review_push&#34;&gt;Pattern: Feature → Review → Push&lt;/h3&gt;&#xA;&lt;div class=&#34;listingblock&#34;&gt;&#xA;&lt;div class=&#34;content&#34;&gt;&#xA;&lt;pre class=&#34;highlight&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;jj new main           # Start new change based on main&#xA;# ... do work ...&#xA;jj describe -m &amp;#34;...&amp;#34;  # Describe your work&#xA;jj bookmark create my-feature  # Create bookmark at current commit&#xA;jj git push --bookmark my-feature  # Push to remote&#xA;&#xA;# For subsequent updates:&#xA;jj bookmark set my-feature     # Move bookmark to current commit&#xA;jj git push --bookmark my-feature  # Push updated bookmark&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

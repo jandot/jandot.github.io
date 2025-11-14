@@ -2,22 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Word on Saaientist</title>
-    <link>/tags/word/</link>
+    <link>//localhost:1313/tags/word/</link>
     <description>Recent content in Word on Saaientist</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Jul 2022 14:16:08 +0200</lastBuildDate><atom:link href="/tags/word/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Jul 2022 14:16:08 +0200</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/word/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to create Word file from asciidoc</title>
-      <link>/posts/how-to-create-word-file-from-asciidoc/</link>
+      <link>//localhost:1313/posts/how-to-create-word-file-from-asciidoc/</link>
       <pubDate>Thu, 07 Jul 2022 14:16:08 +0200</pubDate>
-      
-      <guid>/posts/how-to-create-word-file-from-asciidoc/</guid>
-      <description>The easiest way to create Microsoft Word files (.docx) from asciidoc, is to generate the .html using asciidoctor and then using pandoc to convert that .html to .docx.
-In the code below, we avoid having to install pandoc by running it from a docker container.
-asciidoctor my_file.adoc docker run --rm --volume &amp;#34;`pwd`:/data&amp;#34; pandoc/core my_file.html -o my_file.docx These can be combined in a Makefile, like so:
-my_file.html: my_file.adoc asciidoctor index.adoc my_file.</description>
+      <guid>//localhost:1313/posts/how-to-create-word-file-from-asciidoc/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;The easiest way to create Microsoft Word files (&lt;code&gt;.docx&lt;/code&gt;) from asciidoc, is to generate the &lt;code&gt;.html&lt;/code&gt; using &lt;code&gt;asciidoctor&lt;/code&gt; and then using &lt;code&gt;pandoc&lt;/code&gt; to convert that &lt;code&gt;.html&lt;/code&gt; to &lt;code&gt;.docx&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;In the code below, we avoid having to install pandoc by running it from a docker container.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;listingblock&#34;&gt;&#xA;&lt;div class=&#34;content&#34;&gt;&#xA;&lt;pre class=&#34;highlight&#34;&gt;&lt;code&gt;asciidoctor my_file.adoc&#xA;docker run --rm --volume &amp;#34;`pwd`:/data&amp;#34; pandoc/core my_file.html -o my_file.docx&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;These can be combined in a &lt;code&gt;Makefile&lt;/code&gt;, like so:&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;listingblock&#34;&gt;&#xA;&lt;div class=&#34;content&#34;&gt;&#xA;&lt;pre class=&#34;highlight&#34;&gt;&lt;code&gt;my_file.html: my_file.adoc&#xA;&#x9;asciidoctor index.adoc&#xA;&#xA;my_file.pdf: my_file.adoc&#xA;&#x9;asciidoctor-pdf -o my_file.pdf my_file.adoc&#xA;&#xA;my_file.docx: my_file.html&#xA;&#x9;docker run --rm --volume &amp;#34;`pwd`:/data&amp;#34; pandoc/core my_file.html -o my_file.docx&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>

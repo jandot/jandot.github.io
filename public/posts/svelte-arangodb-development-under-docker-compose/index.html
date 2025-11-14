@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -10,34 +10,41 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title> Svelte/ArangoDB development and docker-compose | Saaientist</title>
-  <link rel = 'canonical' href = '/posts/svelte-arangodb-development-under-docker-compose/'>
+  <link rel = 'canonical' href = '//localhost:1313/posts/svelte-arangodb-development-under-docker-compose/'>
   <meta name="description" content="My external memory. See http://saaientist.blogspot.com for old posts.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta property="og:title" content="Svelte/ArangoDB development and docker-compose" />
-<meta property="og:description" content="Another one for my personal notebook…​
+  <meta property="og:url" content="//localhost:1313/posts/svelte-arangodb-development-under-docker-compose/">
+  <meta property="og:site_name" content="Saaientist">
+  <meta property="og:title" content="Svelte/ArangoDB development and docker-compose">
+  <meta property="og:description" content="Another one for my personal notebook…​
 I’m running a docker-based application which includes a svelte front/backend and an ArangoDB database that are orchestrated using docker-compose.
 Part of the docker-compose.yml file:
-services: frontend: build: context: frontend dockerfile: Dockerfile ports: - 5050:3000 networks: - my_docker_network arangodb: image: arangodb:3.9 restart: always ports: - 8529:8529 networks: - my_docker_network volumes: - arangodb_data_container:/var/lib/arangodb3 - arangodb_apps_data_container:/var/lib/arangodb3-apps networks: my_docker_network: volumes: arangodb_data_container: arangodb_apps_data_container: The frontend can access the database because they are on the same docker network: a database." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/svelte-arangodb-development-under-docker-compose/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-07-18T14:39:00+02:00" />
-<meta property="article:modified_time" content="2022-07-18T14:39:00+02:00" />
+services: frontend: build: context: frontend dockerfile: Dockerfile ports: - 5050:3000 networks: - my_docker_network arangodb: image: arangodb:3.9 restart: always ports: - 8529:8529 networks: - my_docker_network volumes: - arangodb_data_container:/var/lib/arangodb3 - arangodb_apps_data_container:/var/lib/arangodb3-apps networks: my_docker_network: volumes: arangodb_data_container: arangodb_apps_data_container: The frontend can access the database because they are on the same docker network: a database.js file in svelte points to the database at http://arangodb:8529, because arangodb is known to svelte.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-07-18T14:39:00+02:00">
+    <meta property="article:modified_time" content="2022-07-18T14:39:00+02:00">
+    <meta property="article:tag" content="Svelte">
+    <meta property="article:tag" content="Docker">
+    <meta property="article:tag" content="Arangodb">
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Svelte/ArangoDB development and docker-compose"/>
-<meta name="twitter:description" content="Another one for my personal notebook…​
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Svelte/ArangoDB development and docker-compose">
+  <meta name="twitter:description" content="Another one for my personal notebook…​
 I’m running a docker-based application which includes a svelte front/backend and an ArangoDB database that are orchestrated using docker-compose.
 Part of the docker-compose.yml file:
-services: frontend: build: context: frontend dockerfile: Dockerfile ports: - 5050:3000 networks: - my_docker_network arangodb: image: arangodb:3.9 restart: always ports: - 8529:8529 networks: - my_docker_network volumes: - arangodb_data_container:/var/lib/arangodb3 - arangodb_apps_data_container:/var/lib/arangodb3-apps networks: my_docker_network: volumes: arangodb_data_container: arangodb_apps_data_container: The frontend can access the database because they are on the same docker network: a database."/>
+services: frontend: build: context: frontend dockerfile: Dockerfile ports: - 5050:3000 networks: - my_docker_network arangodb: image: arangodb:3.9 restart: always ports: - 8529:8529 networks: - my_docker_network volumes: - arangodb_data_container:/var/lib/arangodb3 - arangodb_apps_data_container:/var/lib/arangodb3-apps networks: my_docker_network: volumes: arangodb_data_container: arangodb_apps_data_container: The frontend can access the database because they are on the same docker network: a database.js file in svelte points to the database at http://arangodb:8529, because arangodb is known to svelte.">
 
   
   
     
   
   
-  <link rel="stylesheet" href="/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
+  <link rel="stylesheet" href="//localhost:1313/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
 
   
   
@@ -49,12 +56,8 @@ services: frontend: build: context: frontend dockerfile: Dockerfile ports: - 505
   
 
   
-<link rel="icon" type="image/png" href="/images/favicon.ico" />
+<link rel="icon" type="image/png" href="//localhost:1313/images/favicon.ico" />
 
-  
-  
-  
-  
 </head>
 
 <body class="max-width mx-auto px3 ltr">
@@ -83,14 +86,14 @@ services: frontend: build: context: frontend dockerfile: Dockerfile ports: - 505
       <ul>
         
         <li>
-          <a class="icon" href=" /posts/how-to-create-word-file-from-asciidoc/" aria-label="Previous">
+          <a class="icon" href=" //localhost:1313/posts/how-to-create-word-file-from-asciidoc/" aria-label="Previous">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
         
         <li>
-          <a class="icon" href="/posts/git-worktree/" aria-label="Next">
+          <a class="icon" href="//localhost:1313/posts/git-worktree/" aria-label="Next">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
@@ -121,47 +124,47 @@ services: frontend: build: context: frontend dockerfile: Dockerfile ports: - 505
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f" aria-label="Facebook">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&text=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&text=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Twitter">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&title=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&title=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Linkedin">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&is_video=false&description=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&is_video=false&description=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Pinterest">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Svelte%2fArangoDB%20development%20and%20docker-compose&body=Check out this article: %2fposts%2fsvelte-arangodb-development-under-docker-compose%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Svelte%2fArangoDB%20development%20and%20docker-compose&body=Check out this article: %2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f" aria-label="Email">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&title=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&title=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Pocket">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&title=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&title=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="reddit">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&name=Svelte%2fArangoDB%20development%20and%20docker-compose&description=Another%20one%20for%20my%20personal%20notebook%e2%80%a6%e2%80%8b%0aI%e2%80%99m%20running%20a%20docker-based%20application%20which%20includes%20a%20svelte%20front%2fbackend%20and%20an%20ArangoDB%20database%20that%20are%20orchestrated%20using%20docker-compose.%0aPart%20of%20the%20docker-compose.yml%20file%3a%0aservices%3a%20frontend%3a%20build%3a%20context%3a%20frontend%20dockerfile%3a%20Dockerfile%20ports%3a%20-%205050%3a3000%20networks%3a%20-%20my_docker_network%20arangodb%3a%20image%3a%20arangodb%3a3.9%20restart%3a%20always%20ports%3a%20-%208529%3a8529%20networks%3a%20-%20my_docker_network%20volumes%3a%20-%20arangodb_data_container%3a%2fvar%2flib%2farangodb3%20-%20arangodb_apps_data_container%3a%2fvar%2flib%2farangodb3-apps%20networks%3a%20my_docker_network%3a%20volumes%3a%20arangodb_data_container%3a%20arangodb_apps_data_container%3a%20The%20frontend%20can%20access%20the%20database%20because%20they%20are%20on%20the%20same%20docker%20network%3a%20a%20database." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&name=Svelte%2fArangoDB%20development%20and%20docker-compose&description=%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eAnother%20one%20for%20my%20personal%20notebook%e2%80%a6%e2%80%8b%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eI%e2%80%99m%20running%20a%20docker-based%20application%20which%20includes%20a%20svelte%20front%2fbackend%20and%20an%20ArangoDB%20database%20that%20are%20orchestrated%20using%20docker-compose.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3ePart%20of%20the%20%3ccode%3edocker-compose.yml%3c%2fcode%3e%20file%3a%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cdiv%20class%3d%22highlight%22%3e%3cpre%20tabindex%3d%220%22%20style%3d%22color%3a%23f8f8f2%3bbackground-color%3a%23272822%3b-moz-tab-size%3a4%3b-o-tab-size%3a4%3btab-size%3a4%3b%22%3e%3ccode%20class%3d%22language-yaml%22%20data-lang%3d%22yaml%22%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%3cspan%20style%3d%22color%3a%23f92672%22%3eservices%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3efrontend%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3ebuild%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3econtext%3c%2fspan%3e%3a%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3efrontend%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3edockerfile%3c%2fspan%3e%3a%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3eDockerfile%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3eports%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20-%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3e5050%3c%2fspan%3e%3a%3cspan%20style%3d%22color%3a%23ae81ff%22%3e3000%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3enetworks%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20-%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3emy_docker_network%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3earangodb%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3eimage%3c%2fspan%3e%3a%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3earangodb%3a3.9%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3erestart%3c%2fspan%3e%3a%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3ealways%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3eports%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20-%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3e8529%3c%2fspan%3e%3a%3cspan%20style%3d%22color%3a%23ae81ff%22%3e8529%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3enetworks%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20-%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3emy_docker_network%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3evolumes%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20-%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3earangodb_data_container%3a%2fvar%2flib%2farangodb3%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20-%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3earangodb_apps_data_container%3a%2fvar%2flib%2farangodb3-apps%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%3cspan%20style%3d%22color%3a%23f92672%22%3enetworks%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3emy_docker_network%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%3cspan%20style%3d%22color%3a%23f92672%22%3evolumes%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3earangodb_data_container%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3earangodb_apps_data_container%3a%3c%2fspan%3e%3c%2fspan%3e%3c%2fspan%3e%3c%2fcode%3e%3c%2fpre%3e%3c%2fdiv%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eThe%20%3ccode%3efrontend%3c%2fcode%3e%20can%20access%20the%20database%20because%20they%20are%20on%20the%20same%20docker%20network%3a%20a%20%3ccode%3edatabase.js%3c%2fcode%3e%20file%20in%20svelte%20points%20to%20the%20database%20at%20%3ca%20href%3d%22http%3a%2f%2farangodb%3a8529%22%20class%3d%22bare%22%3ehttp%3a%2f%2farangodb%3a8529%3c%2fa%3e%2c%20because%20%3ccode%3earangodb%3c%2fcode%3e%20is%20known%20to%20svelte.%3c%2fp%3e%0a%3c%2fdiv%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&t=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&t=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Hacker News">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -342,47 +345,47 @@ services: frontend: build: context: frontend dockerfile: Dockerfile ports: - 505
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f" aria-label="Facebook">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&text=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&text=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Twitter">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&title=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&title=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Linkedin">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&is_video=false&description=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&is_video=false&description=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Pinterest">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Svelte%2fArangoDB%20development%20and%20docker-compose&body=Check out this article: %2fposts%2fsvelte-arangodb-development-under-docker-compose%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Svelte%2fArangoDB%20development%20and%20docker-compose&body=Check out this article: %2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f" aria-label="Email">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&title=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&title=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Pocket">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&title=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&title=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="reddit">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&name=Svelte%2fArangoDB%20development%20and%20docker-compose&description=Another%20one%20for%20my%20personal%20notebook%e2%80%a6%e2%80%8b%0aI%e2%80%99m%20running%20a%20docker-based%20application%20which%20includes%20a%20svelte%20front%2fbackend%20and%20an%20ArangoDB%20database%20that%20are%20orchestrated%20using%20docker-compose.%0aPart%20of%20the%20docker-compose.yml%20file%3a%0aservices%3a%20frontend%3a%20build%3a%20context%3a%20frontend%20dockerfile%3a%20Dockerfile%20ports%3a%20-%205050%3a3000%20networks%3a%20-%20my_docker_network%20arangodb%3a%20image%3a%20arangodb%3a3.9%20restart%3a%20always%20ports%3a%20-%208529%3a8529%20networks%3a%20-%20my_docker_network%20volumes%3a%20-%20arangodb_data_container%3a%2fvar%2flib%2farangodb3%20-%20arangodb_apps_data_container%3a%2fvar%2flib%2farangodb3-apps%20networks%3a%20my_docker_network%3a%20volumes%3a%20arangodb_data_container%3a%20arangodb_apps_data_container%3a%20The%20frontend%20can%20access%20the%20database%20because%20they%20are%20on%20the%20same%20docker%20network%3a%20a%20database." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&name=Svelte%2fArangoDB%20development%20and%20docker-compose&description=%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eAnother%20one%20for%20my%20personal%20notebook%e2%80%a6%e2%80%8b%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eI%e2%80%99m%20running%20a%20docker-based%20application%20which%20includes%20a%20svelte%20front%2fbackend%20and%20an%20ArangoDB%20database%20that%20are%20orchestrated%20using%20docker-compose.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3ePart%20of%20the%20%3ccode%3edocker-compose.yml%3c%2fcode%3e%20file%3a%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cdiv%20class%3d%22highlight%22%3e%3cpre%20tabindex%3d%220%22%20style%3d%22color%3a%23f8f8f2%3bbackground-color%3a%23272822%3b-moz-tab-size%3a4%3b-o-tab-size%3a4%3btab-size%3a4%3b%22%3e%3ccode%20class%3d%22language-yaml%22%20data-lang%3d%22yaml%22%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%3cspan%20style%3d%22color%3a%23f92672%22%3eservices%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3efrontend%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3ebuild%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3econtext%3c%2fspan%3e%3a%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3efrontend%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3edockerfile%3c%2fspan%3e%3a%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3eDockerfile%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3eports%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20-%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3e5050%3c%2fspan%3e%3a%3cspan%20style%3d%22color%3a%23ae81ff%22%3e3000%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3enetworks%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20-%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3emy_docker_network%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3earangodb%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3eimage%3c%2fspan%3e%3a%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3earangodb%3a3.9%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3erestart%3c%2fspan%3e%3a%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3ealways%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3eports%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20-%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3e8529%3c%2fspan%3e%3a%3cspan%20style%3d%22color%3a%23ae81ff%22%3e8529%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3enetworks%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20-%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3emy_docker_network%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3evolumes%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20-%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3earangodb_data_container%3a%2fvar%2flib%2farangodb3%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%20%20-%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3earangodb_apps_data_container%3a%2fvar%2flib%2farangodb3-apps%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%3cspan%20style%3d%22color%3a%23f92672%22%3enetworks%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3emy_docker_network%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%3cspan%20style%3d%22color%3a%23f92672%22%3evolumes%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%3cspan%20style%3d%22color%3a%23f92672%22%3earangodb_data_container%3c%2fspan%3e%3a%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%3cspan%20style%3d%22color%3a%23ae81ff%22%3earangodb_apps_data_container%3a%3c%2fspan%3e%3c%2fspan%3e%3c%2fspan%3e%3c%2fcode%3e%3c%2fpre%3e%3c%2fdiv%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eThe%20%3ccode%3efrontend%3c%2fcode%3e%20can%20access%20the%20database%20because%20they%20are%20on%20the%20same%20docker%20network%3a%20a%20%3ccode%3edatabase.js%3c%2fcode%3e%20file%20in%20svelte%20points%20to%20the%20database%20at%20%3ca%20href%3d%22http%3a%2f%2farangodb%3a8529%22%20class%3d%22bare%22%3ehttp%3a%2f%2farangodb%3a8529%3c%2fa%3e%2c%20because%20%3ccode%3earangodb%3c%2fcode%3e%20is%20known%20to%20svelte.%3c%2fp%3e%0a%3c%2fdiv%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&t=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2f%2flocalhost%3a1313%2fposts%2fsvelte-arangodb-development-under-docker-compose%2f&t=Svelte%2fArangoDB%20development%20and%20docker-compose" aria-label="Hacker News">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>
@@ -410,7 +413,7 @@ services: frontend: build: context: frontend dockerfile: Dockerfile ports: - 505
 
   <footer id="footer">
   <div class="footer-left">
-    Copyright  &copy; 2024  Saaientist 
+    Copyright  &copy; 2025  Saaientist 
   </div>
   <div class="footer-right">
     <nav>

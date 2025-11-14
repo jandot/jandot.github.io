@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Bringing a d3-force network into the viewport | Saaientist</title>
+  <link rel = 'canonical' href = '//localhost:1313/posts/nodelink_to_viewport/'>
+  <meta name="description" content="My external memory. See http://saaientist.blogspot.com for old posts.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:url" content="//localhost:1313/posts/nodelink_to_viewport/">
+  <meta property="og:site_name" content="Saaientist">
+  <meta property="og:title" content="Bringing a d3-force network into the viewport">
+  <meta property="og:description" content="One of the issues I’ve always had with node-link diagrams in D3 is that nodes tend to migrate out of the viewpoint, forcing you to zoom and pan to get the whole graph into view.
+I finally hacked together a piece of code to solve that. Even brushing still works.
+const rescale_to_viewport = () =&gt; { let extentX = extent(nodes.map((d) =&gt; transform.applyX(d.x))) let extentY = extent(nodes.map((d) =&gt; transform.applyY(d.y))) let scaleX = (extentX[1]-extentX[0])/(0.9*width) let scaleY = (extentY[1]-extentY[0])/(0.9*height) let scale = max([scaleX,scaleY]) transform.k /= scale simulationUpdate() extentX = extent(nodes.map((d) =&gt; transform.applyX(d.x))) extentY = extent(nodes.map((d) =&gt; transform.applyY(d.y))) let moveX = ((extentX[1]&#43;extentX[0])/2) - (width/2) let moveY = ((extentY[1]&#43;extentY[0])/2) - (height/2) transform.x -= moveX transform.y -= moveY simulationUpdate() zoomScale = transform.k; panX = transform.x; panY = transform.y; }">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-07-08T09:43:00+02:00">
+    <meta property="article:modified_time" content="2024-07-08T09:43:00+02:00">
+    <meta property="article:tag" content="Svelte">
+    <meta property="article:tag" content="Visualisation">
+    <meta property="article:tag" content="D3">
+    <meta property="article:tag" content="Graph">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Bringing a d3-force network into the viewport">
+  <meta name="twitter:description" content="One of the issues I’ve always had with node-link diagrams in D3 is that nodes tend to migrate out of the viewpoint, forcing you to zoom and pan to get the whole graph into view.
+I finally hacked together a piece of code to solve that. Even brushing still works.
+const rescale_to_viewport = () =&gt; { let extentX = extent(nodes.map((d) =&gt; transform.applyX(d.x))) let extentY = extent(nodes.map((d) =&gt; transform.applyY(d.y))) let scaleX = (extentX[1]-extentX[0])/(0.9*width) let scaleY = (extentY[1]-extentY[0])/(0.9*height) let scale = max([scaleX,scaleY]) transform.k /= scale simulationUpdate() extentX = extent(nodes.map((d) =&gt; transform.applyX(d.x))) extentY = extent(nodes.map((d) =&gt; transform.applyY(d.y))) let moveX = ((extentX[1]&#43;extentX[0])/2) - (width/2) let moveY = ((extentY[1]&#43;extentY[0])/2) - (height/2) transform.x -= moveX transform.y -= moveY simulationUpdate() zoomScale = transform.k; panX = transform.x; panY = transform.y; }">
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="//localhost:1313/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="//localhost:1313/images/favicon.ico" />
+
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" //localhost:1313/posts/brush-in-svelte/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="//localhost:1313/posts/jujutsu/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f&text=Bringing%20a%20d3-force%20network%20into%20the%20viewport" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f&title=Bringing%20a%20d3-force%20network%20into%20the%20viewport" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f&is_video=false&description=Bringing%20a%20d3-force%20network%20into%20the%20viewport" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Bringing%20a%20d3-force%20network%20into%20the%20viewport&body=Check out this article: %2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f&title=Bringing%20a%20d3-force%20network%20into%20the%20viewport" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f&title=Bringing%20a%20d3-force%20network%20into%20the%20viewport" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f&name=Bringing%20a%20d3-force%20network%20into%20the%20viewport&description=%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eOne%20of%20the%20issues%20I%e2%80%99ve%20always%20had%20with%20node-link%20diagrams%20in%20%3ca%20href%3d%22https%3a%2f%2fd3js.org%22%3eD3%3c%2fa%3e%20is%20that%20nodes%20tend%20to%20migrate%20out%20of%20the%20viewpoint%2c%20forcing%20you%20to%20zoom%20and%20pan%20to%20get%20the%20whole%20graph%20into%20view.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eI%20finally%20hacked%20together%20a%20piece%20of%20code%20to%20solve%20that.%20Even%20brushing%20still%20works.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cdiv%20class%3d%22highlight%22%3e%3cpre%20tabindex%3d%220%22%20style%3d%22color%3a%23f8f8f2%3bbackground-color%3a%23272822%3b-moz-tab-size%3a4%3b-o-tab-size%3a4%3btab-size%3a4%3b%22%3e%3ccode%20class%3d%22language-javascript%22%20data-lang%3d%22javascript%22%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%3cspan%20style%3d%22color%3a%2366d9ef%22%3econst%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3erescale_to_viewport%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%28%29%20%3d%26gt%3b%20%7b%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%2366d9ef%22%3elet%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentX%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextent%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3enodes%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3emap%3c%2fspan%3e%28%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e%29%20%3d%26gt%3b%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3eapplyX%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ex%3c%2fspan%3e%29%29%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%2366d9ef%22%3elet%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentY%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextent%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3enodes%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3emap%3c%2fspan%3e%28%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e%29%20%3d%26gt%3b%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3eapplyY%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ey%3c%2fspan%3e%29%29%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%2366d9ef%22%3elet%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3escaleX%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentX%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e1%3c%2fspan%3e%5d%3cspan%20style%3d%22color%3a%23f92672%22%3e-%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentX%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e0%3c%2fspan%3e%5d%29%3cspan%20style%3d%22color%3a%23f92672%22%3e%2f%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23ae81ff%22%3e0.9%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23f92672%22%3e%2a%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23a6e22e%22%3ewidth%3c%2fspan%3e%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%2366d9ef%22%3elet%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3escaleY%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentY%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e1%3c%2fspan%3e%5d%3cspan%20style%3d%22color%3a%23f92672%22%3e-%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentY%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e0%3c%2fspan%3e%5d%29%3cspan%20style%3d%22color%3a%23f92672%22%3e%2f%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23ae81ff%22%3e0.9%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23f92672%22%3e%2a%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23a6e22e%22%3eheight%3c%2fspan%3e%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%2366d9ef%22%3elet%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3escale%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3emax%3c%2fspan%3e%28%5b%3cspan%20style%3d%22color%3a%23a6e22e%22%3escaleX%3c%2fspan%3e%2c%3cspan%20style%3d%22color%3a%23a6e22e%22%3escaleY%3c%2fspan%3e%5d%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ek%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%2f%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3escale%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3esimulationUpdate%3c%2fspan%3e%28%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentX%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextent%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3enodes%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3emap%3c%2fspan%3e%28%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e%29%20%3d%26gt%3b%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3eapplyX%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ex%3c%2fspan%3e%29%29%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentY%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextent%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3enodes%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3emap%3c%2fspan%3e%28%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e%29%20%3d%26gt%3b%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3eapplyY%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ey%3c%2fspan%3e%29%29%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%2366d9ef%22%3elet%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3emoveX%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%28%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentX%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e1%3c%2fspan%3e%5d%3cspan%20style%3d%22color%3a%23f92672%22%3e%2b%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentX%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e0%3c%2fspan%3e%5d%29%3cspan%20style%3d%22color%3a%23f92672%22%3e%2f%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23ae81ff%22%3e2%3c%2fspan%3e%29%20%3cspan%20style%3d%22color%3a%23f92672%22%3e-%3c%2fspan%3e%20%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ewidth%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23f92672%22%3e%2f%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23ae81ff%22%3e2%3c%2fspan%3e%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%2366d9ef%22%3elet%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3emoveY%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%28%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentY%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e1%3c%2fspan%3e%5d%3cspan%20style%3d%22color%3a%23f92672%22%3e%2b%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentY%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e0%3c%2fspan%3e%5d%29%3cspan%20style%3d%22color%3a%23f92672%22%3e%2f%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23ae81ff%22%3e2%3c%2fspan%3e%29%20%3cspan%20style%3d%22color%3a%23f92672%22%3e-%3c%2fspan%3e%20%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3eheight%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23f92672%22%3e%2f%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23ae81ff%22%3e2%3c%2fspan%3e%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ex%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e-%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3emoveX%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ey%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e-%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3emoveY%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3esimulationUpdate%3c%2fspan%3e%28%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3ezoomScale%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ek%3c%2fspan%3e%3b%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3epanX%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ex%3c%2fspan%3e%3b%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3epanY%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ey%3c%2fspan%3e%3b%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%7d%3c%2fspan%3e%3c%2fspan%3e%3c%2fcode%3e%3c%2fpre%3e%3c%2fdiv%3e" aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f&t=Bringing%20a%20d3-force%20network%20into%20the%20viewport" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Bringing a d3-force network into the viewport
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2024-07-08 09:43:00 &#43;0200 CEST" itemprop="datePublished">2024-07-08</time>
+          
+        </div>
+        
+        
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/svelte" rel="tag">svelte</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/visualisation" rel="tag">visualisation</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/d3" rel="tag">d3</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/graph" rel="tag">graph</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <div class="paragraph">
+<p>One of the issues I’ve always had with node-link diagrams in <a href="https://d3js.org">D3</a> is that nodes tend to migrate out of the viewpoint, forcing you to zoom and pan to get the whole graph into view.</p>
+</div>
+<div class="paragraph">
+<p>I finally hacked together a piece of code to solve that. Even brushing still works.</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rescale_to_viewport</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">extentX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">extent</span>(<span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">d</span>) =&gt; <span style="color:#a6e22e">transform</span>.<span style="color:#a6e22e">applyX</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span>)))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">extentY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">extent</span>(<span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">d</span>) =&gt; <span style="color:#a6e22e">transform</span>.<span style="color:#a6e22e">applyY</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y</span>)))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">scaleX</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">extentX</span>[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">-</span><span style="color:#a6e22e">extentX</span>[<span style="color:#ae81ff">0</span>])<span style="color:#f92672">/</span>(<span style="color:#ae81ff">0.9</span><span style="color:#f92672">*</span><span style="color:#a6e22e">width</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">scaleY</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">extentY</span>[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">-</span><span style="color:#a6e22e">extentY</span>[<span style="color:#ae81ff">0</span>])<span style="color:#f92672">/</span>(<span style="color:#ae81ff">0.9</span><span style="color:#f92672">*</span><span style="color:#a6e22e">height</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">scale</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">max</span>([<span style="color:#a6e22e">scaleX</span>,<span style="color:#a6e22e">scaleY</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">transform</span>.<span style="color:#a6e22e">k</span> <span style="color:#f92672">/=</span> <span style="color:#a6e22e">scale</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">simulationUpdate</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">extentX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">extent</span>(<span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">d</span>) =&gt; <span style="color:#a6e22e">transform</span>.<span style="color:#a6e22e">applyX</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span>)))
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">extentY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">extent</span>(<span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">d</span>) =&gt; <span style="color:#a6e22e">transform</span>.<span style="color:#a6e22e">applyY</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y</span>)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">moveX</span> <span style="color:#f92672">=</span> ((<span style="color:#a6e22e">extentX</span>[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">+</span><span style="color:#a6e22e">extentX</span>[<span style="color:#ae81ff">0</span>])<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>) <span style="color:#f92672">-</span> (<span style="color:#a6e22e">width</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">moveY</span> <span style="color:#f92672">=</span> ((<span style="color:#a6e22e">extentY</span>[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">+</span><span style="color:#a6e22e">extentY</span>[<span style="color:#ae81ff">0</span>])<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>) <span style="color:#f92672">-</span> (<span style="color:#a6e22e">height</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">transform</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">moveX</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">transform</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">moveY</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">simulationUpdate</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">zoomScale</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">transform</span>.<span style="color:#a6e22e">k</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">panX</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">transform</span>.<span style="color:#a6e22e">x</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">panY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">transform</span>.<span style="color:#a6e22e">y</span>;
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+</div>
+<div class="paragraph">
+<p>The <code>zoomScale</code>, <code>panX</code> and <code>panY</code> are necessary to keep brushing working as it should. My <code>brushed</code> function:</p>
+</div>
+<div class="paragraph">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">brushed</span>(<span style="color:#a6e22e">event</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">selection</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">brush_active</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> [[<span style="color:#a6e22e">x0</span>, <span style="color:#a6e22e">y0</span>], [<span style="color:#a6e22e">x1</span>, <span style="color:#a6e22e">y1</span>]] <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">selection</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">selectedNodes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nodes</span>.<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">d</span>) =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">zoomScale</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">panX</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">zoomScale</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">panY</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">x0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">x1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">y0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">y1</span>;
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">$selected</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">selectedNodes</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">d</span>) =&gt; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+</div>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Posts</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f&text=Bringing%20a%20d3-force%20network%20into%20the%20viewport" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f&title=Bringing%20a%20d3-force%20network%20into%20the%20viewport" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f&is_video=false&description=Bringing%20a%20d3-force%20network%20into%20the%20viewport" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Bringing%20a%20d3-force%20network%20into%20the%20viewport&body=Check out this article: %2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f&title=Bringing%20a%20d3-force%20network%20into%20the%20viewport" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f&title=Bringing%20a%20d3-force%20network%20into%20the%20viewport" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f&name=Bringing%20a%20d3-force%20network%20into%20the%20viewport&description=%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eOne%20of%20the%20issues%20I%e2%80%99ve%20always%20had%20with%20node-link%20diagrams%20in%20%3ca%20href%3d%22https%3a%2f%2fd3js.org%22%3eD3%3c%2fa%3e%20is%20that%20nodes%20tend%20to%20migrate%20out%20of%20the%20viewpoint%2c%20forcing%20you%20to%20zoom%20and%20pan%20to%20get%20the%20whole%20graph%20into%20view.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eI%20finally%20hacked%20together%20a%20piece%20of%20code%20to%20solve%20that.%20Even%20brushing%20still%20works.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cdiv%20class%3d%22highlight%22%3e%3cpre%20tabindex%3d%220%22%20style%3d%22color%3a%23f8f8f2%3bbackground-color%3a%23272822%3b-moz-tab-size%3a4%3b-o-tab-size%3a4%3btab-size%3a4%3b%22%3e%3ccode%20class%3d%22language-javascript%22%20data-lang%3d%22javascript%22%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%3cspan%20style%3d%22color%3a%2366d9ef%22%3econst%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3erescale_to_viewport%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%28%29%20%3d%26gt%3b%20%7b%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%2366d9ef%22%3elet%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentX%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextent%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3enodes%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3emap%3c%2fspan%3e%28%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e%29%20%3d%26gt%3b%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3eapplyX%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ex%3c%2fspan%3e%29%29%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%2366d9ef%22%3elet%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentY%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextent%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3enodes%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3emap%3c%2fspan%3e%28%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e%29%20%3d%26gt%3b%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3eapplyY%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ey%3c%2fspan%3e%29%29%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%2366d9ef%22%3elet%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3escaleX%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentX%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e1%3c%2fspan%3e%5d%3cspan%20style%3d%22color%3a%23f92672%22%3e-%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentX%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e0%3c%2fspan%3e%5d%29%3cspan%20style%3d%22color%3a%23f92672%22%3e%2f%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23ae81ff%22%3e0.9%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23f92672%22%3e%2a%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23a6e22e%22%3ewidth%3c%2fspan%3e%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%2366d9ef%22%3elet%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3escaleY%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentY%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e1%3c%2fspan%3e%5d%3cspan%20style%3d%22color%3a%23f92672%22%3e-%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentY%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e0%3c%2fspan%3e%5d%29%3cspan%20style%3d%22color%3a%23f92672%22%3e%2f%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23ae81ff%22%3e0.9%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23f92672%22%3e%2a%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23a6e22e%22%3eheight%3c%2fspan%3e%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%2366d9ef%22%3elet%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3escale%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3emax%3c%2fspan%3e%28%5b%3cspan%20style%3d%22color%3a%23a6e22e%22%3escaleX%3c%2fspan%3e%2c%3cspan%20style%3d%22color%3a%23a6e22e%22%3escaleY%3c%2fspan%3e%5d%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ek%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%2f%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3escale%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3esimulationUpdate%3c%2fspan%3e%28%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentX%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextent%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3enodes%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3emap%3c%2fspan%3e%28%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e%29%20%3d%26gt%3b%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3eapplyX%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ex%3c%2fspan%3e%29%29%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentY%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextent%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3enodes%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3emap%3c%2fspan%3e%28%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e%29%20%3d%26gt%3b%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3eapplyY%3c%2fspan%3e%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ed%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ey%3c%2fspan%3e%29%29%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%2366d9ef%22%3elet%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3emoveX%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%28%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentX%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e1%3c%2fspan%3e%5d%3cspan%20style%3d%22color%3a%23f92672%22%3e%2b%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentX%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e0%3c%2fspan%3e%5d%29%3cspan%20style%3d%22color%3a%23f92672%22%3e%2f%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23ae81ff%22%3e2%3c%2fspan%3e%29%20%3cspan%20style%3d%22color%3a%23f92672%22%3e-%3c%2fspan%3e%20%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3ewidth%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23f92672%22%3e%2f%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23ae81ff%22%3e2%3c%2fspan%3e%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%2366d9ef%22%3elet%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3emoveY%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%28%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentY%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e1%3c%2fspan%3e%5d%3cspan%20style%3d%22color%3a%23f92672%22%3e%2b%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23a6e22e%22%3eextentY%3c%2fspan%3e%5b%3cspan%20style%3d%22color%3a%23ae81ff%22%3e0%3c%2fspan%3e%5d%29%3cspan%20style%3d%22color%3a%23f92672%22%3e%2f%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23ae81ff%22%3e2%3c%2fspan%3e%29%20%3cspan%20style%3d%22color%3a%23f92672%22%3e-%3c%2fspan%3e%20%28%3cspan%20style%3d%22color%3a%23a6e22e%22%3eheight%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23f92672%22%3e%2f%3c%2fspan%3e%3cspan%20style%3d%22color%3a%23ae81ff%22%3e2%3c%2fspan%3e%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ex%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e-%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3emoveX%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ey%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e-%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3emoveY%3c%2fspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3esimulationUpdate%3c%2fspan%3e%28%29%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3ezoomScale%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ek%3c%2fspan%3e%3b%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3epanX%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ex%3c%2fspan%3e%3b%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%20%20%20%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3epanY%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23f92672%22%3e%3d%3c%2fspan%3e%20%3cspan%20style%3d%22color%3a%23a6e22e%22%3etransform%3c%2fspan%3e.%3cspan%20style%3d%22color%3a%23a6e22e%22%3ey%3c%2fspan%3e%3b%0a%3c%2fspan%3e%3c%2fspan%3e%3cspan%20style%3d%22display%3aflex%3b%22%3e%3cspan%3e%7d%3c%2fspan%3e%3c%2fspan%3e%3c%2fcode%3e%3c%2fpre%3e%3c%2fdiv%3e" aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2f%2flocalhost%3a1313%2fposts%2fnodelink_to_viewport%2f&t=Bringing%20a%20d3-force%20network%20into%20the%20viewport" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2025  Saaientist 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>

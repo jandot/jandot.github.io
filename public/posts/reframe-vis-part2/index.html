@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -10,32 +10,40 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title> Clojurescript, re-frame and P5 | Saaientist</title>
-  <link rel = 'canonical' href = '/posts/reframe-vis-part2/'>
+  <link rel = 'canonical' href = '//localhost:1313/posts/reframe-vis-part2/'>
   <meta name="description" content="My external memory. See http://saaientist.blogspot.com for old posts.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta property="og:title" content="Clojurescript, re-frame and P5" />
-<meta property="og:description" content="I’m trying out creating generative art using clojurescript and quil (a clojurescript implementation of P5).
+  <meta property="og:url" content="//localhost:1313/posts/reframe-vis-part2/">
+  <meta property="og:site_name" content="Saaientist">
+  <meta property="og:title" content="Clojurescript, re-frame and P5">
+  <meta property="og:description" content="I’m trying out creating generative art using clojurescript and quil (a clojurescript implementation of P5).
 Routing and directory structure The main issue to be solved was to get routing working, so that I don’t have to go into the source code to switch between visuals.
-In the previous post of visualisation in clojurescript I created rect and circle in the views.cljs file. That’s not how it should be done. The views." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/reframe-vis-part2/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-03-30T18:45:00+02:00" />
-<meta property="article:modified_time" content="2023-03-30T18:45:00+02:00" />
+In the previous post of visualisation in clojurescript I created rect and circle in the views.cljs file. That’s not how it should be done. The views.cljs file should contain the different pages instead.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-03-30T18:45:00+02:00">
+    <meta property="article:modified_time" content="2023-03-30T18:45:00+02:00">
+    <meta property="article:tag" content="Clojure">
+    <meta property="article:tag" content="Visualisation">
+    <meta property="article:tag" content="P5">
+    <meta property="article:tag" content="Quil">
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Clojurescript, re-frame and P5"/>
-<meta name="twitter:description" content="I’m trying out creating generative art using clojurescript and quil (a clojurescript implementation of P5).
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Clojurescript, re-frame and P5">
+  <meta name="twitter:description" content="I’m trying out creating generative art using clojurescript and quil (a clojurescript implementation of P5).
 Routing and directory structure The main issue to be solved was to get routing working, so that I don’t have to go into the source code to switch between visuals.
-In the previous post of visualisation in clojurescript I created rect and circle in the views.cljs file. That’s not how it should be done. The views."/>
+In the previous post of visualisation in clojurescript I created rect and circle in the views.cljs file. That’s not how it should be done. The views.cljs file should contain the different pages instead.">
 
   
   
     
   
   
-  <link rel="stylesheet" href="/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
+  <link rel="stylesheet" href="//localhost:1313/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
 
   
   
@@ -47,12 +55,8 @@ In the previous post of visualisation in clojurescript I created rect and circle
   
 
   
-<link rel="icon" type="image/png" href="/images/favicon.ico" />
+<link rel="icon" type="image/png" href="//localhost:1313/images/favicon.ico" />
 
-  
-  
-  
-  
 </head>
 
 <body class="max-width mx-auto px3 ltr">
@@ -81,14 +85,14 @@ In the previous post of visualisation in clojurescript I created rect and circle
       <ul>
         
         <li>
-          <a class="icon" href=" /posts/molecule_viewer/" aria-label="Previous">
+          <a class="icon" href=" //localhost:1313/posts/molecule_viewer/" aria-label="Previous">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
         
         <li>
-          <a class="icon" href="/posts/scatterplot_in_regl/" aria-label="Next">
+          <a class="icon" href="//localhost:1313/posts/scatterplot_in_regl/" aria-label="Next">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
@@ -119,47 +123,47 @@ In the previous post of visualisation in clojurescript I created rect and circle
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2freframe-vis-part2%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f" aria-label="Facebook">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=%2fposts%2freframe-vis-part2%2f&text=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f&text=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Twitter">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2freframe-vis-part2%2f&title=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f&title=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Linkedin">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2freframe-vis-part2%2f&is_video=false&description=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f&is_video=false&description=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Pinterest">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Clojurescript%2c%20re-frame%20and%20P5&body=Check out this article: %2fposts%2freframe-vis-part2%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Clojurescript%2c%20re-frame%20and%20P5&body=Check out this article: %2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f" aria-label="Email">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2freframe-vis-part2%2f&title=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f&title=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Pocket">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2freframe-vis-part2%2f&title=Clojurescript%2c%20re-frame%20and%20P5" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f&title=Clojurescript%2c%20re-frame%20and%20P5" aria-label="reddit">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2freframe-vis-part2%2f&name=Clojurescript%2c%20re-frame%20and%20P5&description=I%e2%80%99m%20trying%20out%20creating%20generative%20art%20using%20clojurescript%20and%20quil%20%28a%20clojurescript%20implementation%20of%20P5%29.%0aRouting%20and%20directory%20structure%20The%20main%20issue%20to%20be%20solved%20was%20to%20get%20routing%20working%2c%20so%20that%20I%20don%e2%80%99t%20have%20to%20go%20into%20the%20source%20code%20to%20switch%20between%20visuals.%0aIn%20the%20previous%20post%20of%20visualisation%20in%20clojurescript%20I%20created%20rect%20and%20circle%20in%20the%20views.cljs%20file.%20That%e2%80%99s%20not%20how%20it%20should%20be%20done.%20The%20views." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f&name=Clojurescript%2c%20re-frame%20and%20P5&description=%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eI%e2%80%99m%20trying%20out%20creating%20generative%20art%20using%20clojurescript%20and%20%3ca%20href%3d%22http%3a%2f%2fquil.info%2f%22%3equil%3c%2fa%3e%20%28a%20clojurescript%20implementation%20of%20%3ca%20href%3d%22http%3a%2f%2fwww.p5js.org%22%3eP5%3c%2fa%3e%29.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22sect1%22%3e%0a%3ch2%20id%3d%22_routing_and_directory_structure%22%3eRouting%20and%20directory%20structure%3c%2fh2%3e%0a%3cdiv%20class%3d%22sectionbody%22%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eThe%20main%20issue%20to%20be%20solved%20was%20to%20get%20%3cem%3erouting%3c%2fem%3e%20working%2c%20so%20that%20I%20don%e2%80%99t%20have%20to%20go%20into%20the%20source%20code%20to%20switch%20between%20visuals.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22imageblock%22%3e%0a%3cdiv%20class%3d%22content%22%3e%0a%3cimg%20src%3d%22%2fassets%2fquil-routing.png%22%20alt%3d%22quil%20routing%22%20width%3d%2250%25%22%2f%3e%0a%3c%2fdiv%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eIn%20%3ca%20href%3d%22https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f%22%3ethe%20previous%20post%20of%20visualisation%20in%20clojurescript%3c%2fa%3e%20I%20created%20%3ccode%3erect%3c%2fcode%3e%20and%20%3ccode%3ecircle%3c%2fcode%3e%20in%20the%20%3ccode%3eviews.cljs%3c%2fcode%3e%20file.%20That%e2%80%99s%20not%20how%20it%20should%20be%20done.%20The%20%3ccode%3eviews.cljs%3c%2fcode%3e%20file%20should%20contain%20the%20different%20pages%20instead.%3c%2fp%3e%0a%3c%2fdiv%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2freframe-vis-part2%2f&t=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f&t=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Hacker News">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -482,47 +486,47 @@ In the previous post of visualisation in clojurescript I created rect and circle
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2freframe-vis-part2%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f" aria-label="Facebook">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=%2fposts%2freframe-vis-part2%2f&text=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f&text=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Twitter">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2freframe-vis-part2%2f&title=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f&title=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Linkedin">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2freframe-vis-part2%2f&is_video=false&description=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f&is_video=false&description=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Pinterest">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Clojurescript%2c%20re-frame%20and%20P5&body=Check out this article: %2fposts%2freframe-vis-part2%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Clojurescript%2c%20re-frame%20and%20P5&body=Check out this article: %2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f" aria-label="Email">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2freframe-vis-part2%2f&title=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f&title=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Pocket">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2freframe-vis-part2%2f&title=Clojurescript%2c%20re-frame%20and%20P5" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f&title=Clojurescript%2c%20re-frame%20and%20P5" aria-label="reddit">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2freframe-vis-part2%2f&name=Clojurescript%2c%20re-frame%20and%20P5&description=I%e2%80%99m%20trying%20out%20creating%20generative%20art%20using%20clojurescript%20and%20quil%20%28a%20clojurescript%20implementation%20of%20P5%29.%0aRouting%20and%20directory%20structure%20The%20main%20issue%20to%20be%20solved%20was%20to%20get%20routing%20working%2c%20so%20that%20I%20don%e2%80%99t%20have%20to%20go%20into%20the%20source%20code%20to%20switch%20between%20visuals.%0aIn%20the%20previous%20post%20of%20visualisation%20in%20clojurescript%20I%20created%20rect%20and%20circle%20in%20the%20views.cljs%20file.%20That%e2%80%99s%20not%20how%20it%20should%20be%20done.%20The%20views." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f&name=Clojurescript%2c%20re-frame%20and%20P5&description=%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eI%e2%80%99m%20trying%20out%20creating%20generative%20art%20using%20clojurescript%20and%20%3ca%20href%3d%22http%3a%2f%2fquil.info%2f%22%3equil%3c%2fa%3e%20%28a%20clojurescript%20implementation%20of%20%3ca%20href%3d%22http%3a%2f%2fwww.p5js.org%22%3eP5%3c%2fa%3e%29.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22sect1%22%3e%0a%3ch2%20id%3d%22_routing_and_directory_structure%22%3eRouting%20and%20directory%20structure%3c%2fh2%3e%0a%3cdiv%20class%3d%22sectionbody%22%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eThe%20main%20issue%20to%20be%20solved%20was%20to%20get%20%3cem%3erouting%3c%2fem%3e%20working%2c%20so%20that%20I%20don%e2%80%99t%20have%20to%20go%20into%20the%20source%20code%20to%20switch%20between%20visuals.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22imageblock%22%3e%0a%3cdiv%20class%3d%22content%22%3e%0a%3cimg%20src%3d%22%2fassets%2fquil-routing.png%22%20alt%3d%22quil%20routing%22%20width%3d%2250%25%22%2f%3e%0a%3c%2fdiv%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eIn%20%3ca%20href%3d%22https%3a%2f%2fjandot.github.io%2fposts%2fclojure-reframe-vis%2f%22%3ethe%20previous%20post%20of%20visualisation%20in%20clojurescript%3c%2fa%3e%20I%20created%20%3ccode%3erect%3c%2fcode%3e%20and%20%3ccode%3ecircle%3c%2fcode%3e%20in%20the%20%3ccode%3eviews.cljs%3c%2fcode%3e%20file.%20That%e2%80%99s%20not%20how%20it%20should%20be%20done.%20The%20%3ccode%3eviews.cljs%3c%2fcode%3e%20file%20should%20contain%20the%20different%20pages%20instead.%3c%2fp%3e%0a%3c%2fdiv%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2freframe-vis-part2%2f&t=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2f%2flocalhost%3a1313%2fposts%2freframe-vis-part2%2f&t=Clojurescript%2c%20re-frame%20and%20P5" aria-label="Hacker News">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>
@@ -550,7 +554,7 @@ In the previous post of visualisation in clojurescript I created rect and circle
 
   <footer id="footer">
   <div class="footer-left">
-    Copyright  &copy; 2024  Saaientist 
+    Copyright  &copy; 2025  Saaientist 
   </div>
   <div class="footer-right">
     <nav>

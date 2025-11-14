@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Using jujutsu | Saaientist</title>
+  <link rel = 'canonical' href = '//localhost:1313/posts/jujutsu/'>
+  <meta name="description" content="My external memory. See http://saaientist.blogspot.com for old posts.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:url" content="//localhost:1313/posts/jujutsu/">
+  <meta property="og:site_name" content="Saaientist">
+  <meta property="og:title" content="Using jujutsu">
+  <meta property="og:description" content="Core Concepts Working copy = a commit (no staging area)
+Every change creates a new commit automatically
+Bookmarks = sticky labels on commits
+Unlike Git branches, they DON’T move automatically with new commits
+You manually move them with jj bookmark set
+Needed for pushing to Git (bookmarks → Git branches)
+Common Patterns Pattern: Feature → Review → Push jj new main # Start new change based on main # ... do work ... jj describe -m &#34;...&#34; # Describe your work jj bookmark create my-feature # Create bookmark at current commit jj git push --bookmark my-feature # Push to remote # For subsequent updates: jj bookmark set my-feature # Move bookmark to current commit jj git push --bookmark my-feature # Push updated bookmark">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-14T16:04:00+02:00">
+    <meta property="article:modified_time" content="2025-11-14T16:04:00+02:00">
+    <meta property="article:tag" content="Git">
+    <meta property="article:tag" content="Jujutsu">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Using jujutsu">
+  <meta name="twitter:description" content="Core Concepts Working copy = a commit (no staging area)
+Every change creates a new commit automatically
+Bookmarks = sticky labels on commits
+Unlike Git branches, they DON’T move automatically with new commits
+You manually move them with jj bookmark set
+Needed for pushing to Git (bookmarks → Git branches)
+Common Patterns Pattern: Feature → Review → Push jj new main # Start new change based on main # ... do work ... jj describe -m &#34;...&#34; # Describe your work jj bookmark create my-feature # Create bookmark at current commit jj git push --bookmark my-feature # Push to remote # For subsequent updates: jj bookmark set my-feature # Move bookmark to current commit jj git push --bookmark my-feature # Push updated bookmark">
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="//localhost:1313/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="//localhost:1313/images/favicon.ico" />
+
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" //localhost:1313/posts/nodelink_to_viewport/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f&text=Using%20jujutsu" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f&title=Using%20jujutsu" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f&is_video=false&description=Using%20jujutsu" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Using%20jujutsu&body=Check out this article: %2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f&title=Using%20jujutsu" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f&title=Using%20jujutsu" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f&name=Using%20jujutsu&description=%3cdiv%20class%3d%22sect1%22%3e%0a%3ch2%20id%3d%22_core_concepts%22%3eCore%20Concepts%3c%2fh2%3e%0a%3cdiv%20class%3d%22sectionbody%22%3e%0a%3cdiv%20class%3d%22ulist%22%3e%0a%3cul%3e%0a%3cli%3e%0a%3cp%3e%3cstrong%3eWorking%20copy%20%3d%20a%20commit%3c%2fstrong%3e%20%28no%20staging%20area%29%3c%2fp%3e%0a%3c%2fli%3e%0a%3cli%3e%0a%3cp%3e%3cstrong%3eEvery%20change%20creates%20a%20new%20commit%3c%2fstrong%3e%20automatically%3c%2fp%3e%0a%3c%2fli%3e%0a%3cli%3e%0a%3cp%3e%3cstrong%3eBookmarks%3c%2fstrong%3e%20%3d%20sticky%20labels%20on%20commits%3c%2fp%3e%0a%3c%2fli%3e%0a%3cli%3e%0a%3cp%3eUnlike%20Git%20branches%2c%20they%20DON%e2%80%99T%20move%20automatically%20with%20new%20commits%3c%2fp%3e%0a%3c%2fli%3e%0a%3cli%3e%0a%3cp%3eYou%20manually%20move%20them%20with%20%3ccode%3ejj%20bookmark%20set%3c%2fcode%3e%3c%2fp%3e%0a%3c%2fli%3e%0a%3cli%3e%0a%3cp%3eNeeded%20for%20pushing%20to%20Git%20%28bookmarks%20%e2%86%92%20Git%20branches%29%3c%2fp%3e%0a%3c%2fli%3e%0a%3c%2ful%3e%0a%3c%2fdiv%3e%0a%3chr%2f%3e%0a%3c%2fdiv%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22sect1%22%3e%0a%3ch2%20id%3d%22_common_patterns%22%3eCommon%20Patterns%3c%2fh2%3e%0a%3cdiv%20class%3d%22sectionbody%22%3e%0a%3cdiv%20class%3d%22sect2%22%3e%0a%3ch3%20id%3d%22_pattern_feature_review_push%22%3ePattern%3a%20Feature%20%e2%86%92%20Review%20%e2%86%92%20Push%3c%2fh3%3e%0a%3cdiv%20class%3d%22listingblock%22%3e%0a%3cdiv%20class%3d%22content%22%3e%0a%3cpre%20class%3d%22highlight%22%3e%3ccode%20class%3d%22language-bash%22%20data-lang%3d%22bash%22%3ejj%20new%20main%20%20%20%20%20%20%20%20%20%20%20%23%20Start%20new%20change%20based%20on%20main%0a%23%20...%20do%20work%20...%0ajj%20describe%20-m%20%26%2334%3b...%26%2334%3b%20%20%23%20Describe%20your%20work%0ajj%20bookmark%20create%20my-feature%20%20%23%20Create%20bookmark%20at%20current%20commit%0ajj%20git%20push%20--bookmark%20my-feature%20%20%23%20Push%20to%20remote%0a%0a%23%20For%20subsequent%20updates%3a%0ajj%20bookmark%20set%20my-feature%20%20%20%20%20%23%20Move%20bookmark%20to%20current%20commit%0ajj%20git%20push%20--bookmark%20my-feature%20%20%23%20Push%20updated%20bookmark%3c%2fcode%3e%3c%2fpre%3e%0a%3c%2fdiv%3e" aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f&t=Using%20jujutsu" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Using jujutsu
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2025-11-14 16:04:00 &#43;0200 &#43;0200" itemprop="datePublished">2025-11-14</time>
+          
+        </div>
+        
+        
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/git" rel="tag">git</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/jujutsu" rel="tag">jujutsu</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <div class="sect1">
+<h2 id="_core_concepts">Core Concepts</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Working copy = a commit</strong> (no staging area)</p>
+</li>
+<li>
+<p><strong>Every change creates a new commit</strong> automatically</p>
+</li>
+<li>
+<p><strong>Bookmarks</strong> = sticky labels on commits</p>
+</li>
+<li>
+<p>Unlike Git branches, they DON’T move automatically with new commits</p>
+</li>
+<li>
+<p>You manually move them with <code>jj bookmark set</code></p>
+</li>
+<li>
+<p>Needed for pushing to Git (bookmarks → Git branches)</p>
+</li>
+</ul>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_common_patterns">Common Patterns</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_pattern_feature_review_push">Pattern: Feature → Review → Push</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj new main           # Start new change based on main
+# ... do work ...
+jj describe -m &#34;...&#34;  # Describe your work
+jj bookmark create my-feature  # Create bookmark at current commit
+jj git push --bookmark my-feature  # Push to remote
+
+# For subsequent updates:
+jj bookmark set my-feature     # Move bookmark to current commit
+jj git push --bookmark my-feature  # Push updated bookmark</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pattern_pause_current_work_do_something_else">Pattern: Pause current work, do something else</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj new main           # Jump to main and start new work
+# (your previous work is preserved in the log)
+jj log                # See all your changes
+jj new &lt;change-id&gt;    # Resume previous work later</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pattern_split_mixed_work_into_separate_changes">Pattern: Split mixed work into separate changes</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj split              # Interactive split (select hunks)
+# OR
+jj diff               # Review what you&#39;ve mixed
+jj new                # Create new change on top
+jj restore --from &lt;previous-change&gt; &lt;files&gt;  # Move specific files</code></pre>
+</div>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1_getting_started">1. Getting Started</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_start_jj_in_existing_git_repo">Start jj in existing Git repo</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj git init --git-repo=.</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_clone_a_remote_git_repo">Clone a remote Git repo</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj git clone &lt;url&gt; [directory]
+# Automatically creates bookmarks for remote branches</code></pre>
+</div>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_daily_workflow">2. Daily Workflow</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_start_new_work">Start new work</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj new [base-revision]    # Create new change (default: @)
+jj describe               # Write commit message (opens editor)
+jj describe -m &#34;message&#34;  # Write message inline</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_check_status">Check status</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj status          # What files changed
+jj diff            # Show changes
+jj log             # View change history (graph)
+jj log -r @        # Show current change only</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_amend_current_change">Amend current change</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash"># Just edit files - changes automatically amend current commit!
+jj describe        # Update the description</code></pre>
+</div>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_working_with_remotes">3. Working with Remotes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_push_to_remote">Push to remote</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash"># First time pushing a feature:
+jj bookmark create feature-name    # Create bookmark at current commit
+
+# Pushing:
+jj git push --bookmark feature-name  # Push specific bookmark
+
+# After more work (bookmark didn&#39;t move automatically!):
+jj bookmark set feature-name       # Move bookmark to current commit
+jj git push --bookmark feature-name  # Push updated bookmark</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fetch_and_rebase">Fetch and rebase</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj git fetch                    # Fetch from all remotes
+jj rebase -d main               # Rebase current change onto main
+jj rebase -d main -r &lt;change&gt;   # Rebase specific change</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_common_bookmark_operations">Common bookmark operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj bookmark list                # List all bookmarks
+jj bookmark track main@origin   # Track remote bookmark
+jj bookmark set main -r @       # Move &#39;main&#39; bookmark to current commit
+jj bookmark delete old-feature  # Delete a bookmark</code></pre>
+</div>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_4_parallel_workflows">4. Parallel Workflows</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_put_current_work_aside">Put current work aside</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj new main              # Start fresh from main
+# Your previous work stays in history</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_switch_between_tasks">Switch between tasks</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj log                   # Find the change you want
+jj new &lt;change-id&gt;       # Continue that change
+# OR
+jj edit &lt;change-id&gt;      # Edit that change directly</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_view_all_your_work">View all your work</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj log                   # See everything
+jj log -r &#39;mine()&#39;       # See only your changes</code></pre>
+</div>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_5_history_surgery">5. History Surgery</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_split_a_change_after_the_fact">Split a change after the fact</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj split &lt;change-id&gt;     # Interactive split
+# OR manually:
+jj edit &lt;change-id&gt;      # Go to that change
+jj split                 # Split interactively
+jj new @-                # Create new change before current
+# Move files between changes</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_move_changes_around">Move changes around</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj squash                # Squash current into parent
+jj squash -r &lt;change&gt;    # Squash specific change
+jj rebase -d &lt;dest&gt;      # Move current change</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_edit_any_change">Edit any change</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj edit &lt;change-id&gt;      # Edit that change directly
+# Make changes, then:
+jj new                   # Return to tip</code></pre>
+</div>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_6_safety_net">6. Safety Net</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_undo_mistakes">Undo mistakes</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj op log                # View operation log
+jj op undo               # Undo last operation
+jj op restore &lt;op-id&gt;    # Restore to specific operation</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_abandon_changes">Abandon changes</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">jj abandon &lt;change-id&gt;   # Remove change from history
+jj abandon               # Abandon current change</code></pre>
+</div>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quick_reference">Quick Reference</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Task | Command |
+|------|---------|
+| New change | <code>jj new [base]</code> |
+| Describe change | <code>jj describe -m &#34;msg&#34;</code> |
+| View history | <code>jj log</code> |
+| View changes | <code>jj diff</code> |
+| Create bookmark | <code>jj bookmark create name</code> |
+| Push | <code>jj git push</code> |
+| Fetch | <code>jj git fetch</code> |
+| Rebase | <code>jj rebase -d destination</code> |
+| Split work | <code>jj split</code> |
+| Undo | <code>jj op undo</code> |</p>
+</div>
+<hr/>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tips">Tips</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>No <code>jj add</code> or <code>jj commit</code></strong> - changes are automatic!</p>
+</li>
+<li>
+<p><strong>Change IDs</strong> are stable, commit hashes change with every rebase</p>
+</li>
+<li>
+<p><strong>Bookmarks don’t auto-move</strong> - unlike Git branches, manually update with <code>jj bookmark set</code></p>
+</li>
+<li>
+<p><strong>Use bookmarks</strong> for anything you want to push to Git</p>
+</li>
+<li>
+<p><strong><code>@</code> means</strong> the current working copy change</p>
+</li>
+<li>
+<p><strong><code>@-</code> means</strong> the parent of current change</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Posts</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f&text=Using%20jujutsu" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f&title=Using%20jujutsu" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f&is_video=false&description=Using%20jujutsu" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Using%20jujutsu&body=Check out this article: %2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f&title=Using%20jujutsu" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f&title=Using%20jujutsu" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f&name=Using%20jujutsu&description=%3cdiv%20class%3d%22sect1%22%3e%0a%3ch2%20id%3d%22_core_concepts%22%3eCore%20Concepts%3c%2fh2%3e%0a%3cdiv%20class%3d%22sectionbody%22%3e%0a%3cdiv%20class%3d%22ulist%22%3e%0a%3cul%3e%0a%3cli%3e%0a%3cp%3e%3cstrong%3eWorking%20copy%20%3d%20a%20commit%3c%2fstrong%3e%20%28no%20staging%20area%29%3c%2fp%3e%0a%3c%2fli%3e%0a%3cli%3e%0a%3cp%3e%3cstrong%3eEvery%20change%20creates%20a%20new%20commit%3c%2fstrong%3e%20automatically%3c%2fp%3e%0a%3c%2fli%3e%0a%3cli%3e%0a%3cp%3e%3cstrong%3eBookmarks%3c%2fstrong%3e%20%3d%20sticky%20labels%20on%20commits%3c%2fp%3e%0a%3c%2fli%3e%0a%3cli%3e%0a%3cp%3eUnlike%20Git%20branches%2c%20they%20DON%e2%80%99T%20move%20automatically%20with%20new%20commits%3c%2fp%3e%0a%3c%2fli%3e%0a%3cli%3e%0a%3cp%3eYou%20manually%20move%20them%20with%20%3ccode%3ejj%20bookmark%20set%3c%2fcode%3e%3c%2fp%3e%0a%3c%2fli%3e%0a%3cli%3e%0a%3cp%3eNeeded%20for%20pushing%20to%20Git%20%28bookmarks%20%e2%86%92%20Git%20branches%29%3c%2fp%3e%0a%3c%2fli%3e%0a%3c%2ful%3e%0a%3c%2fdiv%3e%0a%3chr%2f%3e%0a%3c%2fdiv%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22sect1%22%3e%0a%3ch2%20id%3d%22_common_patterns%22%3eCommon%20Patterns%3c%2fh2%3e%0a%3cdiv%20class%3d%22sectionbody%22%3e%0a%3cdiv%20class%3d%22sect2%22%3e%0a%3ch3%20id%3d%22_pattern_feature_review_push%22%3ePattern%3a%20Feature%20%e2%86%92%20Review%20%e2%86%92%20Push%3c%2fh3%3e%0a%3cdiv%20class%3d%22listingblock%22%3e%0a%3cdiv%20class%3d%22content%22%3e%0a%3cpre%20class%3d%22highlight%22%3e%3ccode%20class%3d%22language-bash%22%20data-lang%3d%22bash%22%3ejj%20new%20main%20%20%20%20%20%20%20%20%20%20%20%23%20Start%20new%20change%20based%20on%20main%0a%23%20...%20do%20work%20...%0ajj%20describe%20-m%20%26%2334%3b...%26%2334%3b%20%20%23%20Describe%20your%20work%0ajj%20bookmark%20create%20my-feature%20%20%23%20Create%20bookmark%20at%20current%20commit%0ajj%20git%20push%20--bookmark%20my-feature%20%20%23%20Push%20to%20remote%0a%0a%23%20For%20subsequent%20updates%3a%0ajj%20bookmark%20set%20my-feature%20%20%20%20%20%23%20Move%20bookmark%20to%20current%20commit%0ajj%20git%20push%20--bookmark%20my-feature%20%20%23%20Push%20updated%20bookmark%3c%2fcode%3e%3c%2fpre%3e%0a%3c%2fdiv%3e" aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2f%2flocalhost%3a1313%2fposts%2fjujutsu%2f&t=Using%20jujutsu" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2025  Saaientist 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>

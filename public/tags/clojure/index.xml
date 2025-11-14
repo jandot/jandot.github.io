@@ -1,32 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>clojure on Saaientist</title>
-    <link>/tags/clojure/</link>
-    <description>Recent content in clojure on Saaientist</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Clojure on Saaientist</title>
+    <link>//localhost:1313/tags/clojure/</link>
+    <description>Recent content in Clojure on Saaientist</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Mar 2023 18:45:00 +0200</lastBuildDate><atom:link href="/tags/clojure/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Mar 2023 18:45:00 +0200</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/clojure/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Clojurescript, re-frame and P5</title>
-      <link>/posts/reframe-vis-part2/</link>
+      <link>//localhost:1313/posts/reframe-vis-part2/</link>
       <pubDate>Thu, 30 Mar 2023 18:45:00 +0200</pubDate>
-      
-      <guid>/posts/reframe-vis-part2/</guid>
-      <description>I’m trying out creating generative art using clojurescript and quil (a clojurescript implementation of P5).
-Routing and directory structure The main issue to be solved was to get routing working, so that I don’t have to go into the source code to switch between visuals.
-In the previous post of visualisation in clojurescript I created rect and circle in the views.cljs file. That’s not how it should be done. The views.</description>
+      <guid>//localhost:1313/posts/reframe-vis-part2/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;I’m trying out creating generative art using clojurescript and &lt;a href=&#34;http://quil.info/&#34;&gt;quil&lt;/a&gt; (a clojurescript implementation of &lt;a href=&#34;http://www.p5js.org&#34;&gt;P5&lt;/a&gt;).&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_routing_and_directory_structure&#34;&gt;Routing and directory structure&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;The main issue to be solved was to get &lt;em&gt;routing&lt;/em&gt; working, so that I don’t have to go into the source code to switch between visuals.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;imageblock&#34;&gt;&#xA;&lt;div class=&#34;content&#34;&gt;&#xA;&lt;img src=&#34;//localhost:1313/assets/quil-routing.png&#34; alt=&#34;quil routing&#34; width=&#34;50%&#34;/&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;In &lt;a href=&#34;https://jandot.github.io/posts/clojure-reframe-vis/&#34;&gt;the previous post of visualisation in clojurescript&lt;/a&gt; I created &lt;code&gt;rect&lt;/code&gt; and &lt;code&gt;circle&lt;/code&gt; in the &lt;code&gt;views.cljs&lt;/code&gt; file. That’s not how it should be done. The &lt;code&gt;views.cljs&lt;/code&gt; file should contain the different pages instead.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Clojurescript, re-frame and modular data visualisation</title>
-      <link>/posts/clojure-reframe-vis/</link>
+      <link>//localhost:1313/posts/clojure-reframe-vis/</link>
       <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/clojure-reframe-vis/</guid>
-      <description>One of the issues we still have is how to combine our custom data visualisations in multi-view dashboards with brushing/linking. We’ll have a programmer work on this for the next two years, but as clojure is a bit of a hobby I’d like to try that out as well. It appears that clojurescript re-frame fits the bill.
-Get set up: 1 2 3 lein new re-frame my-project cd my-project lein figwheel dev my-project/resources/public/index.</description>
+      <guid>//localhost:1313/posts/clojure-reframe-vis/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;One of the issues we still have is how to combine our custom data visualisations in multi-view dashboards with brushing/linking. We’ll have a programmer work on this for the next two years, but as clojure is a bit of a hobby I’d like to try that out as well. It appears that clojurescript &lt;a href=&#34;https://github.com/Day8/re-frame&#34;&gt;re-frame&lt;/a&gt; fits the bill.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Get set up:&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&#xA;&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lein new re-frame my-project&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd my-project&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lein figwheel dev&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>

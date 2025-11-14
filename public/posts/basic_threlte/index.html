@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -10,32 +10,39 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title> Basic scatterplots in Threlte | Saaientist</title>
-  <link rel = 'canonical' href = '/posts/basic_threlte/'>
+  <link rel = 'canonical' href = '//localhost:1313/posts/basic_threlte/'>
   <meta name="description" content="My external memory. See http://saaientist.blogspot.com for old posts.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta property="og:title" content="Basic scatterplots in Threlte" />
-<meta property="og:description" content="Svelte is great for data visualisation, but for larger datasets the simple declarative approach to drawing &lt;circle&gt;-s inside an &lt;svg&gt; doesn’t cut it anymore. Other libraries like three.js are capable of handling more data, but they are written for 3D visualisation instead of 2D plots.
+  <meta property="og:url" content="//localhost:1313/posts/basic_threlte/">
+  <meta property="og:site_name" content="Saaientist">
+  <meta property="og:title" content="Basic scatterplots in Threlte">
+  <meta property="og:description" content="Svelte is great for data visualisation, but for larger datasets the simple declarative approach to drawing &lt;circle&gt;-s inside an &lt;svg&gt; doesn’t cut it anymore. Other libraries like three.js are capable of handling more data, but they are written for 3D visualisation instead of 2D plots.
 Below, I show a proof-of-concept for a three.js-based 2D scatterplot with 5,000 points.
-Figure 1. The final image…​ For installation of svelte-kit and threlte, I refer to their own websites." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/basic_threlte/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-11-17T21:45:00+02:00" />
-<meta property="article:modified_time" content="2022-11-17T21:45:00+02:00" />
+Figure 1. The final image…​ For installation of svelte-kit and threlte, I refer to their own websites.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-11-17T21:45:00+02:00">
+    <meta property="article:modified_time" content="2022-11-17T21:45:00+02:00">
+    <meta property="article:tag" content="Svelte">
+    <meta property="article:tag" content="Visualisation">
+    <meta property="article:tag" content="Threejs">
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Basic scatterplots in Threlte"/>
-<meta name="twitter:description" content="Svelte is great for data visualisation, but for larger datasets the simple declarative approach to drawing &lt;circle&gt;-s inside an &lt;svg&gt; doesn’t cut it anymore. Other libraries like three.js are capable of handling more data, but they are written for 3D visualisation instead of 2D plots.
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Basic scatterplots in Threlte">
+  <meta name="twitter:description" content="Svelte is great for data visualisation, but for larger datasets the simple declarative approach to drawing &lt;circle&gt;-s inside an &lt;svg&gt; doesn’t cut it anymore. Other libraries like three.js are capable of handling more data, but they are written for 3D visualisation instead of 2D plots.
 Below, I show a proof-of-concept for a three.js-based 2D scatterplot with 5,000 points.
-Figure 1. The final image…​ For installation of svelte-kit and threlte, I refer to their own websites."/>
+Figure 1. The final image…​ For installation of svelte-kit and threlte, I refer to their own websites.">
 
   
   
     
   
   
-  <link rel="stylesheet" href="/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
+  <link rel="stylesheet" href="//localhost:1313/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
 
   
   
@@ -47,12 +54,8 @@ Figure 1. The final image…​ For installation of svelte-kit and threlte, I re
   
 
   
-<link rel="icon" type="image/png" href="/images/favicon.ico" />
+<link rel="icon" type="image/png" href="//localhost:1313/images/favicon.ico" />
 
-  
-  
-  
-  
 </head>
 
 <body class="max-width mx-auto px3 ltr">
@@ -81,14 +84,14 @@ Figure 1. The final image…​ For installation of svelte-kit and threlte, I re
       <ul>
         
         <li>
-          <a class="icon" href=" /posts/nodelink-in-layercake/" aria-label="Previous">
+          <a class="icon" href=" //localhost:1313/posts/nodelink-in-layercake/" aria-label="Previous">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
         
         <li>
-          <a class="icon" href="/posts/molecule_viewer/" aria-label="Next">
+          <a class="icon" href="//localhost:1313/posts/molecule_viewer/" aria-label="Next">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
@@ -119,47 +122,47 @@ Figure 1. The final image…​ For installation of svelte-kit and threlte, I re
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2fbasic_threlte%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f" aria-label="Facebook">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=%2fposts%2fbasic_threlte%2f&text=Basic%20scatterplots%20in%20Threlte" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f&text=Basic%20scatterplots%20in%20Threlte" aria-label="Twitter">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2fbasic_threlte%2f&title=Basic%20scatterplots%20in%20Threlte" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f&title=Basic%20scatterplots%20in%20Threlte" aria-label="Linkedin">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2fbasic_threlte%2f&is_video=false&description=Basic%20scatterplots%20in%20Threlte" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f&is_video=false&description=Basic%20scatterplots%20in%20Threlte" aria-label="Pinterest">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Basic%20scatterplots%20in%20Threlte&body=Check out this article: %2fposts%2fbasic_threlte%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Basic%20scatterplots%20in%20Threlte&body=Check out this article: %2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f" aria-label="Email">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2fbasic_threlte%2f&title=Basic%20scatterplots%20in%20Threlte" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f&title=Basic%20scatterplots%20in%20Threlte" aria-label="Pocket">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2fbasic_threlte%2f&title=Basic%20scatterplots%20in%20Threlte" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f&title=Basic%20scatterplots%20in%20Threlte" aria-label="reddit">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2fbasic_threlte%2f&name=Basic%20scatterplots%20in%20Threlte&description=Svelte%20is%20great%20for%20data%20visualisation%2c%20but%20for%20larger%20datasets%20the%20simple%20declarative%20approach%20to%20drawing%20%26lt%3bcircle%26gt%3b-s%20inside%20an%20%26lt%3bsvg%26gt%3b%20doesn%e2%80%99t%20cut%20it%20anymore.%20Other%20libraries%20like%20three.js%20are%20capable%20of%20handling%20more%20data%2c%20but%20they%20are%20written%20for%203D%20visualisation%20instead%20of%202D%20plots.%0aBelow%2c%20I%20show%20a%20proof-of-concept%20for%20a%20three.js-based%202D%20scatterplot%20with%205%2c000%20points.%0aFigure%201.%20The%20final%20image%e2%80%a6%e2%80%8b%20For%20installation%20of%20svelte-kit%20and%20threlte%2c%20I%20refer%20to%20their%20own%20websites." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f&name=Basic%20scatterplots%20in%20Threlte&description=%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eSvelte%20is%20great%20for%20data%20visualisation%2c%20but%20for%20larger%20datasets%20the%20simple%20declarative%20approach%20to%20drawing%20%3ccode%3e%26lt%3bcircle%26gt%3b%3c%2fcode%3e-s%20inside%20an%20%3ccode%3e%26lt%3bsvg%26gt%3b%3c%2fcode%3e%20doesn%e2%80%99t%20cut%20it%20anymore.%20Other%20libraries%20like%20%3ca%20href%3d%22http%3a%2f%2fthreejs.org%22%3ethree.js%3c%2fa%3e%20%3cem%3eare%3c%2fem%3e%20capable%20of%20handling%20more%20data%2c%20but%20they%20are%20written%20for%203D%20visualisation%20instead%20of%202D%20plots.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eBelow%2c%20I%20show%20a%20proof-of-concept%20for%20a%20three.js-based%202D%20scatterplot%20with%205%2c000%20points.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22imageblock%22%3e%0a%3cdiv%20class%3d%22content%22%3e%0a%3cimg%20src%3d%22%2fassets%2fthrelte_basic_scatterplot.png%22%20alt%3d%22threlte%20basic%20scatterplot%22%20width%3d%2250%25%22%2f%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22title%22%3eFigure%201.%20The%20final%20image%e2%80%a6%e2%80%8b%3c%2fdiv%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eFor%20installation%20of%20%3ca%20href%3d%22http%3a%2f%2fkit.svelte.dev%22%3esvelte-kit%3c%2fa%3e%20and%20%3ca%20href%3d%22http%3a%2f%2fthrelte.xyz%22%3ethrelte%3c%2fa%3e%2c%20I%20refer%20to%20their%20own%20websites.%3c%2fp%3e%0a%3c%2fdiv%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2fbasic_threlte%2f&t=Basic%20scatterplots%20in%20Threlte" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f&t=Basic%20scatterplots%20in%20Threlte" aria-label="Hacker News">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -497,47 +500,47 @@ Figure 1. The final image…​ For installation of svelte-kit and threlte, I re
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2fbasic_threlte%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f" aria-label="Facebook">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=%2fposts%2fbasic_threlte%2f&text=Basic%20scatterplots%20in%20Threlte" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f&text=Basic%20scatterplots%20in%20Threlte" aria-label="Twitter">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2fbasic_threlte%2f&title=Basic%20scatterplots%20in%20Threlte" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f&title=Basic%20scatterplots%20in%20Threlte" aria-label="Linkedin">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2fbasic_threlte%2f&is_video=false&description=Basic%20scatterplots%20in%20Threlte" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f&is_video=false&description=Basic%20scatterplots%20in%20Threlte" aria-label="Pinterest">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Basic%20scatterplots%20in%20Threlte&body=Check out this article: %2fposts%2fbasic_threlte%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Basic%20scatterplots%20in%20Threlte&body=Check out this article: %2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f" aria-label="Email">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2fbasic_threlte%2f&title=Basic%20scatterplots%20in%20Threlte" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f&title=Basic%20scatterplots%20in%20Threlte" aria-label="Pocket">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2fbasic_threlte%2f&title=Basic%20scatterplots%20in%20Threlte" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f&title=Basic%20scatterplots%20in%20Threlte" aria-label="reddit">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2fbasic_threlte%2f&name=Basic%20scatterplots%20in%20Threlte&description=Svelte%20is%20great%20for%20data%20visualisation%2c%20but%20for%20larger%20datasets%20the%20simple%20declarative%20approach%20to%20drawing%20%26lt%3bcircle%26gt%3b-s%20inside%20an%20%26lt%3bsvg%26gt%3b%20doesn%e2%80%99t%20cut%20it%20anymore.%20Other%20libraries%20like%20three.js%20are%20capable%20of%20handling%20more%20data%2c%20but%20they%20are%20written%20for%203D%20visualisation%20instead%20of%202D%20plots.%0aBelow%2c%20I%20show%20a%20proof-of-concept%20for%20a%20three.js-based%202D%20scatterplot%20with%205%2c000%20points.%0aFigure%201.%20The%20final%20image%e2%80%a6%e2%80%8b%20For%20installation%20of%20svelte-kit%20and%20threlte%2c%20I%20refer%20to%20their%20own%20websites." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f&name=Basic%20scatterplots%20in%20Threlte&description=%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eSvelte%20is%20great%20for%20data%20visualisation%2c%20but%20for%20larger%20datasets%20the%20simple%20declarative%20approach%20to%20drawing%20%3ccode%3e%26lt%3bcircle%26gt%3b%3c%2fcode%3e-s%20inside%20an%20%3ccode%3e%26lt%3bsvg%26gt%3b%3c%2fcode%3e%20doesn%e2%80%99t%20cut%20it%20anymore.%20Other%20libraries%20like%20%3ca%20href%3d%22http%3a%2f%2fthreejs.org%22%3ethree.js%3c%2fa%3e%20%3cem%3eare%3c%2fem%3e%20capable%20of%20handling%20more%20data%2c%20but%20they%20are%20written%20for%203D%20visualisation%20instead%20of%202D%20plots.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eBelow%2c%20I%20show%20a%20proof-of-concept%20for%20a%20three.js-based%202D%20scatterplot%20with%205%2c000%20points.%3c%2fp%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22imageblock%22%3e%0a%3cdiv%20class%3d%22content%22%3e%0a%3cimg%20src%3d%22%2fassets%2fthrelte_basic_scatterplot.png%22%20alt%3d%22threlte%20basic%20scatterplot%22%20width%3d%2250%25%22%2f%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22title%22%3eFigure%201.%20The%20final%20image%e2%80%a6%e2%80%8b%3c%2fdiv%3e%0a%3c%2fdiv%3e%0a%3cdiv%20class%3d%22paragraph%22%3e%0a%3cp%3eFor%20installation%20of%20%3ca%20href%3d%22http%3a%2f%2fkit.svelte.dev%22%3esvelte-kit%3c%2fa%3e%20and%20%3ca%20href%3d%22http%3a%2f%2fthrelte.xyz%22%3ethrelte%3c%2fa%3e%2c%20I%20refer%20to%20their%20own%20websites.%3c%2fp%3e%0a%3c%2fdiv%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2fbasic_threlte%2f&t=Basic%20scatterplots%20in%20Threlte" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2f%2flocalhost%3a1313%2fposts%2fbasic_threlte%2f&t=Basic%20scatterplots%20in%20Threlte" aria-label="Hacker News">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>
@@ -565,7 +568,7 @@ Figure 1. The final image…​ For installation of svelte-kit and threlte, I re
 
   <footer id="footer">
   <div class="footer-left">
-    Copyright  &copy; 2024  Saaientist 
+    Copyright  &copy; 2025  Saaientist 
   </div>
   <div class="footer-right">
     <nav>

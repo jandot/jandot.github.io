@@ -2,199 +2,165 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Saaientist</title>
-    <link>/tags/</link>
+    <link>//localhost:1313/tags/</link>
     <description>Recent content in Tags on Saaientist</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Mar 2024 15:06:00 +0200</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Nov 2025 16:04:00 +0200</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>brush</title>
-      <link>/tags/brush/</link>
-      <pubDate>Sun, 24 Mar 2024 15:06:00 +0200</pubDate>
-      
-      <guid>/tags/brush/</guid>
+      <title>Git</title>
+      <link>//localhost:1313/tags/git/</link>
+      <pubDate>Fri, 14 Nov 2025 16:04:00 +0200</pubDate>
+      <guid>//localhost:1313/tags/git/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>d3</title>
-      <link>/tags/d3/</link>
-      <pubDate>Sun, 24 Mar 2024 15:06:00 +0200</pubDate>
-      
-      <guid>/tags/d3/</guid>
+      <title>Jujutsu</title>
+      <link>//localhost:1313/tags/jujutsu/</link>
+      <pubDate>Fri, 14 Nov 2025 16:04:00 +0200</pubDate>
+      <guid>//localhost:1313/tags/jujutsu/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>svelte</title>
-      <link>/tags/svelte/</link>
-      <pubDate>Sun, 24 Mar 2024 15:06:00 +0200</pubDate>
-      
-      <guid>/tags/svelte/</guid>
+      <title>D3</title>
+      <link>//localhost:1313/tags/d3/</link>
+      <pubDate>Mon, 08 Jul 2024 09:43:00 +0200</pubDate>
+      <guid>//localhost:1313/tags/d3/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>visualisation</title>
-      <link>/tags/visualisation/</link>
-      <pubDate>Sun, 24 Mar 2024 15:06:00 +0200</pubDate>
-      
-      <guid>/tags/visualisation/</guid>
+      <title>Graph</title>
+      <link>//localhost:1313/tags/graph/</link>
+      <pubDate>Mon, 08 Jul 2024 09:43:00 +0200</pubDate>
+      <guid>//localhost:1313/tags/graph/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>regl</title>
-      <link>/tags/regl/</link>
+      <title>Svelte</title>
+      <link>//localhost:1313/tags/svelte/</link>
+      <pubDate>Mon, 08 Jul 2024 09:43:00 +0200</pubDate>
+      <guid>//localhost:1313/tags/svelte/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Visualisation</title>
+      <link>//localhost:1313/tags/visualisation/</link>
+      <pubDate>Mon, 08 Jul 2024 09:43:00 +0200</pubDate>
+      <guid>//localhost:1313/tags/visualisation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Brush</title>
+      <link>//localhost:1313/tags/brush/</link>
+      <pubDate>Sun, 24 Mar 2024 15:06:00 +0200</pubDate>
+      <guid>//localhost:1313/tags/brush/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Regl</title>
+      <link>//localhost:1313/tags/regl/</link>
       <pubDate>Wed, 17 May 2023 17:45:00 +0200</pubDate>
-      
-      <guid>/tags/regl/</guid>
+      <guid>//localhost:1313/tags/regl/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>clojure</title>
-      <link>/tags/clojure/</link>
+      <title>Clojure</title>
+      <link>//localhost:1313/tags/clojure/</link>
       <pubDate>Thu, 30 Mar 2023 18:45:00 +0200</pubDate>
-      
-      <guid>/tags/clojure/</guid>
+      <guid>//localhost:1313/tags/clojure/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>p5</title>
-      <link>/tags/p5/</link>
+      <title>P5</title>
+      <link>//localhost:1313/tags/p5/</link>
       <pubDate>Thu, 30 Mar 2023 18:45:00 +0200</pubDate>
-      
-      <guid>/tags/p5/</guid>
+      <guid>//localhost:1313/tags/p5/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>quil</title>
-      <link>/tags/quil/</link>
+      <title>Quil</title>
+      <link>//localhost:1313/tags/quil/</link>
       <pubDate>Thu, 30 Mar 2023 18:45:00 +0200</pubDate>
-      
-      <guid>/tags/quil/</guid>
+      <guid>//localhost:1313/tags/quil/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>molecules</title>
-      <link>/tags/molecules/</link>
+      <title>Molecules</title>
+      <link>//localhost:1313/tags/molecules/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/molecules/</guid>
+      <guid>//localhost:1313/tags/molecules/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>threejs</title>
-      <link>/tags/threejs/</link>
+      <title>Threejs</title>
+      <link>//localhost:1313/tags/threejs/</link>
       <pubDate>Thu, 17 Nov 2022 21:45:00 +0200</pubDate>
-      
-      <guid>/tags/threejs/</guid>
+      <guid>//localhost:1313/tags/threejs/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>graph</title>
-      <link>/tags/graph/</link>
+      <title>Layercake</title>
+      <link>//localhost:1313/tags/layercake/</link>
       <pubDate>Mon, 17 Oct 2022 20:45:00 +0200</pubDate>
-      
-      <guid>/tags/graph/</guid>
+      <guid>//localhost:1313/tags/layercake/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>layercake</title>
-      <link>/tags/layercake/</link>
-      <pubDate>Mon, 17 Oct 2022 20:45:00 +0200</pubDate>
-      
-      <guid>/tags/layercake/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>/tags/git/</link>
-      <pubDate>Sat, 17 Sep 2022 16:04:00 +0200</pubDate>
-      
-      <guid>/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>arangodb</title>
-      <link>/tags/arangodb/</link>
+      <title>Arangodb</title>
+      <link>//localhost:1313/tags/arangodb/</link>
       <pubDate>Mon, 18 Jul 2022 14:39:00 +0200</pubDate>
-      
-      <guid>/tags/arangodb/</guid>
+      <guid>//localhost:1313/tags/arangodb/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>docker</title>
-      <link>/tags/docker/</link>
+      <title>Docker</title>
+      <link>//localhost:1313/tags/docker/</link>
       <pubDate>Mon, 18 Jul 2022 14:39:00 +0200</pubDate>
-      
-      <guid>/tags/docker/</guid>
+      <guid>//localhost:1313/tags/docker/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>asciidoc</title>
-      <link>/tags/asciidoc/</link>
+      <title>Asciidoc</title>
+      <link>//localhost:1313/tags/asciidoc/</link>
       <pubDate>Thu, 07 Jul 2022 14:16:08 +0200</pubDate>
-      
-      <guid>/tags/asciidoc/</guid>
+      <guid>//localhost:1313/tags/asciidoc/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Word</title>
-      <link>/tags/word/</link>
+      <link>//localhost:1313/tags/word/</link>
       <pubDate>Thu, 07 Jul 2022 14:16:08 +0200</pubDate>
-      
-      <guid>/tags/word/</guid>
+      <guid>//localhost:1313/tags/word/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>vega</title>
-      <link>/tags/vega/</link>
+      <title>Vega</title>
+      <link>//localhost:1313/tags/vega/</link>
       <pubDate>Tue, 05 Jul 2022 16:04:00 +0200</pubDate>
-      
-      <guid>/tags/vega/</guid>
+      <guid>//localhost:1313/tags/vega/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>javascript</title>
-      <link>/tags/javascript/</link>
+      <title>Javascript</title>
+      <link>//localhost:1313/tags/javascript/</link>
       <pubDate>Fri, 24 Jun 2022 22:01:50 +0200</pubDate>
-      
-      <guid>/tags/javascript/</guid>
+      <guid>//localhost:1313/tags/javascript/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>jupyter</title>
-      <link>/tags/jupyter/</link>
+      <title>Jupyter</title>
+      <link>//localhost:1313/tags/jupyter/</link>
       <pubDate>Sun, 31 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/jupyter/</guid>
+      <guid>//localhost:1313/tags/jupyter/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>teaching</title>
-      <link>/tags/teaching/</link>
+      <title>Teaching</title>
+      <link>//localhost:1313/tags/teaching/</link>
       <pubDate>Sun, 31 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/teaching/</guid>
+      <guid>//localhost:1313/tags/teaching/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>
